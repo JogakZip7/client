@@ -5,7 +5,7 @@ function HomePage() {
     return (
         <nav>
             <ul>
-                <li><Link to="/page">게시판</Link></li>
+                <li><Link to="/post">게시판</Link></li>
             </ul>
         </nav>
     );
