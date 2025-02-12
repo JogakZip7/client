@@ -1,0 +1,171 @@
+/* 
+전체 페이지 스타일 
+body {
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+    background-color: #FAFAFA;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ 로고 영역
+.logo-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 137px;
+    height: 48px;
+}
+
+ 메인 컨테이너 
+.group-container {
+    width: 600px;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+ 제목 스타일 
+h2 {
+    color: #282828;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+ 입력 그룹 
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+ 라벨 (그룹명, 대표 이미지, 그룹 소개 등) 
+.input-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #282828;
+}
+
+ 입력 필드 (텍스트, 비밀번호) 
+.input-box, .textarea-box {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 6px;
+    background: #FAFAFA;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.textarea-box {
+    height: 120px;
+    resize: none;
+}
+
+ 파일 업로드 컨테이너 
+.file-upload-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #DDDDDD;
+    border-radius: 6px;
+    background: #FAFAFA;
+    padding: 10px;
+}
+
+ 파일 업로드 버튼 
+.file-input {
+    display: none;
+}
+
+.file-label {
+    padding: 10px 15px;
+    background-color: #282828;
+    color: #FAFAFA;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+ 그룹 공개 선택 (토글 버튼) 
+.toggle-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #282828;
+    margin-right: 10px;
+}
+
+ 토글 스위치 
+.toggle-switch {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    background-color: #B8B8B8;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.toggle-slider {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    top: 0;
+    left: 0;
+    transition: left 0.3s;
+}
+
+.toggle-checkbox:checked + .toggle-slider {
+    left: 24px;
+    background: #282828;
+}
+
+ 제출 버튼 
+.submit-button {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    background-color: #282828;
+    color: #FAFAFA;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.submit-button:hover {
+    background-color: #1f1f1f;
+}
+
+ */
