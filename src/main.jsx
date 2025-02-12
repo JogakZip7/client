@@ -1,11 +1,16 @@
 //최상위 컴포넌트
-import App from './components/App';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import HomePage from './pages/home/HomePage';
+import SignIn from './pages/admin/LoginPage';
+
 function Main(){
   return(
-    <App>
-      <HomePage />
-    </App>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signin" element={<SignIn/>} /> 
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "flower",
+    "imageUrl": "src/assets/image=img1.png",
+    "badgeCount": 0,
+    "postCount": 0,
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "introduction": "string"
+  },
+  {
+    "id": 2,
+    "name": "child",
+    "imageUrl": "src/assets/image=img2.png",
+    "badgeCount": 20,
+    "postCount": 0,
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "introduction": "string"
+  }
+]
