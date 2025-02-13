@@ -1,8 +1,7 @@
-# React + Vite
+# **🔉프로젝트 소개**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+코드잇부스트 1기 2반 데모데이의 프로젝트 주제인 **조각집**으로, 사진 공유 방식의 커뮤니티 웹 서비스 입니다.
 
-Currently, two official plugins are available:
+### ⭐제시된 요구사항과 차별화된 점
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+회원가입 및 로그인 기능을 추가하여 스크랩한 게시글 및 속한 그룹들을 한 눈에 볼 수 있도록 하였으며, 메인페이지를 따로 만들어 다른 그룹들의 공유 게시글들을 자유롭게 둘러볼 수 있는 커뮤니티의 기능을 강화하였습니다.
