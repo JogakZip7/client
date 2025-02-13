@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import SignIn from "./pages/admin/LoginPage";
 import SignUp from "./pages/admin/SignUpPage";
-import PostPage from "../pages/post/PostPage";
-import ErrorPage from "../pages/Error/ErrorPage";
+import PostPage from "./pages/post/PostPage";
+import ErrorPage from "./pages/Error/ErrorPage";
 
 function Main() {
   return (
@@ -14,8 +14,10 @@ function Main() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/post" element={<PostPage />} />
-        <Route path="/Error" element={<ErrorPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
+export default Main;
