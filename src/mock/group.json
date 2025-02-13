@@ -1,13 +1,13 @@
 [
   {
-    "id": "suding",
+    "id": "123",
     "name": "수딩이네 가족",
     "imageUrl": "src/assets/image=img2.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 수딩이네 가족",
     "postCount": 8
   },
   {
-    "id": "gaeun",
+    "id": "234",
     "name": "가은이네 가족",
     "imageUrl": "src/assets/image=img4.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 가은이네 가족",
