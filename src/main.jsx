@@ -5,8 +5,8 @@ import SignIn from "./pages/admin/LoginPage";
 import SignUp from "./pages/admin/SignUpPage";
 import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
-import GroupList from "./pages/group/GroupList";
-import MyGroup from "./pages/group/GroupDetail";
+import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
+import Group from "./pages/group/GroupDetail"; //그룹페이지
 
 function Main() {
   return (
@@ -17,8 +17,8 @@ function Main() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/post" element={<PostPage />} />
         <Route path="/error" element={<ErrorPage />} />
-        <Route path="/showgroups" element = {<GroupList/>} />
-        <Route path="/groups/${groupId}" element={<MyGroup />} />
+        <Route path="/showgroups" element = {<MyGroupList/>} />
+        <Route path="/groups/:groupId" element={<Group />} />
       </Routes>
     </BrowserRouter>
   );
