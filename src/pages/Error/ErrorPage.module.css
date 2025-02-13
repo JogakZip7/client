@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FAFAFA;
+    text-align: center;
+    font-family: 'ABeeZee', sans-serif;
+    color: #282828;
+  }
+  
+  .errorCode {
+    font-size: 100px;
+    font-weight: bold;
+    color: #282828;
+  }
+  
+  .flowerIcon {
+    margin-top: 10px;
+  }
+  
+  .flowerImg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .message {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    color: #282828;
+  }
+  
+  .subMessage {
+    font-size: 14px;
+    color: #B8B8B8;
+    margin-top: 10px;
+  }
+  
