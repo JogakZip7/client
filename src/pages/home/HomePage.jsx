@@ -6,6 +6,7 @@ function HomePage() {
         <nav>
             <ul>
                 <li><Link to="/post">게시판</Link></li>
+                <li><Link to="/error">에러</Link></li>
             </ul>
         </nav>
     );

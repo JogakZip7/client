@@ -3,6 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import PostPage from "../pages/post/PostPage";
+import ErrorPage from "../pages/Error/ErrorPage";
+
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/post" element={<PostPage />} />
+        <Route path="/Error" element={<ErrorPage />} />
       </Routes>
     </Router>
   );
