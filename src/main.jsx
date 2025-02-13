@@ -5,6 +5,8 @@ import SignIn from "./pages/admin/LoginPage";
 import SignUp from "./pages/admin/SignUpPage";
 import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
+import GroupList from "./pages/group/GroupList";
+import MyGroup from "./pages/group/GroupDetail";
 
 function Main() {
   return (
@@ -15,6 +17,8 @@ function Main() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/post" element={<PostPage />} />
         <Route path="/error" element={<ErrorPage />} />
+        <Route path="/showgroups" element = {<GroupList/>} />
+        <Route path="/groups/${groupId}" element={<MyGroup />} />
       </Routes>
     </BrowserRouter>
   );
