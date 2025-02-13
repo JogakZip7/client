@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MakeGroup.css";
 
 function MakeGroup() {
+  /*
   // 상태 변수들 (화면 출력만 확인)
   const [groupName, setGroupName] = useState("");
   const [groupIntro, setGroupIntro] = useState("");
@@ -39,7 +40,7 @@ function MakeGroup() {
 
     // 로딩 상태를 끄고, 폼 제출 후 알림 (화면 상에서만)
     setLoading(false); // 바로 로딩 상태 끄기
-  };
+  }; */
 
   return (
     <div className="create-group-page">
