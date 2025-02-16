@@ -7,6 +7,7 @@ import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
 import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
 import Group from "./pages/group/GroupDetail"; //그룹페이지
+import Nav from "./components/Nav";
 
 function Main() {
   return (
