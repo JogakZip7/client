@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PostPage.module.css';
+import PenIcon from '../../assets/Pen.png';
+import TrashIcon from '../../assets/Trash.png';
 
 function PostPage() {
   const [commentContent, setCommentContent] = useState("");
@@ -7,8 +9,10 @@ function PostPage() {
   const [editingCommentIndex, setEditingCommentIndex] = useState(null);
   const [editingCommentContent, setEditingCommentContent] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [likes, setLikes] = useState(0);
   const commentsPerPage = 10;
 
+  // 댓글에 아무것도 안쳤을 시에 내용 입력해달라고 경고
   const handleCommentSubmit = () => {
     if (!commentContent.trim()) {
       alert("댓글 내용을 입력해주세요.");
@@ -17,11 +21,12 @@ function PostPage() {
 
     setComments([
       ...comments,
-      { user: "새로운 사용자", date: new Date().toLocaleString(), content: commentContent }
+      { user: "사용자", date: new Date().toLocaleString(), content: commentContent }
     ]);
     setCommentContent("");
   };
 
+  // 댓글 삭제 팝업
   const handleDeleteComment = (index) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
       setComments(comments.filter((_, i) => i !== index));
@@ -31,6 +36,11 @@ function PostPage() {
   const handleEditComment = (index) => {
     setEditingCommentIndex(index);
     setEditingCommentContent(comments[index].content);
+  };
+
+  // 공감 버튼 클릭 시 공감 수 증가
+  const handleLikeClick = () => {
+    setLikes(likes + 1);
   };
 
   const handleSaveEditedComment = () => {
@@ -59,27 +69,45 @@ function PostPage() {
     setCurrentPage(pageNumber);
   };
 
+  // 뒤로가기 버튼 클릭 시 홈페이지로 이동
+  const handleBackClick = () => {
+    window.location.href = "/"; // 홈페이지로 이동
+  };
+
   return (
     <div className={styles.container}>
+      {/* Back Button */}
+      <button onClick={handleBackClick} className={styles.backButton}>
+        뒤로가기
+      </button>
+
       {/* Post Header */}
       <header className={styles.header}>
         <h1 className={styles.title}>제목</h1>
         <div className={styles.headerInfo}>
-          <span>날짜</span> <span>· 공감수</span> <span>· 댓글수</span>
+          <span>닉네임</span> <span>· 날짜</span> <span>· 공감수: {likes}</span> <span>· 댓글수</span>
         </div>
+        {/* 공감하기 버튼 */}
+        <button onClick={handleLikeClick} className={styles.likeButton}>
+          공감하기
+        </button>
         {/* Delete Post Button */}
         <button onClick={handleDeletePost} className={styles.deletePostButton}>
-          글 삭제하기
+          추억 삭제하기
+        </button>
+        {/* Edit Post Button */}
+        <button onClick={() => alert("게시글 수정")} className={styles.editButton}>
+            추억 수정하기
         </button>
       </header>
 
-      {/* Post Content */}
+      {/*게시글 */}
       <section className={styles.contentSection}>
         <p className={styles.contentParagraph}>본문!</p>
         <hr className={styles.divider} />
       </section>
 
-      {/* Comment Section */}
+      {/* 댓글 */}
       <section className={styles.commentSection}>
         <p className={styles.commentTitle}>댓글</p>
         <div>
@@ -129,13 +157,15 @@ function PostPage() {
                 <p className={styles.commentContent}>{comment.content}</p>
               )}
 
-              {/* Edit and Delete Buttons */}
               <div className={styles.commentButtons}>
-                <button onClick={() => handleEditComment(index)} className={styles.editButton}>
-                  수정
+                {/* 댓글 수정 */}
+                <button onClick={() => handleEditComment(index)} className={styles.editCommentButton}>
+                  <img src={PenIcon} alt="Edit" className={styles.icon} />
                 </button>
+
+                {/* 댓글 삭제 */}
                 <button onClick={() => handleDeleteComment(index)} className={styles.deleteCommentButton}>
-                  삭제
+                  <img src={TrashIcon} alt="Delete" className={styles.icon} />
                 </button>
               </div>
 
