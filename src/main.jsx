@@ -7,12 +7,13 @@ import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
 import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
 import Group from "./pages/group/GroupDetail"; //그룹페이지
-import Nav from "./components/Temp";
+import Nav from "./components/Navbar";
 
 function Main() {
   return (
     <BrowserRouter>
       <Routes>
+        <Nav />
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />

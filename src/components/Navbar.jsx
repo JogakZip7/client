@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import './Nav.module.css';
+import './Navbar.module.css';
 
 //로그인 여부에 따른 변화
 function Nav() {
