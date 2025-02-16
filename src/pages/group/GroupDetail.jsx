@@ -7,7 +7,6 @@ function GroupItem() {
   const { id } = useParams(); 
   const navigate = useNavigate();
   const group = items.find((g) => g.id === parseInt(id));
-  console.log(group.imageUrl);
 
   useEffect(() =>{
     if(!group){

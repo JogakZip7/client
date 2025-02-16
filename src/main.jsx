@@ -17,7 +17,7 @@ function Main() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/post" element={<PostPage />} />
         <Route path="/error" element={<ErrorPage />} />
-        <Route path="/showgroups" element = {<MyGroupList/>} />
+        <Route path="/showgroups" element={<MyGroupList />} />
         <Route path="/groups/:id" element={<Group />} />
       </Routes>
     </BrowserRouter>

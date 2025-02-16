@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import SignUpAPI from "../../api/SignUpAPI";
+import  "../../components/appFont.css";
 
-function SignUpPage({token, setToken}){
+function SignUpPage({ token, setToken }) {
   const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
@@ -22,16 +23,15 @@ function SignUpPage({token, setToken}){
     } else if (nickname === "") {
       alert("닉네임은 필수항목입니다.");
     } else {
-      SignUpAPI(userid, password,nickname).then((response) => {
+      SignUpAPI(userid, password, nickname).then((response) => {
         if (response !== "") {
-          alert("회원가입 성공!!!"); 
+          alert("회원가입 성공!!!");
           setUserid("");
           setPassword("");
           setPasswordToConfirm("");
           setNickname("");
           setToken(response);
         } else {
-         
           alert(
             "회원가입 실패!!! - 원인으로는 서버 문제 or 아이디 중복 등의 원인이 있을 수 있습니다."
           );
@@ -52,21 +52,18 @@ function SignUpPage({token, setToken}){
   const passwordToConfirmHandler = (e) => {
     setPasswordToConfirm(e.currentTarget.value);
   };
-  
-  return(
+
+  return (
     <div className="page">
       <div className="joinMain fullsize">
-        {" "}
-        <div className="titleWrap">조각집 회원가입</div>
-        <div className="subText grey">
-          서비스 가입을 하면 조각집의 이용약관, 개인정보취급방침 및 개인정보
-          3자 제공에 동의하게 됩니다.
-          <br /> 이미 계정이 있는 경우 로그인하여 주세요
+        <div className="titleWrap">회원가입</div>
+        <div className="subText">
+          조각집에서 더많은 경험을 하고 싶다면 회원 가입을 해주세요
         </div>
+        {" "}
         <div className="contentWrap">
           <div className="inputTitle">
-            {" "}
-            아이디{" "}
+            아이디
             <div className="inputWrap">
               <input
                 type="text"
@@ -74,16 +71,14 @@ function SignUpPage({token, setToken}){
                 placeholder="아이디를 입력해주세요"
                 value={userid}
                 onChange={useridHandler}
-              />{" "}
+              />
             </div>
           </div>
           <div>
-          <button className="bottomButton">
-              중복확인
-            </button>
+            <button className="bottomButton">중복확인</button>
           </div>
           <div className="inputTitle">
-           닉네임{" "}
+            닉네임
             <div className="inputWrap">
               <input
                 type="text"
@@ -91,11 +86,10 @@ function SignUpPage({token, setToken}){
                 placeholder="닉네임을 입력해주세요"
                 value={nickname}
                 onChange={nicknameHandler}
-              />{" "}
+              />
             </div>
           </div>
           <div className="inputTitle">
-            {" "}
             비밀번호
             <div className="inputWrap">
               <input
@@ -108,11 +102,8 @@ function SignUpPage({token, setToken}){
             </div>
           </div>
           <div className="inputTitle">
-            {" "}
             비밀번호확인
-            <div className="subText">
-              *입력하신 비밀번호를 다시 입력해주세요.
-            </div>
+
             <div className="inputWrap">
               <input
                 type="password"
@@ -122,16 +113,23 @@ function SignUpPage({token, setToken}){
                 onChange={passwordToConfirmHandler}
               />
             </div>
+            <div className="subText">
+              *입력하신 비밀번호를 다시 입력해주세요.
+            </div>
           </div>
           <div>
-            {" "}
+            <br />
+            서비스 가입을 하면 조각집의 이용약관, 개인정보취급방침 및 개인정보
+            3자 제공에 동의하게 됩니다.
+            <br />
             <button className="bottomButton" onClick={signUp}>
               가입하기
             </button>
           </div>
         </div>
       </div>
-    </div>);
+    </div>
+  );
 }
 
-export default SignUpPage
+export default SignUpPage;
