@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './PostPage.module.css';
 import PenIcon from '../../assets/Pen.png';
 import TrashIcon from '../../assets/Trash.png';
+import FlowerIcon from '../../assets/Flower.png';
+import ChatIcon from '../../assets/Chat.png';
 
 function PostPage() {
   const [commentContent, setCommentContent] = useState("");
@@ -10,7 +12,11 @@ function PostPage() {
   const [editingCommentContent, setEditingCommentContent] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [likes, setLikes] = useState(0);
-  const commentsPerPage = 10;
+  const commentsPerPage = 5;
+
+  const [showDeleteCommentPopup, setShowDeleteCommentPopup] = useState(false);  // 댓글 삭제 팝업 상태
+  const [showDeletePostPopup, setShowDeletePostPopup] = useState(false);  // 게시글 삭제 팝업 상태
+  const [commentToDelete, setCommentToDelete] = useState(null);  // 삭제할 댓글
 
   // 댓글에 아무것도 안쳤을 시에 내용 입력해달라고 경고
   const handleCommentSubmit = () => {
@@ -26,11 +32,37 @@ function PostPage() {
     setCommentContent("");
   };
 
-  // 댓글 삭제 팝업
+  // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
-    if (window.confirm("댓글을 삭제하시겠습니까?")) {
-      setComments(comments.filter((_, i) => i !== index));
-    }
+    setShowDeleteCommentPopup(true);  // 팝업 열기
+    setCommentToDelete(index);  // 삭제할 댓글 지정
+  };
+
+  // 댓글 삭제 확인
+  const handleConfirmDeleteComment = () => {
+    setComments(comments.filter((_, i) => i !== commentToDelete));
+    setShowDeleteCommentPopup(false);
+  };
+
+  // 댓글 삭제 취소
+  const handleCancelDeleteComment = () => {
+    setShowDeleteCommentPopup(false);
+  };
+
+  // 게시글 삭제 팝업 표시
+  const handleDeletePost = () => {
+    setShowDeletePostPopup(true);  // 팝업 열기
+  };
+
+  // 게시글 삭제 확인
+  const handleConfirmDeletePost = () => {
+    alert("게시글이 삭제되었습니다.");
+    setShowDeletePostPopup(false);  // 팝업 닫기
+  };
+
+  // 게시글 삭제 취소
+  const handleCancelDeletePost = () => {
+    setShowDeletePostPopup(false);  // 팝업 닫기
   };
 
   const handleEditComment = (index) => {
@@ -49,12 +81,6 @@ function PostPage() {
     setComments(updatedComments);
     setEditingCommentIndex(null);
     setEditingCommentContent("");
-  };
-
-  const handleDeletePost = () => {
-    if (window.confirm("게시글을 삭제하시겠습니까?")) {
-      alert("게시글이 삭제되었습니다.");
-    }
   };
 
   // 댓글 페이징
@@ -85,11 +111,14 @@ function PostPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>제목</h1>
         <div className={styles.headerInfo}>
-          <span>닉네임</span> <span>· 날짜</span> <span>· 공감수: {likes}</span> <span>· 댓글수</span>
+          <span>닉네임</span>
+          <span>· 날짜 </span>
+          <span><img src={FlowerIcon} alt="Delete" className={styles.flowerIcon} /> {likes}</span>
+          <span><img src={ChatIcon} alt="Delete" className={styles.chatIcon} />  {comments.length}</span>
         </div>
         {/* 공감하기 버튼 */}
         <button onClick={handleLikeClick} className={styles.likeButton}>
-          공감하기
+          <img src={FlowerIcon} alt="Delete" className={styles.flowerIcon2} /> 공감 보내기
         </button>
         {/* Delete Post Button */}
         <button onClick={handleDeletePost} className={styles.deletePostButton}>
@@ -104,12 +133,13 @@ function PostPage() {
       {/*게시글 */}
       <section className={styles.contentSection}>
         <p className={styles.contentParagraph}>본문!</p>
-        <hr className={styles.divider} />
+        
       </section>
 
       {/* 댓글 */}
       <section className={styles.commentSection}>
-        <p className={styles.commentTitle}>댓글</p>
+        <p className={styles.commentTitle}>댓글 {comments.length}</p>
+        <hr className={styles.divider} />
         <div>
           <textarea
             value={commentContent}
@@ -202,6 +232,28 @@ function PostPage() {
           </button>
         </div>
       </section>
+
+      {/* 커스텀 댓글 삭제 팝업 */}
+      {showDeleteCommentPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popup}>
+            <h3>정말 댓글을 삭제하실건가요?ㅜㅜ</h3>
+            <button onClick={handleConfirmDeleteComment} className={styles.popupButton}>확인</button>
+            <button onClick={handleCancelDeleteComment} className={styles.popupButton}>취소</button>
+          </div>
+        </div>
+      )}
+
+      {/* 게시글 삭제 팝업 */}
+      {showDeletePostPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popup}>
+            <h3>정말 게시글을 삭제하실건가요?ㅜㅜ</h3>
+            <button onClick={handleConfirmDeletePost} className={styles.popupButton}>확인</button>
+            <button onClick={handleCancelDeletePost} className={styles.popupButton}>취소</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
