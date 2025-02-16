@@ -6,8 +6,15 @@ function PostPage() {
   const [comments, setComments] = useState([]);
   const [editingCommentIndex, setEditingCommentIndex] = useState(null);
   const [editingCommentContent, setEditingCommentContent] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const commentsPerPage = 10;
 
   const handleCommentSubmit = () => {
+    if (!commentContent.trim()) {
+      alert("댓글 내용을 입력해주세요.");
+      return;
+    }
+
     setComments([
       ...comments,
       { user: "새로운 사용자", date: new Date().toLocaleString(), content: commentContent }
@@ -36,9 +43,20 @@ function PostPage() {
 
   const handleDeletePost = () => {
     if (window.confirm("게시글을 삭제하시겠습니까?")) {
-      // 게시글 삭제 로직을 여기에 추가하면 됩니다.
       alert("게시글이 삭제되었습니다.");
     }
+  };
+
+  // 댓글 페이징
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
+
+  const totalPages = Math.ceil(comments.length / commentsPerPage);
+
+  // 페이지네이션 버튼 클릭
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -47,7 +65,7 @@ function PostPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>제목</h1>
         <div className={styles.headerInfo}>
-          <span>#태그</span> <span>· 날짜</span> <span>· 공감수</span> <span>· 댓글수</span>
+          <span>날짜</span> <span>· 공감수</span> <span>· 댓글수</span>
         </div>
         {/* Delete Post Button */}
         <button onClick={handleDeletePost} className={styles.deletePostButton}>
@@ -60,7 +78,7 @@ function PostPage() {
         <p className={styles.contentParagraph}>본문!</p>
         <hr className={styles.divider} />
       </section>
-      
+
       {/* Comment Section */}
       <section className={styles.commentSection}>
         <p className={styles.commentTitle}>댓글</p>
@@ -85,7 +103,7 @@ function PostPage() {
 
         {/* Comments List */}
         <div className={styles.commentsList}>
-          {comments.map((comment, index) => (
+          {currentComments.map((comment, index) => (
             <div key={index} className={styles.commentItem}>
               {/* Comment Header with Name */}
               <div className={styles.commentHeader}>
@@ -125,6 +143,33 @@ function PostPage() {
               <hr className={styles.divider} />
             </div>
           ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className={styles.pagination}>
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+            className={styles.pageButton}
+          >
+            이전
+          </button>
+          {[...Array(totalPages).keys()].map((pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => handlePageChange(pageNumber + 1)}
+              className={`${styles.pageButton} ${currentPage === pageNumber + 1 ? styles.activePage : ""}`}
+            >
+              {pageNumber + 1}
+            </button>
+          ))}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+            className={styles.pageButton}
+          >
+            다음
+          </button>
         </div>
       </section>
     </div>
