@@ -1,16 +1,51 @@
 [
   {
-    "id": 123,
+    "id": 1,
     "name": "수딩이네 가족",
-    "imageUrl": "public/imgs/image=img4.png",
+    "imageUrl": "imgs/image=img4.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 수딩이네 가족",
     "postCount": 8
   },
   {
-    "id": 234,
-    "name": "가은이네 가족",
+    "id": 2,
+    "name": "양서네 가족",
     "imageUrl": "public/imgs/image=img4.png",
-    "introduction": "서로 한 마음으로 응원하고 아끼는 가은이네 가족",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 양서네 가족",
+    "postCount": 8
+  },
+  {
+    "id": 3,
+    "name": "정은이네 가족",
+    "imageUrl": "public/imgs/image=img4.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 정은이네 가족",
+    "postCount": 8
+  },
+  {
+    "id": 4,
+    "name": "신원이네 가족",
+    "imageUrl": "imgs/image=img4.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 신원이네 가족",
+    "postCount": 8
+  },
+  {
+    "id": 5,
+    "name": "민하네 가족",
+    "imageUrl": "imgs/image=img2.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 민하네 가족",
+    "postCount": 8
+  },
+  {
+    "id": 6,
+    "name": "예진이네 가족",
+    "imageUrl": "imgs/image=img3.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 예진이네 가족",
+    "postCount": 8
+  },
+  {
+    "id": 7,
+    "name": "박서네 가족",
+    "imageUrl": "imgs/image=img1.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 박서네 가족",
     "postCount": 8
   }
 ]

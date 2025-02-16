@@ -1,6 +1,10 @@
 import items from "../../mock/group.json";
 import { Link } from "react-router-dom";
+import mygroup from "../../mock/participate.json";
 
+function ParticipateGroup({mygroup}){
+  
+}
 function GroupList() {
   return(
     <ul>

@@ -5,7 +5,7 @@ const SignUpAPI = async (userid, password, nickname) => {
 
   await axios
     .post(
-      "/api/signup/",
+      "/login.json",
       {
         userid: userid,
         password: password,
