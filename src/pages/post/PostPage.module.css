@@ -1,3 +1,5 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 .container {
     position: relative;
     width: 100%;
@@ -15,6 +17,12 @@
     position: relative;
   }
   
+  body  {
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    background-color: #FAFAFA; /* 전체 화면 배경색을 #FAFAFA로 설정 */
+    margin: 0; /* 기본 마진을 제거하여 전체 화면이 꽉 차게 함 */
+    padding: 0; /* 기본 패딩을 제거 */
+  }
   .title {
     font-size: 32px;
     font-weight: bold;
@@ -33,9 +41,37 @@
     padding: 10px 20px;
     background-color: #E74C3C;
     color: #fff;
-    border-radius: 6px;
+    border-radius: px;
     border: none;
     cursor: pointer;
+  }
+  .likeButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 20px;
+    background-color: #ffffff00;
+    border: 1px solid #000000;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .likeButton:hover {
+    background-color: #c0c0c0;
+  }
+  
+  .backButton {
+    padding: 8px 12px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .backButton:hover {
+    background-color: #ddd;
   }
   
   /* Post Content */
@@ -53,11 +89,6 @@
   .divider {
     border: 1px solid #DDD;
     margin-top: 10px;
-  }
-  
-  /* Comment Section */
-  .commentSection {
-    /* 추가 스타일이 필요하면 여기에 작성 */
   }
   
   .commentTitle {
@@ -138,27 +169,62 @@
     cursor: pointer;
   }
   
-  /* Edit and Delete Buttons */
+  /* 댓글 CSS */
   .commentButtons {
     margin-top: 5px;
   }
   
-  .editButton {
-    background-color: #F4D13D;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+  /* 댓글 수정 버튼 */
+  .icon {
+    width: 20px; /* 원하는 크기 */
+    height: 20px;
+    object-fit: contain; /* 이미지 왜곡 방지 */
   }
   
+  .editCommentButton,
   .deleteCommentButton {
-    background-color: #E74C3C;
+    background: none; /* 배경 제거 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서 모양 변경 */
+  }
+  
+  .editCommentButton:hover,
+  .deleteCommentButton:hover {
+    opacity: 0.7; /* 이미지가 눌렸을 때 약간 투명해짐 */
+  }
+  
+
+  /* 게시글 수정 버튼 */
+  .editButton {
+    position: absolute;
+    top: -60px;  /* 위치를 맞추기 위해 같은 높이로 설정 */
+    right: 120px;  /* 삭제하기 버튼 옆에 위치 */
+    padding: 10px 20px;
+    background-color: #fafafa;
+    color: #000000;
+    border-radius: 6px;
     border: none;
-    color: #fff;
-    border-radius: 4px;
-    padding: 5px 10px;
     cursor: pointer;
   }
   
+  .editButton:hover {
+    color: #504f4f;
+  }
+
+  /* 삭제하기 버튼 */
+  .deletePostButton {
+    margin-bottom: 10px;
+    position: absolute;
+    top: -60px;  /* 위치를 맞추기 위해 같은 높이로 설정 */
+    right: 10px;  /* 오른쪽 여백 */
+    padding: 10px 20px;
+    background-color: #fafafa;
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .deletePostButton:hover {
+    color: #504f4f;
+  }
