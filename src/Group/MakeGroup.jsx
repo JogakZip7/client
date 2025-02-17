@@ -45,6 +45,11 @@ function MakeGroup() {
   return (
     <div className="create-group-page">
       <div className="header">
+      <img 
+          src="/imgs/logo.png" 
+          alt="Logo" 
+          className="logo" 
+        />
         <h2>그룹 만들기</h2>
       </div>
 
