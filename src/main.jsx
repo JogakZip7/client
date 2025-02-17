@@ -6,7 +6,7 @@ import SignUp from "./pages/admin/SignUpPage";
 import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
 import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
-import Group from "./pages/group/GroupDetail"; //그룹페이지
+import GroupDetail from "./pages/group/GroupDetail"; //그룹페이지
 import Navbar from "./components/Navbar";
 
 function LayoutWithNavbar() {
@@ -39,7 +39,8 @@ function Main() {
           <Route path="/post" element={<PostPage />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/showgroups" element={<MyGroupList />} />
-          <Route path="/groups/:id" element={<Group />} />
+          <Route path="/groups/:groupId" element={<GroupDetail />} />
+          <Route path="/post/:postId" element={<PostPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

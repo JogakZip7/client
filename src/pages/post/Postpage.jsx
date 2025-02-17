@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import styles from './PostPage.module.css';
 import PenIcon from '../../assets/Pen.png';
 import TrashIcon from '../../assets/Trash.png';
@@ -6,10 +7,22 @@ import FlowerIcon from '../../assets/Flower.png';
 import ChatIcon from '../../assets/Chat.png';
 import postsData from '../../mock/post.json';
 
-// 첫 번째 게시글 데이터를 사용 (추후 라우팅이나 props로 선택 가능)
-const postData = postsData[2];
-
 function PostPage() {
+  const { postId } = useParams(); // URL에서 postId 가져오기
+  const navigate = useNavigate();
+
+  // postId에 해당하는 게시글 찾기
+  const postData = postsData.find((post) => String(post.id) === postId);
+
+  //postData가 없으면 에러 페이지로 이동
+  useEffect(() => {
+    if (!postData) {
+      navigate("/error");
+    }
+  }, [postData, navigate]);
+
+  // postData가 없을 때 로딩 방지
+  if (!postData) return null;
   // 초기 공감 수를 JSON의 likeCount로 설정
   const [likes, setLikes] = useState(postData.likeCount);
   const [commentContent, setCommentContent] = useState("");
