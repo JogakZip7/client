@@ -31,13 +31,13 @@ function Main() {
         <Route element={<LayoutWithoutNavbar />}>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Route>
 
         {/* 네비게이션 바 있는 페이지 */}
         <Route element={<LayoutWithNavbar />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/post" element={<PostPage />} />
-          <Route path="/error" element={<ErrorPage />} />
           <Route path="/showgroups" element={<MyGroupList />} />
           <Route path="/groups/:groupId" element={<GroupDetail />} />
           <Route path="/post/:postId" element={<PostPage/>}/>
