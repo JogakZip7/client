@@ -35,6 +35,7 @@ const GroupDetail = () => {
           createdAt: group.createdAt,
           badges: group.badges,
         });
+        console.log(group);
       }
 
       // Fetch posts
