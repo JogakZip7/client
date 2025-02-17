@@ -7,7 +7,7 @@ import ChatIcon from '../../assets/Chat.png';
 import postsData from '../../mock/post.json';
 
 // 첫 번째 게시글 데이터를 사용 (추후 라우팅이나 props로 선택 가능)
-const postData = postsData[0];
+const postData = postsData[2];
 
 function PostPage() {
   // 초기 공감 수를 JSON의 likeCount로 설정
@@ -31,10 +31,18 @@ function PostPage() {
     }
     setComments([
       ...comments,
-      { user: "사용자", date: new Date().toLocaleString(), content: commentContent }
+      { 
+        user: "사용자", 
+        date: `${new Date().toLocaleDateString("ko-KR")} ${new Date().toLocaleTimeString("ko-KR", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false // 24시간 형식 사용
+        })}`, 
+        content: commentContent 
+      }
     ]);
-    setCommentContent("");
-  };
+  }    
+
 
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
@@ -112,17 +120,27 @@ function PostPage() {
 
       {/* 게시글 헤더 */}
       <header className={styles.header}>
+        {/* 그룹 ID와 공개 여부 표시 (나중에 그룹 이름으로 대체 예정) */}
         <div className={styles.headerInfo}>
-          <span>{postData.groupIdID}</span>
-          <span> | {postData.isPublic}</span>
+          <span>{postData.groupId}</span>
+          <span> | {postData.isPublic ? "공개" : "비공개"}</span>
         </div>
         {/* 게시글 제목으로 title 사용 */}
         <h1 className={styles.title}>{postData.title}</h1>
         <div className={styles.headerInfo}>
           {/* userID 사용 */}
           <span>{postData.userID}</span>
-          <span> · {postData.location}</span>
-          <span> · {new Date(postData.createdAt).toLocaleString()}</span>
+          <span> · {postData.location} </span>
+          <span>
+             · {new Date(postData.createdAt).toLocaleString("ko-KR", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false, // 24시간 형식 사용
+            })}
+          </span>
           <span>
             <img src={FlowerIcon} alt="공감" className={styles.flowerIcon} /> {likes}
           </span>
@@ -153,8 +171,15 @@ function PostPage() {
           className={styles.postImage}
         />
         {/* 본문 내용 */}
-        <p className={styles.contentParagraph}>{postData.content}</p>
-      </section>
+        <p className={styles.contentParagraph}>
+          {postData.content.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+          ))}
+        </p>
+</section>
 
       {/* 댓글 영역 */}
       <section className={styles.commentSection}>
