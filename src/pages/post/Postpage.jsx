@@ -6,6 +6,7 @@ import TrashIcon from '../../assets/Trash.png';
 import FlowerIcon from '../../assets/Flower.png';
 import ChatIcon from '../../assets/Chat.png';
 import postsData from '../../mock/post.json';
+import groupData from "../../mock/group.json";
 
 function PostPage() {
   const { postId } = useParams(); // URL에서 postId 가져오기
@@ -23,6 +24,9 @@ function PostPage() {
 
   // postData가 없을 때 로딩 방지
   if (!postData) return null;
+  const group = groupData.find((group) => group.id === postData.groupId);
+  const groupName = group ? group.name : "알 수 없는 그룹";
+
   // 초기 공감 수를 JSON의 likeCount로 설정
   const [likes, setLikes] = useState(postData.likeCount);
   const [commentContent, setCommentContent] = useState("");
@@ -141,7 +145,7 @@ function PostPage() {
       <header className={styles.header}>
         {/* 그룹 ID와 공개 여부 표시 (나중에 그룹 이름으로 대체 예정) */}
         <div className={styles.headerInfo}>
-          <span>{postData.groupId}</span>
+          <span>{groupName}</span>
           <span> | {postData.isPublic ? "공개" : "비공개"}</span>
         </div>
         {/* 게시글 제목으로 title 사용 */}
