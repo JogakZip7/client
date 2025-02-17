@@ -1,20 +1,54 @@
 [
   {
     "id": 1,
-    "name": "flower",
+    "userID": "sujin",
+    "groupId": 1,
+    "title": "꽃보러갔는데....",
+    "content": "콧구멍에 꽃내음 한껏 집어넣음요..님들도 꽃구경하러 나가보시길",
     "imageUrl": "src/assets/image=img1.png",
-    "badgeCount": 0,
-    "postCount": 0,
+    "isPublic": true,
+    "location": "홍익대학교 제4공학관",
     "createdAt": "2024-02-22T07:47:49.803Z",
-    "introduction": "string"
+    "likeCount": 20,
+    "commentCount": 1
   },
   {
     "id": 2,
-    "name": "child",
+    "userID": "sujin",
+    "groupId": 1,
+    "title": "울애기 비행기 첫 경험",
+    "content":"어린애가 울지도 않고 씩씩하네요",
     "imageUrl": "src/assets/image=img2.png",
-    "badgeCount": 20,
-    "postCount": 0,
+    "isPublic": true,
+    "location": "홍익대학교 제4공학관",
     "createdAt": "2024-02-22T07:47:49.803Z",
-    "introduction": "string"
+    "likeCount": 20,
+    "commentCount": 1
+  },
+  {
+    "id": 2,
+    "userID": "gaeun",
+    "groupId": 2,
+    "title": "울애기 비행기 첫 경험",
+    "content":"어린애가 울지도 않고 씩씩하네요",
+    "imageUrl": "src/assets/image=img3.png",
+    "isPublic": true,
+    "location": "올림픽공원 나홀로 나무",
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "likeCount": 20,
+    "commentCount": 1
+  },
+  {
+    "id": 2,
+    "userID": "seohyun",
+    "groupId": 3,
+    "title": "울애기 비행기 첫 경험",
+    "content":"어린애가 울지도 않고 씩씩하네요",
+    "imageUrl": "/imgs/image=img2.png",
+    "isPublic": false,
+    "location": "이화여대",
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "likeCount": 20,
+    "commentCount": 1
   }
 ]
