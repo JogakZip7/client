@@ -1,16 +1,22 @@
 [
   {
-    "id": "suding",
+    "id": "1",
     "name": "수딩이네 가족",
     "imageUrl": "src/assets/image=img2.png",
-    "introduction": "서로 한 마음으로 응원하고 아끼는 수딩이네 가족",
-    "postCount": 8
+    "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
+    "postCount": 2,
+    "followCount": 10,
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 수딩이네 가족"
   },
   {
-    "id": "gaeun",
+    "id": "2",
     "name": "가은이네 가족",
-    "imageUrl": "src/assets/image=img4.png",
-    "introduction": "서로 한 마음으로 응원하고 아끼는 가은이네 가족",
-    "postCount": 8
+    "imageUrl": "/imgs/image=img4.png",
+    "badges": ["게시글 20개 등록"],
+    "postCount": 20,
+    "followCount": 1000,
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 가은이네 가족"
   }
 ]
