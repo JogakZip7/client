@@ -42,6 +42,7 @@
     color: rgb(0, 0, 0);
     border-radius: 5px;
     cursor: pointer;
+    transform: translateY(-25px);
   }
   
   .likeButton:hover {
@@ -55,6 +56,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
+    transform: translateY(-2px);
   }
   
   .backButton:hover {
@@ -64,8 +66,13 @@
   /* Post Content */
   .contentSection {
     margin-bottom: 20px;
+    text-align: center;
   }
-  
+  .postImage {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; /* 반응형 처리 */
+  }
   .contentParagraph {
     font-size: 16px;
     line-height: 1.5;
