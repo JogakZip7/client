@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Logo from "/imgs/logo.png"
 
 function SignIn() {
   const [users, setUsers] = useState([]);
@@ -39,29 +40,35 @@ function SignIn() {
   const handleLogin = (e) => {
     e.preventDefault();
     setError("");
-    // 입력한 닉네임, 비밀번호가 users 배열에 있는지 확인
-    const user = (users || []).find(
-      (u) => u.id === id && u.password === password
-    );
+    
+    // 입력한 ID가 유저리스트에 있는지 확인
+    const user = users.find((u) => u.id === id);
 
-    if (user) {
-      console.log("로그인 성공!");
-      setIsLogin(true);
-
-      const fakeToken = `fake-jwt-token-${user.id}-${Date.now()}`;
-      localStorage.setItem("token", fakeToken);
-      localStorage.setItem("id", user.id);
-      localStorage.setItem("nickname", user.nickname);
-      
-      alert(`${user.nickname}님 기다리고 있었어요🎉`);
-      window.location.href = "/"; //로그인 시 메인화면으로 이동
-    } else {
-      setError("닉네임 또는 비밀번호가 올바르지 않습니다.");
+    if (!user) {
+      setError("아이디가 존재하지 않습니다. 회원가입을 진행해주세요.");
+      return;
     }
+
+    // 비밀번호 확인
+    if (user.password !== password) {
+      setError("비밀번호가 올바르지 않습니다.");
+      return;
+    }
+
+    // 로그인 성공
+    console.log("로그인 성공!");
+    const fakeToken = `fake-jwt-token-${user.id}-${Date.now()}`;
+    localStorage.setItem("token", fakeToken);
+    localStorage.setItem("id", user.id);
+    localStorage.setItem("nickname", user.nickname);
+
+    alert(`${user.nickname}님 기다리고 있었어요🎉`);
+    window.location.href = "/"; // 메인화면 이동
   };
 
   return (
     <div>
+      <span><img src={Logo}/></span>
       <h2>로그인</h2>
       <form onSubmit={handleLogin}>
         <div>
@@ -77,9 +84,12 @@ function SignIn() {
             required
           />
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit">로그인</button>
+        <a href="/signup"><button>회원가입</button></a>
       </form>
+      <div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 }
