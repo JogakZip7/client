@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import "./MakePost.css";
 
 const MakePost = () => {
-  const { groupId } = useParams();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    nickname: "",
     title: "",
     content: "",
     image: null,
@@ -35,6 +31,10 @@ const MakePost = () => {
     });
   };
 
+  const handleToggle = () => {
+    setFormData({ ...formData, isPublic: !formData.isPublic });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -59,7 +59,7 @@ const MakePost = () => {
     // 로딩 상태와 에러 메시지 처리
     setLoading(false);
     alert("추억이 성공적으로 등록되었습니다!");
-    navigate(`/groups/${groupId}`);
+    // navigate(`/groups/${groupId}`);
   };
 
   return (
@@ -67,16 +67,6 @@ const MakePost = () => {
       <h1 className="create-post-title">추억 올리기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
-          <div className="form-group">
-            <label>닉네임</label>
-            <input
-              type="text"
-              name="nickname"
-              value={formData.nickname}
-              onChange={handleChange}
-              placeholder="닉네임을 입력해 주세요"
-            />
-          </div>
           <div className="form-group">
             <label>제목</label>
             <input
@@ -88,19 +78,19 @@ const MakePost = () => {
             />
           </div>
           <div className="form-group">
-            <label>내용</label>
+            <label>본문</label>
+              <div className="form-group">
+              <input type="file" name="imageUrl" onChange={handleImageChange} />
+              </div>
             <textarea
               name="content"
               value={formData.content}
               onChange={handleChange}
-              placeholder="내용을 입력해 주세요"
+              placeholder="본문 내용을 입력해 주세요"
             />
           </div>
-          <div className="form-group">
-            <label>이미지</label>
-            <input type="file" name="imageUrl" onChange={handleImageChange} />
-          </div>
         </div>
+
         <div className="form-right">
           <div className="form-group">
             <label>태그</label>
@@ -131,6 +121,24 @@ const MakePost = () => {
               onChange={handleChange}
             />
           </div>
+
+          {/* 공개 여부 토글 */}
+          <div className="form-group">
+            <label>공개 여부</label>
+            <div className="toggle">
+              <span>{formData.isPublic ? "공개" : "비공개"}</span>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={formData.isPublic}
+                  onChange={handleToggle}
+                />
+                <span className="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          {/* 비밀번호 입력 (항상 표시됨) */}
           <div className="form-group">
             <label>비밀번호</label>
             <input
@@ -141,20 +149,8 @@ const MakePost = () => {
               placeholder="비밀번호를 입력해 주세요"
             />
           </div>
-          <div className="form-group">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="isPublic"
-                checked={formData.isPublic}
-                onChange={(e) =>
-                  setFormData({ ...formData, isPublic: e.target.checked })
-                }
-              />
-              공개 여부
-            </label>
-          </div>
         </div>
+
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit" className="submit-button" disabled={loading}>
           {loading ? "올리는 중..." : "올리기"}
