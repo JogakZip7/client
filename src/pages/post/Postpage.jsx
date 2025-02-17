@@ -101,12 +101,18 @@ function PostPage() {
   };
 
   const handleSaveEditedComment = () => {
+    if (!editingCommentContent.trim()) {
+      alert("댓글 내용을 입력해주세요."); // 경고 메시지 추가
+      return;
+    }
+  
     const updatedComments = [...comments];
     updatedComments[editingCommentIndex].content = editingCommentContent;
     setComments(updatedComments);
     setEditingCommentIndex(null);
     setEditingCommentContent("");
   };
+  
 
   // 댓글 페이징 계산
   const indexOfLastComment = currentPage * commentsPerPage;
@@ -222,21 +228,22 @@ function PostPage() {
                 <span className={styles.commentDate}>{comment.date}</span>
               </div>
               {editingCommentIndex === index ? (
-                <div>
-                  <textarea
-                    value={editingCommentContent}
-                    onChange={(e) => setEditingCommentContent(e.target.value)}
-                    className={styles.editingTextarea}
-                  />
-                  <div className={styles.editingSaveButtonContainer}>
-                    <button onClick={handleSaveEditedComment} className={styles.editingSaveButton}>
-                      저장
-                    </button>
-                  </div>
+              <div>
+                <textarea
+                  value={editingCommentContent}
+                  onChange={(e) => setEditingCommentContent(e.target.value)}
+                  className={styles.editingTextarea}
+                />
+                <div className={styles.editingSaveButtonContainer}>
+                  <button onClick={handleSaveEditedComment} className={styles.editingSaveButton}>
+                    저장
+                  </button>
                 </div>
-              ) : (
-                <p className={styles.commentContent}>{comment.content}</p>
-              )}
+              </div>
+            ) : (
+              <p className={styles.commentContent}>{comment.content}</p>
+            )}
+
               <div className={styles.commentButtons}>
                 <button onClick={() => handleEditComment(index)} className={styles.editCommentButton}>
                   <img src={PenIcon} alt="수정" className={styles.icon} />
