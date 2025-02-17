@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignUpAPI from "../../api/SignUpAPI";
 import  "../../components/appFont.css";
+import Logo from "/imgs/logo.png";
 
 function SignUpPage({ token, setToken }) {
   const [userid, setUserid] = useState("");
@@ -56,6 +57,7 @@ function SignUpPage({ token, setToken }) {
   return (
     <div className="page">
       <div className="joinMain fullsize">
+        <span><img src={Logo}/></span>
         <div className="titleWrap">회원가입</div>
         <div className="subText">
           조각집에서 더많은 경험을 하고 싶다면 회원 가입을 해주세요
