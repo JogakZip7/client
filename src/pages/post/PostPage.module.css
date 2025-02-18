@@ -4,7 +4,7 @@
     position: relative;
     width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 112px auto;
     background-color: #FAFAFA;
     padding: 20px;
   }
@@ -23,6 +23,7 @@
     margin: 0; /* 기본 마진을 제거하여 전체 화면이 꽉 차게 함 */
     padding: 0; /* 기본 패딩을 제거 */
   }
+  
   .title {
     font-size: 32px;
     font-weight: bold;
