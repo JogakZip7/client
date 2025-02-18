@@ -13,37 +13,4 @@ function ErrorPage() {
   );
 }
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundColor: '#FAFAFA',
-    textAlign: 'center',
-    fontFamily: "'ABeeZee', sans-serif",
-    color: '#282828',
-  },
-  errorCode: {
-    fontSize: '100px',
-    fontWeight: 'bold',
-    color: '#282828',
-  },
-  flowerIcon: {
-    marginTop: '10px',
-  },
-  message: {
-    fontSize: '18px',
-    fontWeight: '400',
-    marginTop: '20px',
-    color: '#282828',
-  },
-  subMessage: {
-    fontSize: '14px',
-    color: '#B8B8B8',
-    marginTop: '10px',
-  },
-};
-
 export default ErrorPage;
