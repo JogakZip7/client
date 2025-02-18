@@ -1,23 +1,27 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import './Navbar.module.css';
+import styles from "./Navbar.module.css";
 import Logo from "/imgs/logo.png";
 
-function Dropdown({handleLogout}){
-  return(
-    <>
+function Dropdown({ handleLogout }) {
+  return (
+    <ul className={styles.dropdownMenu}>
       <li>
         <Link to="/showgroups">참여하고 있는 그룹</Link>
       </li>
       <li>
-        <button onClick={handleLogout}>로그아웃</button>
+      <Link to="/myscraps">스크랩한 포스트</Link>
       </li>
-
-    </> 
+      <li>
+        그룹 만들기
+      </li>
+      <li onClick={handleLogout}>
+        로그아웃
+      </li>
+    </ul>
   );
 }
 
-//로그인 여부에 따른 변화
 function Nav() {
   const [isLogin, setIsLogin] = useState(false);
   const [nickname, setNickname] = useState("");
@@ -25,54 +29,59 @@ function Nav() {
   const [view, setView] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // 토큰 삭제
-    localStorage.removeItem("nickname"); // 닉네임 삭제
-    localStorage.removeItem("id"); //아이디 삭제
+    localStorage.removeItem("token");
+    localStorage.removeItem("nickname");
+    localStorage.removeItem("id");
     setIsLogin(false);
     setNickname("");
-    setID("")
+    setID("");
     alert("로그아웃 되었습니다.");
-    window.location.href = "/"; // 메인페이지 머물러있기
+    window.location.href = "/";
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedNickname = localStorage.getItem("nickname");
-    const storedId = localStorage.getItem("id")
+    const storedId = localStorage.getItem("id");
 
     if (token) {
       setIsLogin(true);
       setNickname(storedNickname);
-      setID(storedId)
-    } else{
+      setID(storedId);
+    } else {
       setIsLogin(false);
-      setNickname("")
-      setID("")
+      setNickname("");
+      setID("");
     }
   }, []);
- 
+
   return (
-    <div>
-      <span><img src={Logo}/></span>
-      {isLogin ? (
-        <div className="navbar">
-          <ul onClick={()=> {setView(!(view))}}>
-            환영합니다, {nickname}님! 🎉{" "}
-            {view?'OFF': 'ON'}
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <Link to="/">
+          <img src={Logo} alt="Logo" className={styles.logo} />
+        </Link>
+
+        {isLogin ? (
+          <div className={styles.userSection}>
+            <button onClick={() => setView(!view)} className={styles.userButton}>
+              환영합니다, {nickname}님! 🎉
+              <span className={styles.arrow}>{view ? "▲" : "▼"}</span>
+            </button>
             {view && <Dropdown handleLogout={handleLogout} />}
-          </ul>
-        </div>
-      ) : (
-        <div>
-          <a href="/signin">
-            <button>로그인</button>
-          </a>
-          <a href="/signup">
-            <button>회원가입</button>
-          </a>
-        </div>
-      )}
-    </div>
+          </div>
+        ) : (
+          <div className={styles.authButtons}>
+            <Link to="/signin">
+              <button className={styles.loginButton}>로그인</button>
+            </Link>
+            <Link to="/signup">
+              <button className={styles.signupButton}>회원가입</button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 }
 
