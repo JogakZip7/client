@@ -1,6 +1,6 @@
 {
   "name": "jogakzip",
-  "private": true,
+  "private": false,
   "homepage": "https://jogakzip7.github.io/client/",
   "version": "0.0.0",
   "type": "module",
