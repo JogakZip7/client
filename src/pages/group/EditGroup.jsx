@@ -1,64 +1,87 @@
 import React, { useState } from "react";
-import './EditGroup.css';
+import "./EditGroup.css";
 
-const EditGroup = () => {
-  // 상태 변수들
-  const [editGroupData, setEditGroupData] = useState({
-    name: "",
-    imageUrl: "",
-    introduction: "",
-    isPublic: false,
-    password: "", // 수정 권한 인증을 위한 비밀번호 상태 추가
-  });
-
-  const [modalState, setModalState] = useState({
-    isEditModalOpen: false,
-    isDeleteModalOpen: false,
-  });
+function EditGroup() {
+  
+  // 상태 변수들 (화면 출력만 확인)
+  const [groupName, setGroupName] = useState("");
+  const [groupIntro, setGroupIntro] = useState("");
+  const [groupImage, setGroupImage] = useState(null);
+  const [isPublic, setIsPublic] = useState(true);
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // 그룹 공개 여부를 토글하는 함수
   const handleToggle = () => {
-    setEditGroupData({ ...editGroupData, isPublic: !editGroupData.isPublic });
+    setIsPublic(!isPublic);
   };
 
-  // 이미지 업로드 핸들러
+  // 파일 업로드 핸들러
   const handleImageChange = (e) => {
-    setEditGroupData({ ...editGroupData, imageUrl: e.target.files[0] });
+    setGroupImage(e.target.files[0]);
   };
 
-  // 수정 작업을 위한 폼 제출 핸들러
-  const handleEditGroupSubmit = (e) => {
+  // 폼 제출 시 데이터 전송 (백엔드 연결 없이 화면 출력만 확인)
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // 수정 작업은 주석 처리
-  };
+    setLoading(true);
 
-  // 그룹 삭제 핸들러 (삭제 버튼은 그대로 유지)
+    // 화면 출력만 위한 데이터 객체 생성
+    const groupData = {
+      name: groupName,
+      password: password,
+      imageURL: groupImage, // 이미지 파일 그대로 상태에서 처리
+      isPublic: isPublic,
+      introduction: groupIntro,
+    };
+
+    // 데이터 확인을 위해 console로 출력 (서버 연결 없는 상태)
+    console.log("Sending group data:", JSON.stringify(groupData, null, 2));
+
+    // 로딩 상태를 끄고, 폼 제출 후 알림 (화면 상에서만)
+    setLoading(false); // 바로 로딩 상태 끄기
+  }; 
+
+  // 그룹 삭제 핸들러
   const handleDeleteGroupSubmit = () => {
-    // 그룹 삭제 시 비밀번호를 묻지 않고 바로 삭제 처리
+    // 입력한 비밀번호와 그룹의 비밀번호가 일치하는지 확인 (실제로는 서버와 비교해야 함)
+    const groupPassword = "1234";  // 실제 데이터베이스의 비밀번호를 넣어야 함
+    
+    if (password !== groupPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
 
-    // 이 부분은 나중에 API를 통해 데이터베이스에 저장된 비밀번호와 비교하여 검증하는 방식으로 구현해야 합니다.
-    // 아래는 API 연결 전에 주석 처리된 상태입니다.
-
-    // if (editGroupData.password !== /* 실제 데이터베이스의 비밀번호 */) {
-    //   alert("비밀번호가 일치하지 않습니다.");
-    //   return;
-    // }
-    // 비밀번호가 맞다면 삭제 처리
+    // 비밀번호가 맞다면 삭제 처리 (여기서는 단순히 알림을 띄우는 것만 구현)
+    alert("그룹이 삭제되었습니다.");
+    
+    // 삭제 후 폼 초기화
+    setGroupName("");
+    setGroupIntro("");
+    setGroupImage(null);
+    setIsPublic(true);
+    setPassword("");  // 삭제 후 비밀번호 상태 초기화
   };
 
   return (
-    <div className="edit-group-container">
-      <h2>그룹 정보 수정</h2>
+    <div className="create-group-page">
+      <div className="header">
+        <img 
+          src="/imgs/logo.png" 
+          alt="Logo" 
+          className="logo" 
+        />
+        <h2>그룹 수정 및 삭제하기</h2>
+      </div>
 
-      <form onSubmit={handleEditGroupSubmit}>
+      <form className="create-group-form" onSubmit={handleSubmit}>
         <label>그룹명</label>
         <input
           type="text"
           placeholder="그룹명을 입력하세요"
-          value={editGroupData.name}
-          onChange={(e) =>
-            setEditGroupData({ ...editGroupData, name: e.target.value })
-          }
+          value={groupName}
+          onChange={(e) => setGroupName(e.target.value)}
+          required
         />
 
         <label>대표 이미지</label>
@@ -67,38 +90,33 @@ const EditGroup = () => {
         <label>그룹 소개</label>
         <textarea
           placeholder="그룹을 소개해 주세요"
-          value={editGroupData.introduction}
-          onChange={(e) =>
-            setEditGroupData({ ...editGroupData, introduction: e.target.value })
-          }
+          value={groupIntro}
+          onChange={(e) => setGroupIntro(e.target.value)}
         />
 
         <label>그룹 공개 선택</label>
         <div className="toggle">
-          <span>{editGroupData.isPublic ? "공개" : "비공개"}</span>
+          <span>{isPublic ? "공개" : "비공개"}</span>
           <label className="switch">
-            <input
-              type="checkbox"
-              checked={editGroupData.isPublic}
-              onChange={handleToggle}
-            />
+            <input type="checkbox" checked={isPublic} onChange={handleToggle} />
             <span className="slider"></span>
           </label>
         </div>
 
-        {/* 수정 권한 인증을 위한 비밀번호 입력란 */}
-        <label>수정 권한 인증 (비밀번호 입력)</label>
+        {/* 비밀번호 입력 */}
+        <label>비밀번호 인증</label>
         <input
           type="password"
-          placeholder="비밀번호를 입력해주세요"
-          value={editGroupData.password}
-          onChange={(e) =>
-            setEditGroupData({ ...editGroupData, password: e.target.value })
-          }
+          placeholder="그룹 비밀번호를 입력해 주세요"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <div className="button-group">
-          <button type="submit">수정하기</button>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "수정하는 중..." : "수정하기"}
+          </button>
           <button
             type="button"
             onClick={handleDeleteGroupSubmit}
@@ -110,6 +128,6 @@ const EditGroup = () => {
       </form>
     </div>
   );
-};
+}
 
 export default EditGroup;
