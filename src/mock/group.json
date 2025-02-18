@@ -5,13 +5,13 @@
     "imageUrl":"/imgs/image=img2.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 수딩이네 가족",
     "postCount": 8,
-    "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
+    "badges": ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
     "followCount": 10000000000000
   },
   {
     "id": 2,
     "name": "양서네 가족",
-    "imageUrl": "/imgs/image=img4.png",
+    "imageUrl": "/imgs/image=img1.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 양서네 가족",
     "postCount": 8,
     "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "name": "민하네 가족",
-    "imageUrl": "/imgs/image=img2.png",
+    "imageUrl": "/imgs/image=img4.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 민하네 가족",
     "postCount": 8,
     "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
@@ -49,13 +49,24 @@
     "name": "예진이네 가족",
     "imageUrl": "/imgs/image=img3.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 예진이네 가족",
-    "postCount": 8
+    "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
+    "postCount": 8,
+    "followCount": 10
   },
   {
     "id": 7,
     "name": "박서네 가족",
     "imageUrl": "/imgs/image=img1.png",
     "introduction": "서로 한 마음으로 응원하고 아끼는 박서네 가족",
+    "postCount": 8,
+    "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
+    "followCount": 10
+  },
+  {
+    "id": 8,
+    "name": "가은이네 가족",
+    "imageUrl": "/imgs/image=img2.png",
+    "introduction": "서로 한 마음으로 응원하고 아끼는 가은이네 가족",
     "postCount": 8,
     "badges": ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"],
     "followCount": 10
