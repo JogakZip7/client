@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "sujin",
+      "nickname": "suding",
+      "password": "sudingpw"
+    },
+    {
+      "id": "seohyunp",
+      "nickname": "seohyunp",
+      "password": "seohyunppw"
+    },
+    {
+      "id": "seohyuny",
+      "nickname": "seohyuny",
+      "password": "seohyunypw"
+    },
+    {
+      "id": "gaeun",
+      "nickname": "gaeun",
+      "password": "gaeunpw"
+    }
+  ]
+}
