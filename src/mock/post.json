@@ -26,12 +26,12 @@
     "commentCount": 1
   },
   {
-    "id": 2,
+    "id": 3,
     "userID": "gaeun",
     "groupId": 2,
-    "title": "울애기 비행기 첫 경험",
-    "content":"어린애가 울지도 않고 씩씩하네요",
-    "imageUrl": "/imgs/image=img2.png",
+    "title": "오늘만 I L0VE YOU",
+    "content": "그날 이후로 난 이렇게 살고 더는 기타 한 번도 들지 못 하고\n그날 이후로 난 이렇게 살아 웃기지 그런데\n세탁기는 가득히 밀려버린 빨래를 토해내고 머리는 붕 떠 부스스해\n나 빼고 분주한 창밖은 벚꽃마저 바쁘고\n한심하기로 퍽 짝이 없어도 당장에 내가 내일 환생할 리 만무해도\n추억 팔아서 곡이나 쓰는 건 딱 죽기보다 싫은데",
+    "imageUrl": "/imgs/image=img3.png",
     "isPublic": true,
     "location": "올림픽공원 나홀로 나무",
     "createdAt": "2024-02-22T07:47:49.803Z",
@@ -39,14 +39,14 @@
     "commentCount": 1
   },
   {
-    "id": 2,
+    "id": 4,
     "userID": "seohyun",
     "groupId": 3,
-    "title": "울애기 비행기 첫 경험",
-    "content":"어린애가 울지도 않고 씩씩하네요",
-    "imageUrl": "/imgs/image=img2.png",
+    "title": "울 자기 낚시 첫 경험...",
+    "content":"어린애가 울지도 않고 씩씩하네요..(물고기가...)",
+    "imageUrl": "/imgs/image=img4.png",
     "isPublic": false,
-    "location": "이화여대",
+    "location": "바다 한 가운데에서...",
     "createdAt": "2024-02-22T07:47:49.803Z",
     "likeCount": 20,
     "commentCount": 1
