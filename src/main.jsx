@@ -25,7 +25,7 @@ function LayoutWithoutNavbar() {
 
 function Main() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         {/* 네비게이션 바 없는 페이지 (로그인 & 회원가입) */}
         <Route element={<LayoutWithoutNavbar />}>
