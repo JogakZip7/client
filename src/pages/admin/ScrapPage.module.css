@@ -1,3 +1,69 @@
-.page{
+.page {
   margin-top: 112px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none; /* 링크 스타일 제거 */
+  color: inherit; /* 부모의 색상 유지 */
+}
+
+.listItem img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.listItem:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02); /* 살짝 확대 */
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textContainer h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.textContainer p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 600px) {
+  .listItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .listItem img {
+    width: 80px;
+    height: 80px;
+  }
 }
