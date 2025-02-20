@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./EditGroup.css";
+import { Route } from 'react-router-dom';
 
 function EditGroup() {
   
@@ -66,11 +67,6 @@ function EditGroup() {
   return (
     <div className="create-group-page">
       <div className="header">
-        <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
         <h2>그룹 수정 및 삭제하기</h2>
       </div>
 
