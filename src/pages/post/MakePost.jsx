@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route } from 'react-router-dom';
 import "./MakePost.css";
 
 const MakePost = () => {
@@ -64,11 +65,6 @@ const MakePost = () => {
 
   return (
     <div className="create-post-container">
-        <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
       <h1 className="create-post-title">추억 올리기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
