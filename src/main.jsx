@@ -9,6 +9,10 @@ import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
 import GroupDetail from "./pages/group/GroupDetail"; //그룹페이지
 import ScrapPage from "./pages/admin/ScrapPage.jsx";
 import Navbar from "./components/Navbar";
+import MakeGroup from './MakeGroup';
+import EditGroup from './EditGroup';
+import MakePost from './MakePost';
+import EditPost from './EditPost';
 
 function LayoutWithNavbar() {
   return (
@@ -43,6 +47,10 @@ function Main() {
           <Route path="/groups/:groupId" element={<GroupDetail />} />
           <Route path="/post/:postId" element={<PostPage/>}/>
           <Route path="/myscraps" element={<ScrapPage/>}/>
+          <Route path="/make-group" element={<MakeGroup />} />
+          <Route path="/edit-group/:id" element={<EditGroup />} />  
+          <Route path="/make-post" element={<MakePost />} />
+          <Route path="/edit-post/:id" element={<EditPost />} />  
         </Route>
       </Routes>
     </BrowserRouter>
