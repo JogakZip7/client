@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./MakeGroup.css";
 import { Route } from 'react-router-dom';
+import "./MakeGroup.css";
 
 function MakeGroup() {
   
@@ -12,10 +12,6 @@ function MakeGroup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 그룹 공개 여부를 토글하는 함수
-  const handleToggle = () => {
-    setIsPublic(!isPublic);
-  };
 
   // 파일 업로드 핸들러 (백엔드 연결 없이 테스트용)
   const handleImageChange = (e) => {
@@ -69,14 +65,6 @@ function MakeGroup() {
           onChange={(e) => setGroupIntro(e.target.value)}
         />
 
-        <label>그룹 공개 선택</label>
-        <div className="toggle">
-          <span>{isPublic ? "공개" : "비공개"}</span>
-          <label className="switch">
-            <input type="checkbox" checked={isPublic} onChange={handleToggle} />
-            <span className="slider"></span>
-          </label>
-        </div>
 
         {/* 비밀번호 입력 */}
         <label>비밀번호 생성</label>
