@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./EditGroup.css";
 import { Route } from 'react-router-dom';
+import "./EditGroup.css";
 
 function EditGroup() {
   
@@ -12,10 +12,6 @@ function EditGroup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 그룹 공개 여부를 토글하는 함수
-  const handleToggle = () => {
-    setIsPublic(!isPublic);
-  };
 
   // 파일 업로드 핸들러
   const handleImageChange = (e) => {
@@ -90,14 +86,6 @@ function EditGroup() {
           onChange={(e) => setGroupIntro(e.target.value)}
         />
 
-        <label>그룹 공개 선택</label>
-        <div className="toggle">
-          <span>{isPublic ? "공개" : "비공개"}</span>
-          <label className="switch">
-            <input type="checkbox" checked={isPublic} onChange={handleToggle} />
-            <span className="slider"></span>
-          </label>
-        </div>
 
         {/* 비밀번호 입력 */}
         <label>비밀번호 인증</label>
