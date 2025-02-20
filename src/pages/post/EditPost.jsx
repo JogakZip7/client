@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route } from 'react-router-dom';
 import "./EditPost.css";
 
 const EditPost = ({ postData = {} }) => {
@@ -84,7 +85,7 @@ const EditPost = ({ postData = {} }) => {
 
   return (
     <div className="create-post-container">
-      <img src="/imgs/logo.png" alt="Logo" className="logo" />
+    
       <h1 className="create-post-title">추억 수정 및 삭제하기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
