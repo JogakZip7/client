@@ -5,7 +5,7 @@ import mokPostData from "../../mock/post.json";
 import "./GroupDetail.css";
 import FlowerIcon from "../../assets/Flower.png";
 import ChatIcon from "../../assets/Chat.png";
-import EmptyIcon from "../../assets/Empty.png";
+import EmptyIcon from "../../assets/empty.png";
 
 const GroupDetail = () => {
   const navigate = useNavigate();
