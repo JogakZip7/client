@@ -44,7 +44,7 @@ function GroupList() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.title}>내가 속한 그룹</div>
+      <div className={styles.title}>우리는 7942~ ₊·*◟(⌯ˇ- ˇ⌯)◜‧*・</div>
       {userGroups.length > 0 ? (
         <ul className={styles.container}>
           {userGroups.map((item) => (

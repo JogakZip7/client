@@ -1,0 +1,14 @@
+5c63c0bbe617942b636c2e6e18dcb56269a022b6 commit	refs/heads/admin
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/heads/develop
+971b39c20e9adb67d6ae7373434d9f9d13501a88 commit	refs/heads/gh-pages
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/heads/main
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/heads/settings
+00260caf07dea5ead7457b2cd4239350465517c0 commit	refs/remotes/origin/EditGroup
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/remotes/origin/HEAD
+5d74c3ebcf443a6a0e1d10def176bee759b38430 commit	refs/remotes/origin/MakeGroup
+5ef663a0a8f7965c4a61c13baf454e3b22b3a350 commit	refs/remotes/origin/admin
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/remotes/origin/develop
+535712f99555433cb51f39d431109dc3d4f95c28 commit	refs/remotes/origin/group
+352cb813e7bf8b20086d474e62ae5c98aefed006 commit	refs/remotes/origin/main
+b46fe98cbe5fd907471eda65c2ddbdd32fe5546a commit	refs/remotes/origin/makepost
+0eaa1a40727d6e741e32cf2d0dea3f3efbeb8441 commit	refs/remotes/origin/post

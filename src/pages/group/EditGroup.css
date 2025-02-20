@@ -1,101 +1,84 @@
-/* EditGroup.css */
+/* 전체 페이지 스타일 */
+.create-group-page {
+  width: 100%;
+  max-width: 350px;
+  margin: 112px auto;
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* 전반적인 컨테이너 스타일 */
-.edit-group-container {
-    position: relative;
-    width: 1920px;
-    height: 1080px;
-    background: #FAFAFA;
-  }
-  
-  /* 그룹명 스타일 */
-  .edit-group-container label.group-name {
-    display: block; /* 블록 요소로 표시 */
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 16px;
-    font-weight: 500;
-    color: #282828;
-    margin-bottom: 8px; /* 라벨과 입력란 사이의 여백 추가 */
-  }
-  
-  .edit-group-container input.group-name-input,
-  .edit-group-container textarea.group-intro-input,
-  .edit-group-container input.password-input {
-    display: block; /* 블록 요소로 표시 */
-    width: 100%;
-    height: 45px;
-    background: #FAFAFA;
-    border: 1px solid #DDDDDD;
-    border-radius: 6px;
-    padding-left: 10px;
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 14px;
-    color: #B8B8B8;
-    margin-bottom: 20px; /* 입력란 사이의 여백 추가 */
-  }
-  
-  .edit-group-container textarea.group-intro-input {
-    height: 120px;
-    resize: none;
-  }
-  
-  .edit-group-container input.password-input {
-    height: 45px;
-  }
-  
-  /* 그룹 공개 선택 */
-  .toggle {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .toggle span {
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 14px;
-    color: #282828;
-  }
-  
-  .toggle .slider {
-    background: #282828;
-    border-radius: 15px;
-  }
-  
-  /* 버튼 스타일 */
-  .button-group {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .button-group button {
-    width: 100px;
-    height: 45px;
-    font-family: 'Spoqa Han Sans Neo';
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 6px;
-    margin: 0 10px; /* 버튼 간의 여백 추가 */
-  }
-  
-  .button-group .submit-btn {
-    background: #282828;
-    color: #FAFAFA;
-    border: none;
-  }
-  
-  .button-group .delete-btn {
-    background: #FAFAFA;
-    color: #282828;
-    border: 1px solid #282828;
-  }
-  
-  .edit-group-container h2 {
-    font-family: 'Spoqa Han Sans Neo';
-    font-weight: 700;
-    font-size: 24px;
-    text-align: center;
-    color: #282828;
-    margin-top: 140px;
-  }
-  
+/* 상단 헤더 스타일 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 폼 스타일 */
+.create-group-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-left: 15px; /* 좌측 여백 */
+  padding-right: 15px ;
+}
+
+.create-group-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.create-group-form input,
+.create-group-form textarea {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 290px;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 버튼들이 수평으로 중앙 정렬 */
+  gap: 20px;
+}
+
+.button-group button {
+   width: calc(100% - 10px); /* 버튼의 너비를 10px 줄임 */
+  height: 40px; 
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-group .submit-btn {
+  background-color: #6A6765;
+  color: white;
+  border: none;
+}
+
+.button-group .submit-btn:hover {
+  background-color: #282828;
+}
+
+/* 삭제 버튼 */
+.button-group .delete-btn {
+  background-color: #6A6765;
+  color: white;
+  border: none;
+
+}
+
+.button-group .delete-btn:hover {
+  background-color: #282828;
+}

@@ -30,7 +30,7 @@
 }
 
 .userButton {
-  background: #f3f3f3;
+  background: #f4f4f4;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -87,7 +87,7 @@
 }
 
 .loginButton {
-  background: #007bff;
+  background: #6A6765;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -97,7 +97,7 @@
 }
 
 .loginButton:hover {
-  background: #0056b3;
+  background: #282828;
 }
 
 .signupButton {

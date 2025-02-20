@@ -10,10 +10,10 @@ function Dropdown({ handleLogout }) {
         <Link to="/showgroups">참여하고 있는 그룹</Link>
       </li>
       <li>
-      <Link to="/myscraps">스크랩한 포스트</Link>
+      <Link to="/myscraps">추억 모음집</Link>
       </li>
       <li>
-        그룹 만들기
+        <Link to="/groups">그룹 만들기</Link>
       </li>
       <li onClick={handleLogout}>
         로그아웃

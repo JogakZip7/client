@@ -1,9 +1,9 @@
 /* 전체 컨테이너 */
 .group-detail-container {
   width: 100%;
-  max-width: 1560px;
   margin: 112px auto;
   padding: 20px;
+  max-width: 1180px;
 }
 
 /* 헤더 섹션 */
@@ -11,11 +11,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #dddddd;
 }
 
 .group-img {
-  width: 180px;
-  height: 180px;
+  width: 262px;
+  height: 273px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -27,20 +29,11 @@
   position: relative;
 }
 
-/* createAt, isPublic 및 edit/delete 버튼을 같은 선상에 배치
-.group-meta-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 20px;
-}*/
-
 /* 그룹명과 통계 정보 */
 .group-name-stats {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .group-detail-title {
@@ -61,27 +54,10 @@
 
 .v-line {
   display: inline-block;
-  border-left: 2px solid #dddddd;
+  border-left: 2px solid #b8b8b8;
   height: 20px;
   margin-top: 3px;
 }
-
-/* left: createAt과 공개 여부
-.group-meta {
-  display: flex;
-  gap: 40px;
-}
-
-.public-status {
-  font-size: 18px;
-  color: #999;
-}*/
-
-/* right: edit와 delete 버튼
-.group-actions {
-  display: flex;
-  gap: 40px;
-}*/
 
 .edit-delete-btn {
   background: none;
@@ -91,8 +67,8 @@
   font-size: 16px;
   cursor: pointer;
   text-decoration: none;
-  position: absolute; /* 절대 위치로 설정 */
-  right: 0; /* 부모 요소의 오른쪽 끝으로 정렬 */
+  position: absolute;
+  right: 0;
   margin-bottom: 20px;
 }
 
@@ -105,13 +81,13 @@
 /* 그룹 설명 */
 .group-description {
   font-size: 18px;
-  line-height: 24px;
+  line-height: 10px;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #333;
 }
 
-.group-badge-and-like {
+.group-badge-and-follow {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,16 +123,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-right: 10px;
+  margin-bottom: 3px;
 }
 
 .badge.acquired {
   opacity: 1;
-  background-color: #e6fff2;
+  background-color: #FDF3EA;
 }
 
 .badge.not-acquired {
-  opacity: 0.3;
-  background-color: #f4f4f4;
+  opacity: 0.4;
+  background-color: #FDF1E7;
 }
 
 .badge-icon {
@@ -248,7 +225,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 140px;
+  margin-top: 100px;
   margin-bottom: 70px;
 }
 
@@ -275,7 +252,7 @@
   background-color: #444;
 }
 
-/* 필터, 검색 및 정렬 옵션 */
+/* 필터, 정렬 옵션 */
 .privacy-toggle {
   display: flex;
   gap: 10px;
@@ -288,9 +265,10 @@
   font-weight: 700;
   font-size: 14px;
   padding: 10px 15px;
-  border: 1px solid #b8b8b8;
+  border: 1px solid #dddddd;
   border-radius: 20px;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 .public-btn.active,
@@ -310,6 +288,134 @@
   padding: 10px;
   font-size: 14px;
   border-radius: 5px;
+}
+
+/* 추억 카드 레이아웃 */
+
+.post-list {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.post-card {
+  width: 340px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  transform: scale(1.02);
+}
+
+.post-img {
+  width: 335px;
+  height: 335px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* 빈 추억 목록 상태 */
+.empty-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.no-results {
+  font-size: 18px;
+  color: #8d8d8d;
+}
+
+.upload-first-post {
+  font-size: 14px;
+  color: #b8b8b8;
+}
+
+/* 메모리 정보 */
+.post-info {
+  padding: 10px 0;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.group-name {
+  font-size: 14px;
+  color: #282828;
+}
+
+.post-v-line {
+  display: inline-block;
+  border-left: 1px solid #b8b8b8;
+  height: 15px;
+  margin-top: 3px;
+}
+
+.public-status {
+  font-size: 14px;
+  color: #8d8d8d;
+}
+
+.post-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #282828;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*
+.post-tags {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 20px;
+}*/
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #8d8d8d;
+}
+
+.post-location {
+  display: flex;
+  gap: 20px;
+}
+
+.post-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.flower-chat-icon {
+  width: 18px;
+  height: auto;
+  vertical-align: middle;
+  transform: translateY(-1.5px);
 }
 
 /* 페이지네이션 */
