@@ -91,10 +91,11 @@ function MakeGroup() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "만드는 중..." : "만들기"}
-        </button>
+         <div className="button-group">
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "만드는 중..." : "만들기"}
+          </button>
+        </div>
       </form>
     </div>
   );
