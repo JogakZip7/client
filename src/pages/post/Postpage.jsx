@@ -129,7 +129,7 @@ function PostPage() {
       return;
     }
 
-    navigate(`/edit-post/${postId}`); //postId 포함해서 이동
+    navigate(`/posts/${postId}`); //postId 포함해서 이동
   };
   // 댓글 수정
   const handleEditComment = (index) => {
