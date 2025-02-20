@@ -1,128 +1,130 @@
-
 /* 전체 페이지 스타일 */
 .create-group-page {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 40px;
-    transform: scale(0.85); /* 화면 전체 크기 축소 */
-  }
-  
-  /* 상단 헤더 스타일 */
-  /* 로고 이미지 스타일 */
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 상단 헤더 스타일 */
 .header {
-  font-size: 24px;
-  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 40px; /* 로고 위쪽 여백 추가 */
 }
 
-.logo {
+/* 로고 아이콘 스타일 */
+.header .logo {
   width: 150px;
-  margin: 0 auto 20px; /* 좌우 여백 자동, 아래 여백 20px */
-  display: block; /* 블록 요소로 변환 */
+  margin: 0 auto 40px;
+  display: block;
 }
-  
-  /* 폼 스타일 */
-  .create-group-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .create-group-form label {
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: left;
-  }
-  
-  .create-group-form input,
-  .create-group-form textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-  }
-  
-  /* 토글 버튼 */
-  .create-group-form .toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 28px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 50px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: '';
-    height: 18px;
-    width: 18px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #282828;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  /* 버튼 스타일 */
-  button {
-    padding: 15px;
-    background-color: #FAFAFA;
-    color: #282828;
-    font-size: 16px;
-    border: 1px solid #282828;;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #444;
-    color: #FAFAFA;
-  }
 
-  .delete-btn {
-    background-color: #FAFAFA;; /* 삭제 버튼 색상 */
-  }
-  
-  .delete-btn:hover {
-    background-color: #444;
-    color: #FAFAFA;
-  }
-  
+/* 폼 스타일 */
+.create-group-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.create-group-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.create-group-form input,
+.create-group-form textarea {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* 토글 버튼 */
+.create-group-form .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #282828;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 버튼들이 수평으로 중앙 정렬 */
+  gap: 10px; /* 버튼 간 간격을 10px로 조정 */
+}
+
+.button-group button {
+  width: 420px; 
+  height: 40px; /* 높이를 5px 줄임 */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 수정 버튼 */
+.button-group .submit-btn {
+  background-color: #FAFAFA;
+  color: #282828;
+  border: 1px solid #282828;
+}
+
+.button-group .submit-btn:hover {
+  background-color: #444;
+  color: #FAFAFA;
+}
+
