@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import "./EditPost.css";
 
 const EditPost = ({ postData = {} }) => {
@@ -84,7 +85,6 @@ const EditPost = ({ postData = {} }) => {
 
   return (
     <div className="create-post-container">
-    
       <h1 className="create-post-title">추억 수정 및 삭제하기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
@@ -114,16 +114,6 @@ const EditPost = ({ postData = {} }) => {
 
         <div className="form-right">
           <div className="form-group">
-            <label>태그</label>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags.join(",")}
-              onChange={handleTagsChange}
-              placeholder="태그를 입력해 주세요 (콤마로 구분)"
-            />
-          </div>
-          <div className="form-group">
             <label>장소</label>
             <input
               type="text"
@@ -145,21 +135,21 @@ const EditPost = ({ postData = {} }) => {
 
           <div className="form-group">
             <label>공개 여부</label>
-            <div className="toggle">
-              <span>{formData.isPublic ? "공개" : "비공개"}</span>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={formData.isPublic}
-                  onChange={handleToggle}
-                />
+              <div className="toggle">
+                <span>{formData.isPublic ? "공개" : "비공개"}</span>
+                <label className="switch">
+                    <input
+                      type="checkbox"
+                      checked={formData.isPublic}
+                      onChange={handleToggle}
+                    />
                 <span className="slider"></span>
-              </label>
-            </div>
+                </label>
           </div>
+        </div>
 
-          <div className="form-group">
-            <label>비밀번호</label>
+        <div className="form-group">
+          <label>비밀번호</label>
             <input
               type="password"
               name="postPassword"
