@@ -1,9 +1,9 @@
 /* 전체 컨테이너 */
 .group-detail-container {
   width: 100%;
-  max-width: 1560px;
   margin: 112px auto;
   padding: 20px;
+  max-width: 1180px;
 }
 
 /* 헤더 섹션 */
@@ -128,12 +128,12 @@
 
 .badge.acquired {
   opacity: 1;
-  background-color: #e6fff2;
+  background-color: #FDF3EA;
 }
 
 .badge.not-acquired {
-  opacity: 0.3;
-  background-color: #f4f4f4;
+  opacity: 0.4;
+  background-color: #FDF1E7;
 }
 
 .badge-icon {

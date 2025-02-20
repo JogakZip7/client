@@ -33,7 +33,7 @@ function ScrapPage() {
   return (
     <div className={styles.page}>
       <div className={styles.title}>
-        <h1>스크랩한 글 모아보기</h1>
+        <h1>당신! 추억 수집가군요? (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</h1>
       </div>
       <ul className={styles.list}>
         {userScrap.length > 0 ? (

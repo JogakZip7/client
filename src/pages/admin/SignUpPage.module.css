@@ -59,26 +59,12 @@
   font-size: 14px;
   box-sizing: border-box;
 }
-.button{
-  height: 40px;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.button:hover{
-  background-color: #0056b3;
-}
+
 .bottomButton {
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #6A6765;
   color: white;
   border: none;
   border-radius: 6px;
@@ -88,7 +74,7 @@
 }
 
 .bottomButton:hover {
-  background-color: #0056b3;
+  background-color: #282828;
 }
 
 .terms {
