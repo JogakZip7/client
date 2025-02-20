@@ -91,6 +91,7 @@ const GroupDetail = () => {
     fetchGroupData();
   }, [fetchGroupData]);
 
+  // ✅ 그룹 데이터가 `null`이거나 `error` 발생 시 `/error` 페이지로 이동
   useEffect(() => {
     if (hasFetchedPosts) {
       fetchPosts();
