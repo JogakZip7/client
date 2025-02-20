@@ -128,15 +128,6 @@ const GroupDetail = () => {
     }
   };
 
-  /* 페이지 연결 필요 */
-  const handleEditDeleteGroup = () => {
-    navigate();
-  };
-
-  const handleCreatePostClick = () => {
-    navigate("/post");
-  };
-
   const badgeInfo = {
     "게시글 20개 등록": { icon: "👾", name: "게시글 20개 등록" },
     "그룹 인원수 10명 달성": { icon: "🌼", name: "그룹 인원수 10명 달성" },
@@ -183,9 +174,9 @@ const GroupDetail = () => {
           className="group-img"
         />
         <div className="group-info">
-          <button className="edit-delete-btn" onClick={handleEditDeleteGroup}>
-            그룹 수정/삭제
-          </button>
+          <Link to={`/groups/${groupId}`}>
+            <button className="edit-delete-btn">그룹 수정/삭제</button>
+          </Link>
 
           <div className="group-name-stats">
             <h1 className="group-detail-title">{groupData.name}</h1>
@@ -216,9 +207,11 @@ const GroupDetail = () => {
       <div className="post-section">
         <div className="post-header">
           <h3>추억 목록</h3>
-          <button className="post-upload-btn" onClick={handleCreatePostClick}>
-            추억 올리기
-          </button>
+          <Link to={`/groups/${groupId}/posts`}>
+            <button className="post-upload-btn">
+              추억 올리기
+            </button>
+          </Link>
         </div>
 
         <div className="post-controls">

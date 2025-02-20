@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Logo from "/imgs/logo.png";
 import styles from "./LoginPage.module.css";
 
@@ -57,7 +58,9 @@ function SignIn() {
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
-        <img src={Logo} alt="Logo" className={styles.logo} />
+        <Link to="/">
+          <img src={Logo} alt="Logo" className={styles.logo} />
+        </Link>
       </div>
 
       <h2 className={styles.title}>로그인</h2>
