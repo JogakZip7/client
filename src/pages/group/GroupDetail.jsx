@@ -3,6 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import mokGroupData from "../../mock/group.json";
 import mokPostData from "../../mock/post.json";
 import "./GroupDetail.css";
+import FlowerIcon from "../../assets/Flower.png";
+import ChatIcon from "../../assets/Chat.png";
+import EmptyIcon from "../../assets/Empty.png";
 
 const GroupDetail = () => {
   const navigate = useNavigate();
@@ -97,14 +100,6 @@ const GroupDetail = () => {
     }
   }, [currentPage, sortBy, isPublicSelected]);
 
-  // 그룹 데이터가 `null`이거나 `error` 발생 시 `/error` 페이지로 이동
-  useEffect(() => {
-    if (!loading && (!groupData || error)) {
-      console.log("Navigating to /error due to missing data or error...");
-      navigate("/error");
-    }
-  }, [groupData, error, loading, navigate]);
-
   //팔로우,언팔로우 기능
   const followGroup = async () => {
     try {
@@ -132,16 +127,13 @@ const GroupDetail = () => {
     }
   };
 
-  /*const handleEditGroup = () => {
-      navigate(`/groups/${groupId}`);
-    };
-  
-    const handleDeleteGroup = () => {
-      navigate(`/groups/${groupId}`);
-    };*/
+  /* 페이지 연결 필요 */
+  const handleEditDeleteGroup = () => {
+    navigate();
+  };
 
   const handleCreatePostClick = () => {
-    navigate(`/groups/${groupId}/posts`);
+    navigate("/post");
   };
 
   const badgeInfo = {
@@ -185,12 +177,14 @@ const GroupDetail = () => {
     <div className="group-detail-container">
       <div className="group-header">
         <img
-          src={groupData.imageUrl || "/default-group.png"}
+          src={groupData.imageUrl}
           alt={groupData.name}
           className="group-img"
         />
         <div className="group-info">
-          <button className="edit-delete-btn">그룹 수정/삭제</button>
+          <button className="edit-delete-btn" onClick={handleEditDeleteGroup}>
+            그룹 수정/삭제
+          </button>
 
           <div className="group-name-stats">
             <h1 className="group-detail-title">{groupData.name}</h1>
@@ -202,7 +196,7 @@ const GroupDetail = () => {
           </div>
           <p className="group-description">{groupData.introduction}</p>
 
-          <div className="group-badge-and-like">
+          <div className="group-badge-and-follow">
             <div className="group-badges">
               <h3>획득 배지</h3>
               <div className="badges-list">
@@ -218,7 +212,6 @@ const GroupDetail = () => {
           </div>
         </div>
       </div>
-
       <div className="post-section">
         <div className="post-header">
           <h3>추억 목록</h3>
@@ -253,24 +246,76 @@ const GroupDetail = () => {
         </div>
 
         {/* 게시글 목록 렌더링 */}
-        <div className="post-list">
-          {posts.length === 0 ? (
-            <p>게시글이 없습니다.</p>
-          ) : (
-            posts.map((post) => (
-              <Link key={post.id} to={`/post/${post.id}`}>
+        {posts.length === 0 ? (
+          <div className="empty-post">
+            <img src={EmptyIcon} alt="게시물 없음" className="empty-icon" />
+            <p className="no-results">게시된 추억이 없습니다.</p>
+            <p className="upload-first-post">첫 번째 추억을 올려보세요!</p>
+          </div>
+        ) : (
+          <div className="post-list">
+            {posts.map((post) => (
+              <Link
+                key={post.id}
+                to={`/post/${post.id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <div
-                  className={`post-item ${
+                  className={`post-card post-item ${
                     post.isPublic ? "public" : "private"
                   }`}
                 >
-                  <h4>{post.title}</h4>
-                  <span>{post.content}</span>
+                  <img
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="post-img"
+                  />
+                  <div className="post-info">
+                    <div className="post-meta">
+                      <span className="group-name">{post.nickname}</span>
+                      <div className="post-v-line"></div>
+                      <span className="public-status">
+                        {post.isPublic ? "공개" : "비공개"}
+                      </span>
+                    </div>
+                    <h4 className="post-card-title">{post.title}</h4>
+                    <p className="post-tags">
+                      {post.tags
+                        ? post.tags.map((tag) => `#${tag}`).join(" ")
+                        : ""}
+                    </p>
+                    <div className="post-footer">
+                      <div className="post-location">
+                        <span>{post.location}</span>
+                        <span>
+                          {new Date(post.createdAt).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <div className="post-stats">
+                        <span>
+                          <img
+                            src={FlowerIcon}
+                            alt="공감"
+                            className="flower-chat-icon"
+                          />{" "}
+                          {post.likeCount}
+                        </span>
+                        <span>
+                          <img
+                            src={ChatIcon}
+                            alt="댓글"
+                            className="flower-chat-icon"
+                          />{" "}
+                          {post.commentCount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Link>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Pagination */}
         <div className="pagination">
