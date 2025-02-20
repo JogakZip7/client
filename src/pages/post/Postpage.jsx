@@ -17,11 +17,9 @@ function PostPage() {
 
   // 페이지 로드 시, 사용자가 이 게시글에 공감했는지 확인
   useEffect(() => {
-    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
-    setLikeClicked(!!likedPosts[postId]); // 공감 여부 확인
-  }, [postId]);
-
-  
+  const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
+  setLikeClicked(!!likedPosts[postId]); // 공감 여부 확인
+}, [postId]);
   //postData가 없으면 에러 페이지로 이동
   useEffect(() => {
     if (!postData) {
@@ -50,19 +48,30 @@ function PostPage() {
 
   const loggedInUser = localStorage.getItem("id");
   // 댓글 입력 값이 없을 때 경고
-  const handleCommentSubmit = () => {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // 기본 Enter 동작(줄바꿈) 방지
+      handleCommentSubmit(); // 댓글 등록 함수 실행
+    }
+  };
+  const handleCommentSubmit = (e) => {
+    if (e && e.key === "Enter" && !e.shiftKey) {
+      if (!commentContent.trim()) return; // 빈 댓글 방지
+    } else if (!e || e.type !== "keydown") {
+      if (!commentContent.trim()) {
+        alert("댓글 내용을 입력해주세요.");
+        return;
+      }
+    }
+    
     if (!loggedInUser) {
       alert("로그인 후 댓글을 작성할 수 있습니다.");
-      return;
-    }
-    if (!commentContent.trim()) {
-      alert("댓글 내용을 입력해주세요.");
       return;
     }
     setComments([
       ...comments,
       { 
-        user: loggedInUser,
+        user: loggedInUser, // 현재 로그인한 사용자 ID
         date: `${new Date().toLocaleDateString("ko-KR")} ${new Date().toLocaleTimeString("ko-KR", {
           hour: "2-digit",
           minute: "2-digit",
@@ -83,6 +92,10 @@ function PostPage() {
   
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
+    if (comments[index].user !== loggedInUser) {
+      alert("본인이 작성한 댓글만 삭제할 수 있습니다.");
+      return;
+    }
     setShowDeleteCommentPopup(true);
     setCommentToDelete(index);
   };
@@ -265,12 +278,13 @@ function PostPage() {
         <p className={styles.commentTitle}>댓글 {comments.length}</p>
         <hr className={styles.divider} />
         <div>
-          <textarea
-            value={commentContent}
-            onChange={(e) => setCommentContent(e.target.value)}
-            placeholder="댓글 작성해주세요"
-            className={styles.commentTextarea}
-          />
+        <textarea
+          value={commentContent}
+          onChange={(e) => setCommentContent(e.target.value)}
+          onKeyDown={handleKeyDown} // Enter 키 이벤트 추가
+          placeholder="댓글 작성해주세요"
+          className={styles.commentTextarea}
+        />
           <div className={styles.submitButtonContainer}>
             <button onClick={handleCommentSubmit} className={styles.submitButton}>
               등록
