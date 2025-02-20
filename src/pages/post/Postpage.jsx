@@ -47,6 +47,8 @@ function PostPage() {
   const [commentToDelete, setCommentToDelete] = useState(null);                  // 삭제할 댓글
 
   const loggedInUser = localStorage.getItem("id");
+  const nickname = localStorage.getItem("nickname") || "익명";
+
   // 댓글 입력 값이 없을 때 경고
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -63,25 +65,28 @@ function PostPage() {
         return;
       }
     }
-    
+  
     if (!loggedInUser) {
       alert("로그인 후 댓글을 작성할 수 있습니다.");
       return;
     }
-    setComments([
-      ...comments,
-      { 
-        user: loggedInUser, // 현재 로그인한 사용자 ID
-        date: `${new Date().toLocaleDateString("ko-KR")} ${new Date().toLocaleTimeString("ko-KR", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false
-        })}`, 
-        content: commentContent 
-      }
-    ]);
-    setCommentContent("");
+  
+    // 닉네임을 로컬스토리지에서 가져와서 댓글 정보에 포함시킴
+    const newComment = {
+      user: loggedInUser, // 현재 로그인한 사용자 ID
+      nickname: nickname, // 닉네임 추가
+      date: `${new Date().toLocaleDateString("ko-KR")} ${new Date().toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      })}`,
+      content: commentContent
+    };
+  
+    setComments([...comments, newComment]); // 상태 업데이트
+    setCommentContent(""); // 입력 필드 초기화
   };
+  
 
   useEffect(() => {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
@@ -111,31 +116,18 @@ function PostPage() {
     setShowDeleteCommentPopup(false);
   };
 
-  // 게시글 삭제 팝업 표시
-  const handleDeletePost = () => {
-    if (postData.userID !== loggedInUser) {
-      alert("본인이 작성한 게시글만 삭제할 수 있습니다.");
-      return;
-    }
-    setShowDeletePostPopup(true);
-  };
-
-  // 게시글 삭제 확인
-  const handleConfirmDeletePost = () => {
-    alert("게시글이 삭제되었습니다.");
-    setShowDeletePostPopup(false);
-  };
-
   // 게시글 삭제 취소
   const handleCancelDeletePost = () => {
     setShowDeletePostPopup(false);
   };
+  // 게시글 수정
   const handleEditPost = () => {
     if (postData.userID !== loggedInUser) {
-      alert("본인이 작성한 게시글만 수정할 수 있습니다.");
+      alert("본인이 작성한 게시글만 수정 및 삭제할 수 있습니다.");
       return;
     }
   }
+  // 댓글 수정
   const handleEditComment = (index) => {
     if (comments[index].user !== loggedInUser) {
       alert("본인이 작성한 댓글만 수정할 수 있습니다.");
@@ -152,23 +144,23 @@ function PostPage() {
       return;
     }
   
-    // 현재 공감 상태를 확인
-    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
-  
-    if (likeClicked) {
-      // 이미 공감한 경우 → 공감 취소
-      setLikes(likes - 1);
-      setLikeClicked(false);
-      delete likedPosts[postId]; // 로컬 스토리지에서 삭제
-    } else {
-      // 공감하지 않은 경우 → 공감 추가
-      setLikes(likes + 1);
-      setLikeClicked(true);
-      likedPosts[postId] = true; // 로컬 스토리지에 저장
-    }
-  
-    localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
-  };
+  // 현재 공감 상태를 확인
+  const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
+
+  if (likeClicked) {
+    // 이미 공감한 경우 → 공감 취소
+    setLikes(likes - 1);
+    setLikeClicked(false);
+    delete likedPosts[postId]; // 로컬 스토리지에서 삭제
+  } else {
+    // 공감하지 않은 경우 → 공감 추가
+    setLikes(likes + 1);
+    setLikeClicked(true);
+    likedPosts[postId] = true; // 로컬 스토리지에 저장
+  }
+
+  localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
+};
   
 
   const handleSaveEditedComment = () => {
@@ -206,21 +198,25 @@ function PostPage() {
     <div className={styles.container}>
       {/* 뒤로가기 버튼 */}
       <button onClick={handleBackClick} className={styles.backButton}>
-        뒤로가기
+        ◀︎
       </button>
 
       {/* 게시글 헤더 */}
       <header className={styles.header}>
-        {/* 그룹 ID와 공개 여부 표시 (나중에 그룹 이름으로 대체 예정) */}
+        {/* 그룹 ID와 공개 여부 표시 */}
         <div className={styles.headerInfo}>
-          <span>{groupName}</span>
+          <button onClick={() => navigate(`/groups/${postData.groupId}`)} className={styles.groupButton}>
+            {groupName}
+          </button>
           <span> | {postData.isPublic ? "공개" : "비공개"}</span>
         </div>
+          
         {/* 게시글 제목으로 title 사용 */}
         <h1 className={styles.title}>{postData.title}</h1>
         <div className={styles.headerInfo}>
           {/* userID 사용 */}
-          <span>{postData.userID}</span>
+          <span>{postData.nickname}</span>
+
           <span> · {postData.location} </span>
           <span>
              · {new Date(postData.createdAt).toLocaleString("ko-KR", {
@@ -244,13 +240,9 @@ function PostPage() {
           <img src={FlowerIcon} alt="공감" className={styles.flowerIcon2} />
           {likeClicked ? " 공감 취소" : " 공감 보내기"}
         </button>
-        {/* 게시글 삭제 버튼 */}
-        <button onClick={handleDeletePost} className={styles.deletePostButton}>
-          추억 삭제하기
-        </button>
         {/* 게시글 수정 버튼 */}
         <button onClick={handleEditPost} className={styles.editButton}>
-          추억 수정하기
+          추억 수정 / 삭제
         </button>
       </header>
 
@@ -298,7 +290,7 @@ function PostPage() {
           {currentComments.map((comment, index) => (
             <div key={index} className={styles.commentItem}>
               <div className={styles.commentHeader}>
-                <span>{comment.user}</span>
+                <span>{comment.nickname}</span>
                 <span className={styles.commentDate}>{comment.date}</span>
               </div>
               {editingCommentIndex === index ? (
