@@ -15,13 +15,18 @@ function PostPage() {
   // postId에 해당하는 게시글 찾기
   const postData = postsData.find((post) => String(post.id) === postId);
 
+  // 페이지 로드 시, 사용자가 이 게시글에 공감했는지 확인
+  useEffect(() => {
+  const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
+  setLikeClicked(!!likedPosts[postId]); // 공감 여부 확인
+}, [postId]);
   //postData가 없으면 에러 페이지로 이동
   useEffect(() => {
     if (!postData) {
       navigate("/error");
     }
   }, [postData, navigate]);
-
+  
   // postData가 없을 때 로딩 방지
   if (!postData) return null;
   const group = groupData.find((group) => group.id === postData.groupId);
@@ -29,6 +34,7 @@ function PostPage() {
 
   // 초기 공감 수를 JSON의 likeCount로 설정
   const [likes, setLikes] = useState(postData.likeCount);
+  const [likeClicked, setLikeClicked] = useState(false);
   const [commentContent, setCommentContent] = useState("");
   const [comments, setComments] = useState([]);
   const [editingCommentIndex, setEditingCommentIndex] = useState(null);
@@ -40,29 +46,56 @@ function PostPage() {
   const [showDeletePostPopup, setShowDeletePostPopup] = useState(false);        // 게시글 삭제 팝업 상태
   const [commentToDelete, setCommentToDelete] = useState(null);                  // 삭제할 댓글
 
+  const loggedInUser = localStorage.getItem("id");
   // 댓글 입력 값이 없을 때 경고
-  const handleCommentSubmit = () => {
-    if (!commentContent.trim()) {
-      alert("댓글 내용을 입력해주세요.");
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // 기본 Enter 동작(줄바꿈) 방지
+      handleCommentSubmit(); // 댓글 등록 함수 실행
+    }
+  };
+  const handleCommentSubmit = (e) => {
+    if (e && e.key === "Enter" && !e.shiftKey) {
+      if (!commentContent.trim()) return; // 빈 댓글 방지
+    } else if (!e || e.type !== "keydown") {
+      if (!commentContent.trim()) {
+        alert("댓글 내용을 입력해주세요.");
+        return;
+      }
+    }
+    
+    if (!loggedInUser) {
+      alert("로그인 후 댓글을 작성할 수 있습니다.");
       return;
     }
     setComments([
       ...comments,
       { 
-        user: "사용자", 
+        user: loggedInUser, // 현재 로그인한 사용자 ID
         date: `${new Date().toLocaleDateString("ko-KR")} ${new Date().toLocaleTimeString("ko-KR", {
           hour: "2-digit",
           minute: "2-digit",
-          hour12: false // 24시간 형식 사용
+          hour12: false
         })}`, 
         content: commentContent 
       }
     ]);
-  }    
+    setCommentContent("");
+  };
 
-
+  useEffect(() => {
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
+    if (likedPosts[postId]) {
+      setLikeClicked(true);
+    }
+  }, [postId]);
+  
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
+    if (comments[index].user !== loggedInUser) {
+      alert("본인이 작성한 댓글만 삭제할 수 있습니다.");
+      return;
+    }
     setShowDeleteCommentPopup(true);
     setCommentToDelete(index);
   };
@@ -80,6 +113,10 @@ function PostPage() {
 
   // 게시글 삭제 팝업 표시
   const handleDeletePost = () => {
+    if (postData.userID !== loggedInUser) {
+      alert("본인이 작성한 게시글만 삭제할 수 있습니다.");
+      return;
+    }
     setShowDeletePostPopup(true);
   };
 
@@ -93,16 +130,46 @@ function PostPage() {
   const handleCancelDeletePost = () => {
     setShowDeletePostPopup(false);
   };
-
+  const handleEditPost = () => {
+    if (postData.userID !== loggedInUser) {
+      alert("본인이 작성한 게시글만 수정할 수 있습니다.");
+      return;
+    }
+  }
   const handleEditComment = (index) => {
+    if (comments[index].user !== loggedInUser) {
+      alert("본인이 작성한 댓글만 수정할 수 있습니다.");
+      return;
+    }
     setEditingCommentIndex(index);
     setEditingCommentContent(comments[index].content);
   };
 
   // 공감 버튼 클릭 시 공감 수 증가
   const handleLikeClick = () => {
-    setLikes(likes + 1);
+    if (!loggedInUser) {
+      alert("로그인 후 공감을 보낼 수 있습니다.");
+      return;
+    }
+  
+    // 현재 공감 상태를 확인
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
+  
+    if (likeClicked) {
+      // 이미 공감한 경우 → 공감 취소
+      setLikes(likes - 1);
+      setLikeClicked(false);
+      delete likedPosts[postId]; // 로컬 스토리지에서 삭제
+    } else {
+      // 공감하지 않은 경우 → 공감 추가
+      setLikes(likes + 1);
+      setLikeClicked(true);
+      likedPosts[postId] = true; // 로컬 스토리지에 저장
+    }
+  
+    localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
   };
+  
 
   const handleSaveEditedComment = () => {
     if (!editingCommentContent.trim()) {
@@ -131,8 +198,9 @@ function PostPage() {
 
   // 뒤로가기 버튼 클릭 시 홈으로 이동
   const handleBackClick = () => {
-    window.location.href = "/";
+    navigate(-1); // 바로 이전 페이지로 이동
   };
+  
 
   return (
     <div className={styles.container}>
@@ -173,14 +241,15 @@ function PostPage() {
         </div>
         {/* 공감하기 버튼 */}
         <button onClick={handleLikeClick} className={styles.likeButton}>
-          <img src={FlowerIcon} alt="공감" className={styles.flowerIcon2} /> 공감 보내기
+          <img src={FlowerIcon} alt="공감" className={styles.flowerIcon2} />
+          {likeClicked ? " 공감 취소" : " 공감 보내기"}
         </button>
         {/* 게시글 삭제 버튼 */}
         <button onClick={handleDeletePost} className={styles.deletePostButton}>
           추억 삭제하기
         </button>
         {/* 게시글 수정 버튼 */}
-        <button onClick={() => alert("게시글 수정")} className={styles.editButton}>
+        <button onClick={handleEditPost} className={styles.editButton}>
           추억 수정하기
         </button>
       </header>
@@ -209,12 +278,13 @@ function PostPage() {
         <p className={styles.commentTitle}>댓글 {comments.length}</p>
         <hr className={styles.divider} />
         <div>
-          <textarea
-            value={commentContent}
-            onChange={(e) => setCommentContent(e.target.value)}
-            placeholder="댓글 작성해주세요"
-            className={styles.commentTextarea}
-          />
+        <textarea
+          value={commentContent}
+          onChange={(e) => setCommentContent(e.target.value)}
+          onKeyDown={handleKeyDown} // Enter 키 이벤트 추가
+          placeholder="댓글 작성해주세요"
+          className={styles.commentTextarea}
+        />
           <div className={styles.submitButtonContainer}>
             <button onClick={handleCommentSubmit} className={styles.submitButton}>
               등록
