@@ -44,8 +44,8 @@ function Main() {
           <Route path="/" element={<HomePage />} />
           <Route path="/post" element={<PostPage />} />
           <Route path="/showgroups" element={<MyGroupList />} />
-          <Route path="/groups/:groupId" element={<GroupDetail />} />
-          <Route path="/post/:postId" element={<PostPage/>}/>
+          <Route path="/groups/:groupId/details" element={<GroupDetail />} />
+          <Route path="/post/:postId/details" element={<PostPage/>}/>
           <Route path="/myscraps" element={<ScrapPage/>}/>
           <Route path="/groups" element={<MakeGroup />} />
           <Route path="/groups/:groupId" element={<EditGroup />} />  
