@@ -106,14 +106,14 @@
   
   .submitButton {
     padding: 10px 20px;
-    background-color: #282828;
+    background-color: #6A6765;
     color: #fff;
     border-radius: 6px;
     border: none;
     cursor: pointer;
   }
   .submitButton:hover{
-    background-color: #4d4d4d;
+    background-color: #282828;
   }
   /* Comments List */
   .commentsList {
@@ -172,7 +172,7 @@
   
   .editingSaveButton {
     padding: 10px 20px;
-    background-color: #282828;
+    background-color: #6A6765;
     color: #fff;
     border-radius: 6px;
     border: none;
@@ -180,7 +180,7 @@
   }
   .editingSaveButton:hover {
     
-    background-color: #4d4d4d;
+    background-color: #282828;
     
   }
   /* 댓글 CSS */
@@ -234,14 +234,14 @@
     right: 5px;  /* 삭제하기 버튼 옆에 위치 */
     padding: 10px 20px;
     background-color: #fafafa;
-    color: #8d8d8d;
+    color: #6A6765;
     border-radius: 6px;
     border: none;
     cursor: pointer;
   }
   
   .editButton:hover {
-    color: #bbb;
+    color: #282828;
   }
   /* 페이지네이션 컨테이너 */
 .pagination {
