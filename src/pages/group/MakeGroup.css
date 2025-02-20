@@ -1,4 +1,3 @@
-
 /* 전체 페이지 스타일 */
 .create-group-page {
   width: 100%;
@@ -12,13 +11,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  margin-top: 40px; /* 로고 위쪽 여백 추가 */
 }
 
 /* 로고 아이콘 스타일 */
-.header .icon {
-  width: 137px;
-  height: 48px;
-  margin-bottom: 20px;
+.header .logo {
+  width: 150px;
+  margin: 0 auto 40px;
+  display: block;
 }
 
 /* 폼 스타일 */
@@ -96,16 +97,34 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* 버튼 스타일 */
-button {
-  padding: 10px;
-  background-color: #282828;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+/* 버튼 그룹 스타일 */
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 버튼들이 수평으로 중앙 정렬 */
+  gap: 10px; /* 버튼 간 간격을 10px로 조정 */
 }
 
-button:hover {
-  background-color: #444;
+.button-group button {
+  width: 420px; 
+  height: 40px; /* 높이를 5px 줄임 */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+/* 수정 버튼 */
+.button-group .submit-btn {
+  background-color: #FAFAFA;
+  color: #282828;
+  border: 1px solid #282828;
+}
+
+.button-group .submit-btn:hover {
+  background-color: #444;
+  color: #FAFAFA;
+}
+
