@@ -1,0 +1,95 @@
+/* 전체 로그인 페이지 스타일 */
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+/* 네비게이션 바 */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  background: white;
+  border-bottom: 2px solid #ddd;
+}
+
+/* 로고 */
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+/* 제목 */
+.title {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 입력 폼 스타일 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 버튼 스타일 */
+.loginButton,
+.signupButton {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+}
+
+.loginButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.loginButton:hover {
+  background-color: #0056b3;
+}
+
+.signupButton {
+  background: #ddd;
+  color: black;
+}
+
+.signupButton:hover {
+  background: #bbb;
+}
+
+/* 에러 메시지 */
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

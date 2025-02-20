@@ -7,6 +7,7 @@ import PostPage from "./pages/post/PostPage";
 import ErrorPage from "./pages/Error/ErrorPage";
 import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
 import GroupDetail from "./pages/group/GroupDetail"; //그룹페이지
+import ScrapPage from "./pages/admin/ScrapPage.jsx";
 import Navbar from "./components/Navbar";
 
 function LayoutWithNavbar() {
@@ -41,6 +42,7 @@ function Main() {
           <Route path="/showgroups" element={<MyGroupList />} />
           <Route path="/groups/:groupId" element={<GroupDetail />} />
           <Route path="/post/:postId" element={<PostPage/>}/>
+          <Route path="/myscraps" element={<ScrapPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

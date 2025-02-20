@@ -2,6 +2,21 @@ import React, { useState, useEffect } from "react";
 import items from "../../mock/group.json";
 import { Link } from "react-router-dom";
 import mygroup from "../../mock/participate.json";
+import styles from "./GroupList.module.css";
+
+function GroupListItem({ item }) {
+  return (
+    <Link to={`/groups/${item.id}`}>
+      <div className="PostListItem">
+        <img src={item.imageUrl} />
+        <div>
+          <h1>{item.name}</h1>
+          <p>{item.introduction}</p>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 function GroupList() {
   const [userGroups, setUserGroups] = useState([]);
@@ -13,11 +28,13 @@ function GroupList() {
     setUserId(storedUserId);
     if (storedUserId) {
       // 유저의 참여 그룹만 필터링
-      const userParticipation = mygroup.find((entry) => entry.userId === storedUserId);
-      
+      const userParticipation = mygroup.find(
+        (entry) => entry.userId === storedUserId
+      );
+
       if (userParticipation) {
         const groupIds = userParticipation.groupId;
-        
+
         // 해당 유저가 참여한 그룹들의 데이터만 필터링
         const userGroups = items.filter((item) => groupIds.includes(item.id));
         setUserGroups(userGroups);
@@ -26,17 +43,13 @@ function GroupList() {
   }, []);
 
   return (
-    <div>
-      <h2>내가 속한 그룹</h2>
+    <div className={styles.page}>
+      <div className={styles.title}>내가 속한 그룹</div>
       {userGroups.length > 0 ? (
-        <ul>
+        <ul className={styles.container}>
           {userGroups.map((item) => (
             <li key={item.id}>
-              <img src={item.imageUrl} alt={item.name} />
-              <br />
-              <Link to={`/groups/${item.id}`}>{item.name}</Link>
-              <br />
-              <br />
+              <GroupListItem item={item} />
             </li>
           ))}
         </ul>
