@@ -1,9 +1,13 @@
 /* 전체 페이지 스타일 */
 .create-group-page {
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   margin: 112px auto;
   text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 상단 헤더 스타일 */
@@ -12,14 +16,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 40px; /* 로고 위쪽 여백 추가 */
-}
-
-/* 로고 아이콘 스타일 */
-.header .logo {
-  width: 150px;
-  margin: 0 auto 40px;
-  display: block;
 }
 
 /* 폼 스타일 */
@@ -27,6 +23,8 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding-left: 15px; /* 좌측 여백 */
+  padding-right: 15px ;
 }
 
 .create-group-form label {
@@ -38,63 +36,10 @@
 .create-group-form input,
 .create-group-form textarea {
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
-}
-
-/* 토글 버튼 */
-.create-group-form .toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: '';
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #282828;
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
+  width: 290px;
 }
 
 /* 버튼 그룹 스타일 */
@@ -102,12 +47,12 @@ input:checked + .slider:before {
   margin-top: 30px;
   display: flex;
   justify-content: center; /* 버튼들이 수평으로 중앙 정렬 */
-  gap: 10px; /* 버튼 간 간격을 10px로 조정 */
+  gap: 20px;
 }
 
 .button-group button {
-  width: 210px; /* 가로 길이를 10px 늘림 */
-  height: 40px; /* 높이를 5px 줄임 */
+   width: calc(100% - 10px); /* 버튼의 너비를 10px 줄임 */
+  height: 40px; 
   font-family: 'Spoqa Han Sans Neo';
   font-size: 16px;
   font-weight: 500;
@@ -116,26 +61,24 @@ input:checked + .slider:before {
   transition: background-color 0.3s ease;
 }
 
-/* 수정 버튼 */
 .button-group .submit-btn {
-  background-color: #FAFAFA;
-  color: #282828;
-  border: 1px solid #282828;
+  background-color: #6A6765;
+  color: white;
+  border: none;
 }
 
 .button-group .submit-btn:hover {
-  background-color: #444;
-  color: #FAFAFA;
+  background-color: #282828;
 }
 
 /* 삭제 버튼 */
 .button-group .delete-btn {
-  background-color: #FAFAFA;
-  color: #282828;
-  border: 1px solid #282828;
+  background-color: #6A6765;
+  color: white;
+  border: none;
+
 }
 
 .button-group .delete-btn:hover {
-  background-color: #444;
-  color: #FAFAFA;
+  background-color: #282828;
 }
