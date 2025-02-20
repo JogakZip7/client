@@ -127,7 +127,7 @@ function PostPage() {
       alert("본인이 작성한 게시글만 수정할 수 있습니다.");
       return;
     }
-    navigate(`/edit-post/${postId}`); // 📌 postId 포함해서 이동
+    navigate(`/edit-post/${postId}`); //postId 포함해서 이동
   };
   // 댓글 수정
   const handleEditComment = (index) => {

@@ -44,7 +44,7 @@
   }
   
   .likeButton:hover {
-    background-color: #c0c0c0;
+    background-color: #ddd;
   }
   
   .backButton {
@@ -52,14 +52,14 @@
     background-color: #fafafa;
     border: none;
     border-radius: 5px;
-    color: #8D8D8D;
+    color: #8d8d8d;
     cursor: pointer;
     margin-bottom: 10px;
     font-size: 15px;
   }
   
   .backButton:hover {
-    color: #ddd;
+    color: #bbb;
   }
   
   /* Post Content */
@@ -234,14 +234,14 @@
     right: 5px;  /* 삭제하기 버튼 옆에 위치 */
     padding: 10px 20px;
     background-color: #fafafa;
-    color: #000000;
+    color: #8d8d8d;
     border-radius: 6px;
     border: none;
     cursor: pointer;
   }
   
   .editButton:hover {
-    color: #504f4f;
+    color: #bbb;
   }
   /* 페이지네이션 컨테이너 */
 .pagination {
