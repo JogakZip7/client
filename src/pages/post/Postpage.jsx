@@ -122,7 +122,7 @@ function PostPage() {
   };
   // 게시글 수정
   const handleEditPost = () => {
-    if (postData.userID !== loggedInUser) {
+    if (postData.nickname !== loggedInUser) {
       alert("본인이 작성한 게시글만 수정 및 삭제할 수 있습니다.");
       return;
     }
@@ -214,7 +214,7 @@ function PostPage() {
         {/* 게시글 제목으로 title 사용 */}
         <h1 className={styles.title}>{postData.title}</h1>
         <div className={styles.headerInfo}>
-          {/* userID 사용 */}
+          {/* 닉네임 사용 */}
           <span>{postData.nickname}</span>
 
           <span> · {postData.location} </span>
