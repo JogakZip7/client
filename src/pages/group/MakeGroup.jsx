@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MakeGroup.css";
+import { Route } from 'react-router-dom';
 
 function MakeGroup() {
   
@@ -45,11 +46,6 @@ function MakeGroup() {
   return (
     <div className="create-group-page">
       <div className="header">
-      <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
         <h2>그룹 만들기</h2>
       </div>
 
