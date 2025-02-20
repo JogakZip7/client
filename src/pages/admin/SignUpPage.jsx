@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import SignUpAPI from "../../api/SignUpAPI";
 import styles from "./SignUpPage.module.css"; // CSS 모듈 추가
 import Logo from "/imgs/logo.png";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function SignUpPage({ token, setToken }) {
-  const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [passwordToConfirm, setPasswordToConfirm] = useState("");
@@ -13,8 +12,6 @@ function SignUpPage({ token, setToken }) {
   const signUp = () => {
     if (password !== passwordToConfirm) {
       alert("비밀번호와 비밀번호 확인이 다릅니다.");
-    } else if (!userid) {
-      alert("아이디는 필수 항목입니다.");
     } else if (!password) {
       alert("비밀번호는 필수 항목입니다.");
     } else if (!passwordToConfirm) {
@@ -25,7 +22,6 @@ function SignUpPage({ token, setToken }) {
       SignUpAPI(userid, password, nickname).then((response) => {
         if (response !== "") {
           alert("회원가입 성공! 🎉");
-          setUserid("");
           setPassword("");
           setPasswordToConfirm("");
           setNickname("");
@@ -46,22 +42,11 @@ function SignUpPage({ token, setToken }) {
         <div className={styles.titleWrap}>회원가입</div>
         <div className={styles.subText}>
           조각집에서 더 많은 경험을 하고 싶다면 회원 가입을 해주세요.
+          <br />
+          <br />
         </div>
 
         <div className={styles.contentWrap}>
-          {/* 아이디 입력 */}
-          <div className={styles.inputTitle}>아이디</div>
-          <div className={styles.inputWrap}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="아이디를 입력하세요"
-              value={userid}
-              onChange={(e) => setUserid(e.target.value)}
-            />
-          </div>
-          <button className={styles.button}>중복확인</button>
-
           {/* 닉네임 입력 */}
           <div className={styles.inputTitle}>닉네임</div>
           <div className={styles.inputWrap}>

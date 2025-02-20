@@ -1,12 +1,16 @@
 .page {
   margin-top: 112px;
   padding: 20px;
+  max-width: 1400px; /* 페이지 크기 확대 */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #333;
   text-align: center;
 }
@@ -14,56 +18,81 @@
 .list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 리스트 전체 중앙 정렬 */
+  width: 100%;
 }
 
 .listItem {
   display: flex;
   align-items: center;
-  gap: 20px;
-  border-bottom: 1px solid #ddd;
-  padding: 15px 10px;
+  gap: 30px;
+  border-bottom: 2px solid #ddd;
+  padding: 20px 15px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  text-decoration: none; /* 링크 스타일 제거 */
-  color: inherit; /* 부모의 색상 유지 */
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  max-width: 900px; /* 리스트 아이템 크기 확대 */
 }
 
 .listItem img {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .listItem:hover {
   background-color: #f0f0f0;
-  transform: scale(1.02); /* 살짝 확대 */
+  transform: scale(1.05);
 }
 
 .textContainer {
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  width: 100%;
 }
 
 .textContainer h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
+  text-align: left; /* 제목 왼쪽 정렬 */
 }
 
 .textContainer p {
-  margin: 5px 0 0;
-  font-size: 14px;
+  margin: 8px 0 0;
+  font-size: 16px;
   color: #666;
+  text-align: left; /* 본문 왼쪽 정렬 */
 }
 
 /* 반응형 스타일 */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .listItem {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    max-width: 100%;
   }
 
   .listItem img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .textContainer {
+    align-items: center; /* 작은 화면에서는 다시 중앙 정렬 */
+    text-align: center;
+  }
+
+  .textContainer h2 {
+    font-size: 18px;
+  }
+
+  .textContainer p {
+    font-size: 14px;
   }
 }
