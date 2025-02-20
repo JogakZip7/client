@@ -48,6 +48,7 @@ function PostPage() {
 
   const loggedInUser = localStorage.getItem("id");
   const nickname = localStorage.getItem("nickname") || "익명";
+  const loggedInUserNickname = localStorage.getItem("nickname");
 
   // 댓글 입력 값이 없을 때 경고
   const handleKeyDown = (e) => {
@@ -122,11 +123,12 @@ function PostPage() {
   };
   // 게시글 수정
   const handleEditPost = () => {
-    if (postData.nickname !== loggedInUser) {
-      alert("본인이 작성한 게시글만 수정 및 삭제할 수 있습니다.");
+    if (postData.nickname !== loggedInUserNickname) {
+      alert("본인이 작성한 게시글만 수정할 수 있습니다.");
       return;
     }
-  }
+    navigate(`/edit-post/${postId}`); // 📌 postId 포함해서 이동
+  };
   // 댓글 수정
   const handleEditComment = (index) => {
     if (comments[index].user !== loggedInUser) {
@@ -248,7 +250,7 @@ function PostPage() {
 
       {/* 게시글 내용 */}
       <section className={styles.contentSection}>
-        {/* 이미지 중앙 정렬: CSS에서 .postImage에 display: block; margin: 0 auto; 적용 */}
+        {/* 이미지 중앙 정렬*/}
         <img
           src={postData.imageUrl}
           alt={postData.title}
