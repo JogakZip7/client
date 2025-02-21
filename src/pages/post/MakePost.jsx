@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Route } from 'react-router-dom';
 import "./MakePost.css";
 
 const MakePost = () => {
@@ -94,16 +93,6 @@ const MakePost = () => {
 
         <div className="form-right">
           <div className="form-group">
-            <label>태그</label>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags.join(",")}
-              onChange={handleTagsChange}
-              placeholder="태그를 입력해 주세요 (콤마로 구분)"
-            />
-          </div>
-          <div className="form-group">
             <label>장소</label>
             <input
               type="text"
@@ -156,7 +145,7 @@ const MakePost = () => {
 
         {/* 버튼 컨테이너 추가 */}
         <div className="button-container">
-          <button type="submit" className="submit-button" disabled={loading}>
+          <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "올리는 중..." : "올리기"}
           </button>
         </div>
