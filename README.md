@@ -41,3 +41,86 @@
 | Formatting | <img src="https://img.shields.io/badge/prettier-F7B93E?style=flat-square&logo=styled-components&logoColor=white"/> |
 | Package manager | <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=styled-components&logoColor=white"/>|
 | Version control | <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> |
+
+# 📂 폴더 구조
+```
+📦public
+ ┣ 📂imgs
+ ┃ ┣ 📜fav_size=16_16.png
+ ┃ ┣ 📜fav_size=32_32.png
+ ┃ ┣ 📜fav_size=64_64.png
+ ┃ ┣ 📜image=img1.png
+ ┃ ┣ 📜image=img2.png
+ ┃ ┣ 📜image=img3.png
+ ┃ ┣ 📜image=img4.png
+ ┃ ┣ 📜image=img5.png
+ ┃ ┗ 📜logo.png
+ ┗ 📜login.json
+ 📦src
+ ┣ 📂api
+ ┃ ┣ 📜axiosInstance.jsx
+ ┃ ┣ 📜GroupAPI.jsx
+ ┃ ┣ 📜ImagePostAPI.jsx
+ ┃ ┣ 📜LoginAPI.jsx
+ ┃ ┣ 📜PostAPI.jsx
+ ┃ ┗ 📜SignUpAPI.jsx
+ ┣ 📂assets
+ ┃ ┣ 📜badge=groupnum.png
+ ┃ ┣ 📜badge=post.png
+ ┃ ┣ 📜badge=postheart.png
+ ┃ ┣ 📜Chat.png
+ ┃ ┣ 📜empty.png
+ ┃ ┣ 📜error.png
+ ┃ ┣ 📜Flower.png
+ ┃ ┣ 📜like.png
+ ┃ ┣ 📜mypagebutton.png
+ ┃ ┣ 📜Pen.png
+ ┃ ┣ 📜state=active.png
+ ┃ ┣ 📜state=default.png
+ ┃ ┗ 📜Trash.png
+ ┣ 📂components
+ ┃ ┣ 📜appFont.css
+ ┃ ┣ 📜Navbar.jsx
+ ┃ ┗ 📜Navbar.module.css
+ ┣ 📂mock
+ ┃ ┣ 📜group.json
+ ┃ ┣ 📜participate.json
+ ┃ ┣ 📜post.json
+ ┃ ┗ 📜scrap.json
+ ┣ 📂pages
+ ┃ ┣ 📂admin
+ ┃ ┃ ┣ 📜LoginPage.jsx
+ ┃ ┃ ┣ 📜LoginPage.module.css
+ ┃ ┃ ┣ 📜ScrapPage.jsx
+ ┃ ┃ ┣ 📜ScrapPage.module.css
+ ┃ ┃ ┣ 📜SignUpPage.jsx
+ ┃ ┃ ┗ 📜SignUpPage.module.css
+ ┃ ┣ 📂error
+ ┃ ┃ ┣ 📜ErrorPage.jsx
+ ┃ ┃ ┗ 📜ErrorPage.module.css
+ ┃ ┣ 📂group
+ ┃ ┃ ┣ 📜EditGroup.css
+ ┃ ┃ ┣ 📜EditGroup.jsx
+ ┃ ┃ ┣ 📜GroupDetail.css
+ ┃ ┃ ┣ 📜GroupDetail.jsx
+ ┃ ┃ ┣ 📜GroupList.jsx
+ ┃ ┃ ┣ 📜GroupList.module.css
+ ┃ ┃ ┣ 📜MakeGroup.css
+ ┃ ┃ ┗ 📜MakeGroup.jsx
+ ┃ ┣ 📂home
+ ┃ ┃ ┣ 📜HomePage.css
+ ┃ ┃ ┗ 📜HomePage.jsx
+ ┃ ┗ 📂post
+ ┃ ┃ ┣ 📜EditPost.css
+ ┃ ┃ ┣ 📜EditPost.jsx
+ ┃ ┃ ┣ 📜MakePost.css
+ ┃ ┃ ┣ 📜MakePost.jsx
+ ┃ ┃ ┣ 📜Postpage.jsx
+ ┃ ┃ ┗ 📜PostPage.module.css
+ ┣ 📜.env
+ ┣ 📜index.jsx
+ ┣ 📜main.jsx
+ ┣ 📜Modal.css
+ ┗ 📜Modal.jsx
+```
+
