@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .create-post-container {
   max-width: 1200px;
   margin: 112px auto;
@@ -55,6 +56,66 @@ label {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
+=======
+/* 기본 스타일 */
+.create-post-container {
+    max-width: 1200px;
+    margin: 112px auto;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.create-post-title {
+    font-size: 24px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 요소 간의 간격 */
+    margin-bottom: 90px; /* 버튼과 겹치지 않도록 폼 하단에 여백 추가 */
+}
+
+/* 왼쪽 폼 스타일 */
+.form-left {
+    flex: 7; /* 70% */
+    padding: 0 30px; /* 왼쪽, 오른쪽 패딩 일관되게 설정 */
+    border-right: 1.5px solid #ccc; /* 세로 선 추가 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 폼 요소 중앙 정렬 */
+}
+
+/* 오른쪽 폼 스타일 */
+.form-right {
+    flex: 3; /* 30% */
+    padding: 0 30px; /* 왼쪽, 오른쪽 패딩 일관되게 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 폼 요소 중앙 정렬 */
+}
+
+/* 폼 그룹 스타일 */
+.form-group {
+    width: 100%; /* 전체 너비를 사용하도록 설정 */
+    text-align: left; /* 텍스트는 왼쪽 정렬 */
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left; /* 레이블 텍스트 왼쪽 정렬 */
+>>>>>>> origin/editpost
 }
 
 input[type="text"],
@@ -62,6 +123,7 @@ input[type="file"],
 input[type="date"],
 input[type="password"],
 textarea {
+<<<<<<< HEAD
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -178,4 +240,115 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(22px);  /* 기존 26px에서 22px로 줄임 */
+=======
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: left; /* 텍스트 입력 필드도 왼쪽 정렬 */
+}
+
+textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼을 중앙에 배치 */
+    position: fixed; /* 화면에 고정 */
+    bottom: 90px; /* 화면 하단에서 90px 위로 위치 */
+    left: 50%; /* 화면의 가로 중앙 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+    width: 80%; /* 버튼의 너비를 설정 */
+    gap: 20px; /* 버튼 간의 간격 */
+}
+
+.button-container button {
+    width: 300px; /* 버튼 너비 */
+    height: 45px; /* 버튼 높이 */
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    margin: 0; /* 버튼 간의 여백 제거 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 올리기 버튼 */
+.button-container .submit-button {
+    background-color: #6A6765;
+    color: white;
+    border: none;
+}
+
+.button-container .submit-button:hover {
+    background-color: #282828;
+}
+
+/* 공개 여부 토글 스타일 */
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #282828;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+>>>>>>> origin/editpost
 }

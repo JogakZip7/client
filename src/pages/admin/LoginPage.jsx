@@ -46,7 +46,6 @@ function SignIn() {
             required
           />
         </div>
-
         <div className={styles.inputGroup}>
           <label>비밀번호:</label>
           <input
@@ -57,13 +56,10 @@ function SignIn() {
             required
           />
         </div>
-
         {error && <p className={styles.errorMessage}>{error}</p>}
-
         <button type="submit" className={styles.loginButton}>
           로그인
         </button>
-
         <Link to="/signup">
           <button type="button" className={styles.signupButton}>
             회원가입
