@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route } from 'react-router-dom';
 import "./EditGroup.css";
 
 function EditGroup() {
@@ -11,10 +12,6 @@ function EditGroup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 그룹 공개 여부를 토글하는 함수
-  const handleToggle = () => {
-    setIsPublic(!isPublic);
-  };
 
   // 파일 업로드 핸들러
   const handleImageChange = (e) => {
@@ -66,11 +63,6 @@ function EditGroup() {
   return (
     <div className="create-group-page">
       <div className="header">
-        <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
         <h2>그룹 수정 및 삭제하기</h2>
       </div>
 
@@ -94,14 +86,6 @@ function EditGroup() {
           onChange={(e) => setGroupIntro(e.target.value)}
         />
 
-        <label>그룹 공개 선택</label>
-        <div className="toggle">
-          <span>{isPublic ? "공개" : "비공개"}</span>
-          <label className="switch">
-            <input type="checkbox" checked={isPublic} onChange={handleToggle} />
-            <span className="slider"></span>
-          </label>
-        </div>
 
         {/* 비밀번호 입력 */}
         <label>비밀번호 인증</label>
@@ -113,10 +97,11 @@ function EditGroup() {
           required
         />
 
-        <div className="button-group">
+        
           <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "수정하는 중..." : "수정하기"}
           </button>
+          
           <button
             type="button"
             onClick={handleDeleteGroupSubmit}
@@ -124,7 +109,8 @@ function EditGroup() {
           >
             삭제하기
           </button>
-        </div>
+          
+        
       </form>
     </div>
   );

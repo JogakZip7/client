@@ -1,0 +1,107 @@
+[
+	{
+		"id" : "06b11161-7cf6-40ef-8184-076fba6cf390",
+		"nickname" : "parkseo",
+		"password" : "$2a$10$ZEhhEiwBcHzZHuwAylhGyu8X5AZ.Q3YdNYWPwFABAluM/MmUgKLUW"
+	},
+	{
+		"id" : "1a083a9a-c649-4bc9-8933-823e4f8230f1",
+		"nickname" : "seohyun",
+		"password" : "$2a$10$zS0e4NA8s6HjwmUP5s9FRuZySu4NGTQ5aPz8aUGAHxSsR.N.3dCNO"
+	},
+	{
+		"id" : "1a496b5f-7884-47fe-95bf-753db0bcb72b",
+		"nickname" : "suding",
+		"password" : "$2a$10$BEGxHeGKlQqksFTdypfdzOoeLOa/ARp00NBr0tDAFfwwmGbEWvLtS"
+	},
+	{
+		"id" : "326d9c79-88d3-4516-a881-e1f3c0110e09",
+		"nickname" : "gaeun",
+		"password" : "$2a$10$HKCU9WKlprMSPsywbisc6ujuelVS1ojT2LYogBZMDRZsnM1L1JNZi"
+	},
+	{
+		"id" : "35f5abe9-56cb-457a-a2b0-d15400456367",
+		"nickname" : "yoyo",
+		"password" : "$2a$10$gww.VeAchFmMrQrfEM4HN.VBgcTbS7VgJNN6w5TUMiNFa76Elpd12"
+	},
+	{
+		"id" : "3aaa3ceb-5735-40c1-8fa9-0c4b71e09e7b",
+		"nickname" : "soso",
+		"password" : "$2a$10$6wvzzsgz0T4c71U0MaKKUe4Ovolftpjtj2KuQ0VCBLy9Kfz3CqP7u"
+	},
+	{
+		"id" : "4a23c95e-763f-4eb1-9fce-34d3762a11c5",
+		"nickname" : "pipi",
+		"password" : "$2a$10$TUuF95GZFguBF58CKKCVneqJC51UMTLdkQYbCJviZHjIhW5jimc4K"
+	},
+	{
+		"id" : "4a582909-9015-44ed-8426-21954e3d44ed",
+		"nickname" : "codeit",
+		"password" : "$2a$10$bQ1eUD7g4x3Vv3IrI./SzeF9Hvi8UPV51hRcXAVWhzoDaBcSrE4ui"
+	},
+	{
+		"id" : "5b25dcca-3b94-4276-9c96-bc2e33f8f921",
+		"nickname" : "gaga",
+		"password" : "$2a$10$XmryOv.Otvz4DnXyHKTR8.c56RvPT9umbTeLnamP9Pye0CMA8zbGG"
+	},
+	{
+		"id" : "5ea9416f-0adc-451e-b374-0c34ecd2e2c5",
+		"nickname" : "jeongeun",
+		"password" : "$2a$10$SARCWEu7nhWo2PlZxcfOG.4/ohrrmiqy/TjLIUxLTzmlA2yZoDTim"
+	},
+	{
+		"id" : "67034c36-fa4a-4603-b691-75012d76256c",
+		"nickname" : "sujin1",
+		"password" : "$2a$10$1T/4zur2PcvqSGpHeSraD.8wLI21XQCrecXd2Y1Mn2AmW4F8ivimu"
+	},
+	{
+		"id" : "6b164575-be67-4f25-a5ec-5d9fb9b72287",
+		"nickname" : "sujin",
+		"password" : "$2a$10$F85VR8M1TZPbNT4T19vs.ucmf.Bkoe62JF5ktWFfhLE0ujJHaBfnS"
+	},
+	{
+		"id" : "6db22dfd-e82b-4f2a-8e07-319e771e201b",
+		"nickname" : "yejin",
+		"password" : "$2a$10$iDu5IE2/k5t2Zo9wFpqIluTsPT4eqtgM4saA6AtZxbhKErSum3si6"
+	},
+	{
+		"id" : "7d3825a4-01dc-4986-891f-2ea734fb2619",
+		"nickname" : "chichi",
+		"password" : "$2a$10$8ftBLg48EeBcE96XX4.RyeUNoyJZHUopDud6uF/3RIqxW9343ARcK"
+	},
+	{
+		"id" : "9ca099d4-bd86-4444-ba03-53d439712241",
+		"nickname" : "nana",
+		"password" : "$2a$10$U06GwMwnIZj5SYfyMkMB/.sTt2sjiN5x9jYijufI3Kh7UBDsqd0FK"
+	},
+	{
+		"id" : "a1f56938-4a3d-4313-b06a-9066c19587d1",
+		"nickname" : "joe",
+		"password" : "$2a$10$.7NboGzv7Y9wAJzsowVfGu2QYsvVe.v6kvboW0dFTtiHuD/DjkuZK"
+	},
+	{
+		"id" : "ab0dfbb8-779e-4e1d-b696-efc22ea7feec",
+		"nickname" : "sinwon",
+		"password" : "$2a$10$ohN/RgDbNBuE8OjLgJPTm.NhdZf6ABNXC54TGlf15GU8iZ9scelvq"
+	},
+	{
+		"id" : "b22840e6-a330-4099-b63a-538d9f76207f",
+		"nickname" : "jiyeon",
+		"password" : "$2a$10$k3UKPbPvdj.692.GVJGZZeR3w.isVNQVkq.Pedtj5FZQoEhfQh9Bi"
+	},
+	{
+		"id" : "bbd5b3eb-83a2-47a3-9dcd-326f4041f5e7",
+		"nickname" : "dodo",
+		"password" : "$2a$10$MNVDSJmgXV9q.KUYdPTHx.1bxXkCKTb/QAEuOje9AwckH9VYU3hdm"
+	},
+	{
+		"id" : "cd310565-9ee5-458b-891d-b1c69e7f5f17",
+		"nickname" : "minha",
+		"password" : "$2a$10$o0dwmiBL3zljgrfAcO6wBuZjULcugtBvjM3QA4XaGH7Tl00B46NnS"
+	},
+	{
+		"id" : "fef1c93d-2ee2-437b-a1fc-70d8851ce325",
+		"nickname" : "gogo",
+		"password" : "$2a$10$GGFH4vQ/eJb4AXAsw.iA.eslX5e/D.l938Uj4utLnaQqWmTGmPfv6"
+	}
+]

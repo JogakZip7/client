@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from 'react-router-dom'; // URL에서 postId와 groupId 추출
+import { updatePost, deletePost } from '../../api/PostApi'; // PostApi.jsx에서 작성한 updatePost와 deletePost 함수 import
 import "./EditPost.css";
 
 const EditPost = ({ postData = {} }) => {
+  const { groupId, postId } = useParams(); // URL에서 groupId와 postId 추출
   const [formData, setFormData] = useState({
     title: postData.title || "",
     content: postData.content || "",
@@ -14,6 +17,7 @@ const EditPost = ({ postData = {} }) => {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(); // 페이지 이동을 위해 사용
 
   // 폼 데이터 변경 처리
   const handleChange = (e) => {
@@ -36,55 +40,60 @@ const EditPost = ({ postData = {} }) => {
     setFormData({ ...formData, isPublic: !formData.isPublic });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMessage("");
 
-    // 데이터 출력 (서버 호출 부분)
-    console.log("Sending updated post data:", formData);
+    try {
+      // FormData 객체를 사용해 데이터를 전송 (이미지 포함)
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('content', formData.content);
+      formDataToSend.append('image', formData.image);
+      formDataToSend.append('tags', formData.tags.join(','));
+      formDataToSend.append('location', formData.location);
+      formDataToSend.append('moment', formData.moment);
+      formDataToSend.append('postPassword', formData.postPassword);
+      formDataToSend.append('isPublic', formData.isPublic);
 
-    // 실제 API 호출 부분 
-    // axios.put('YOUR_API_URL', formData)
-    //   .then(response => {
-    //     console.log("Server response:", response.data);
-    //     alert("추억이 수정되었습니다!");
-    //   })
-    //   .catch(error => {
-    //     console.error("Error updating post:", error);
-    //     setErrorMessage("추억 수정에 실패했습니다.");
-    //   })
-    //   .finally(() => setLoading(false));
+      // 게시물 수정 API 호출 (PostApi.jsx의 updatePost 함수 사용)
+      const response = await updatePost(postId, formDataToSend);
 
-    // 로딩 상태 처리
-    setLoading(false);
-    alert("추억이 수정되었습니다!");
+      console.log("Server response:", response);
+      alert("추억이 수정되었습니다!");
+      navigate(`/groups/${groupId}/posts`); // 수정된 게시물이 속한 그룹의 게시물 목록 페이지로 이동
+
+    } catch (error) {
+      console.error("Error updating post:", error);
+      setErrorMessage("추억 수정에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     setLoading(true);
     setErrorMessage("");
 
-    // 실제 API 호출 부분 
-    // axios.delete('YOUR_API_URL', { data: { id: postData.id } })
-    //   .then(response => {
-    //     console.log("Post deleted:", response.data);
-    //     alert("추억이 삭제되었습니다!");
-    //   })
-    //   .catch(error => {
-    //     console.error("Error deleting post:", error);
-    //     setErrorMessage("추억 삭제에 실패했습니다.");
-    //   })
-    //   .finally(() => setLoading(false));
+    try {
+      // 게시물 삭제 API 호출 (PostApi.jsx의 deletePost 함수 사용)
+      const response = await deletePost(postId);
 
-    // 삭제 후 알림
-    setLoading(false);
-    alert("추억이 삭제되었습니다!");
+      console.log("Post deleted:", response);
+      alert("추억이 삭제되었습니다!");
+      navigate(`/groups/${groupId}/posts`); // 삭제된 게시물이 속한 그룹의 게시물 목록 페이지로 이동
+
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      setErrorMessage("추억 삭제에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="create-post-container">
-      <img src="/imgs/logo.png" alt="Logo" className="logo" />
       <h1 className="create-post-title">추억 수정 및 삭제하기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
@@ -113,16 +122,6 @@ const EditPost = ({ postData = {} }) => {
         </div>
 
         <div className="form-right">
-          <div className="form-group">
-            <label>태그</label>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags.join(",")}
-              onChange={handleTagsChange}
-              placeholder="태그를 입력해 주세요 (콤마로 구분)"
-            />
-          </div>
           <div className="form-group">
             <label>장소</label>
             <input
@@ -156,17 +155,6 @@ const EditPost = ({ postData = {} }) => {
                 <span className="slider"></span>
               </label>
             </div>
-          </div>
-
-          <div className="form-group">
-            <label>비밀번호</label>
-            <input
-              type="password"
-              name="postPassword"
-              value={formData.postPassword}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력해 주세요"
-            />
           </div>
         </div>
 

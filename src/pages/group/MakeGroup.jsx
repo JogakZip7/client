@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route } from 'react-router-dom';
 import "./MakeGroup.css";
 
 function MakeGroup() {
@@ -11,10 +12,6 @@ function MakeGroup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 그룹 공개 여부를 토글하는 함수
-  const handleToggle = () => {
-    setIsPublic(!isPublic);
-  };
 
   // 파일 업로드 핸들러 (백엔드 연결 없이 테스트용)
   const handleImageChange = (e) => {
@@ -45,14 +42,9 @@ function MakeGroup() {
   return (
     <div className="create-group-page">
       <div className="header">
-      <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
         <h2>그룹 만들기</h2>
       </div>
-
+  
       <form className="create-group-form" onSubmit={handleSubmit}>
         <label>그룹명</label>
         <input
@@ -62,26 +54,17 @@ function MakeGroup() {
           onChange={(e) => setGroupName(e.target.value)}
           required
         />
-
+  
         <label>대표 이미지</label>
         <input type="file" onChange={handleImageChange} />
-
+  
         <label>그룹 소개</label>
         <textarea
           placeholder="그룹을 소개해 주세요"
           value={groupIntro}
           onChange={(e) => setGroupIntro(e.target.value)}
         />
-
-        <label>그룹 공개 선택</label>
-        <div className="toggle">
-          <span>{isPublic ? "공개" : "비공개"}</span>
-          <label className="switch">
-            <input type="checkbox" checked={isPublic} onChange={handleToggle} />
-            <span className="slider"></span>
-          </label>
-        </div>
-
+  
         {/* 비밀번호 입력 */}
         <label>비밀번호 생성</label>
         <input
@@ -91,14 +74,18 @@ function MakeGroup() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-         <div className="button-group">
-          <button type="submit" className="submit-btn" disabled={loading}>
+        
+        {/* 버튼 그룹 */}
+        <div className="submit-btn">
+          <button type="submit" disabled={loading}>
             {loading ? "만드는 중..." : "만들기"}
           </button>
         </div>
+
       </form>
     </div>
   );
+  
 }
 
 export default MakeGroup;

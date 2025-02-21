@@ -2,38 +2,36 @@ import React, { useState } from "react";
 import SignUpAPI from "../../api/SignUpAPI";
 import styles from "./SignUpPage.module.css"; // CSS 모듈 추가
 import Logo from "/imgs/logo.png";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function SignUpPage({ token, setToken }) {
-  const [userid, setUserid] = useState("");
+function SignUpPage() {
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [passwordToConfirm, setPasswordToConfirm] = useState("");
+  const [token, setToken] = useState("");
 
-  const signUp = () => {
+  const signUp = async (e) => {
+    e.preventDefault();
+
+    // 비밀번호 확인 체크
     if (password !== passwordToConfirm) {
-      alert("비밀번호와 비밀번호 확인이 다릅니다.");
-    } else if (!userid) {
-      alert("아이디는 필수 항목입니다.");
-    } else if (!password) {
-      alert("비밀번호는 필수 항목입니다.");
-    } else if (!passwordToConfirm) {
-      alert("비밀번호 확인은 필수 항목입니다.");
-    } else if (!nickname) {
-      alert("닉네임은 필수 항목입니다.");
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+      return;
+    }
+
+    if (!nickname || !password) {
+      alert("닉네임과 비밀번호를 모두 입력해주세요.");
+      return;
+    }
+
+    const result = await SignUpAPI(nickname, password);
+
+    if (result.success) {
+      setToken(result.token); // 🔥 토큰 저장
+      alert("회원가입 성공! 🎉");
+      window.location.href = "/"; // 로그인 페이지로 리디렉트 가능
     } else {
-      SignUpAPI(userid, password, nickname).then((response) => {
-        if (response !== "") {
-          alert("회원가입 성공! 🎉");
-          setUserid("");
-          setPassword("");
-          setPasswordToConfirm("");
-          setNickname("");
-          setToken(response);
-        } else {
-          alert("회원가입 실패! 아이디 중복 또는 서버 문제일 수 있습니다.");
-        }
-      });
+      alert(result.error);
     }
   };
 
@@ -46,22 +44,11 @@ function SignUpPage({ token, setToken }) {
         <div className={styles.titleWrap}>회원가입</div>
         <div className={styles.subText}>
           조각집에서 더 많은 경험을 하고 싶다면 회원 가입을 해주세요.
+          <br />
+          <br />
         </div>
 
         <div className={styles.contentWrap}>
-          {/* 아이디 입력 */}
-          <div className={styles.inputTitle}>아이디</div>
-          <div className={styles.inputWrap}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="아이디를 입력하세요"
-              value={userid}
-              onChange={(e) => setUserid(e.target.value)}
-            />
-          </div>
-          <button className={styles.button}>중복확인</button>
-
           {/* 닉네임 입력 */}
           <div className={styles.inputTitle}>닉네임</div>
           <div className={styles.inputWrap}>

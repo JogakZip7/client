@@ -6,7 +6,7 @@ import styles from "./GroupList.module.css";
 
 function GroupListItem({ item }) {
   return (
-    <Link to={`/groups/${item.id}`}>
+    <Link to={`/groups/${item.id}/details`}>
       <div className="PostListItem">
         <img src={item.imageUrl} />
         <div>
@@ -24,7 +24,7 @@ function GroupList() {
 
   // 페이지가 로드될 때, localStorage에서 userId를 가져옵니다.
   useEffect(() => {
-    const storedUserId = localStorage.getItem("id"); // localStorage에서 userId 가져오기
+    const storedUserId = localStorage.getItem("nickname"); // localStorage에서 userId 가져오기
     setUserId(storedUserId);
     if (storedUserId) {
       // 유저의 참여 그룹만 필터링
@@ -44,7 +44,7 @@ function GroupList() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.title}>내가 속한 그룹</div>
+      <div className={styles.title}>우리는 7942~ ₊·*◟(⌯ˇ- ˇ⌯)◜‧*・</div>
       {userGroups.length > 0 ? (
         <ul className={styles.container}>
           {userGroups.map((item) => (

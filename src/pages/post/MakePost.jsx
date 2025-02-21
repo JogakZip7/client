@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom'; // useParams를 import
+import { createPost } from '../../api/PostApi'; // PostApi.jsx에서 작성한 createPost 함수 import
 import "./MakePost.css";
 
 const MakePost = () => {
+  const { groupId } = useParams(); // URL에서 groupId 추출
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -14,6 +17,7 @@ const MakePost = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,10 +28,11 @@ const MakePost = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
+  // handleTagsChange가 실제로 사용되도록 연결
   const handleTagsChange = (e) => {
     setFormData({
       ...formData,
-      tags: e.target.value.split(",").map((tag) => tag.trim()),
+      tags: e.target.value.split(",").map((tag) => tag.trim()), // 콤마로 구분된 태그 배열로 변환
     });
   };
 
@@ -35,40 +40,40 @@ const MakePost = () => {
     setFormData({ ...formData, isPublic: !formData.isPublic });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMessage("");
 
-    // 데이터 객체 출력 (서버 호출 부분)
-    console.log("Sending post data:", formData);
+    try {
+      // FormData 객체를 사용해 데이터를 전송 (이미지 포함)
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('content', formData.content);
+      formDataToSend.append('image', formData.image);
+      formDataToSend.append('tags', formData.tags.join(','));
+      formDataToSend.append('location', formData.location);
+      formDataToSend.append('moment', formData.moment);
+      formDataToSend.append('postPassword', formData.postPassword);
+      formDataToSend.append('isPublic', formData.isPublic);
 
-    // 실제 API 호출 부분 
-    // axios.post('YOUR_API_URL', formData)
-    //   .then(response => {
-    //     console.log("Server response:", response.data);
-    //     alert("추억이 성공적으로 등록되었습니다!");
-    //     navigate(`/groups/${groupId}`);
-    //   })
-    //   .catch(error => {
-    //     console.error("Error creating post:", error);
-    //     setErrorMessage("추억 등록에 실패했습니다.");
-    //   })
-    //   .finally(() => setLoading(false));
+      // 실제 API 호출 부분 (PostApi.jsx의 createPost 함수 사용)
+      const response = await createPost(groupId, formDataToSend);
 
-    // 로딩 상태와 에러 메시지 처리
-    setLoading(false);
-    alert("추억이 성공적으로 등록되었습니다!");
-    // navigate(`/groups/${groupId}`);
+      console.log("Server response:", response);
+      alert("추억이 성공적으로 등록되었습니다!");
+      navigate(`/groups/${groupId}/posts`); // 게시물이 등록된 그룹 페이지로 이동
+
+    } catch (error) {
+      console.error("Error creating post:", error);
+      setErrorMessage("추억 등록에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="create-post-container">
-        <img 
-          src="/imgs/logo.png" 
-          alt="Logo" 
-          className="logo" 
-        />
       <h1 className="create-post-title">추억 올리기</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-left">
@@ -84,9 +89,7 @@ const MakePost = () => {
           </div>
           <div className="form-group">
             <label>본문</label>
-              <div className="form-group">
-              <input type="file" name="imageUrl" onChange={handleImageChange} />
-              </div>
+            <input type="file" name="image" onChange={handleImageChange} />
             <textarea
               name="content"
               value={formData.content}
@@ -97,16 +100,6 @@ const MakePost = () => {
         </div>
 
         <div className="form-right">
-          <div className="form-group">
-            <label>태그</label>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags.join(",")}
-              onChange={handleTagsChange}
-              placeholder="태그를 입력해 주세요 (콤마로 구분)"
-            />
-          </div>
           <div className="form-group">
             <label>장소</label>
             <input
@@ -143,26 +136,14 @@ const MakePost = () => {
             </div>
           </div>
 
-          {/* 비밀번호 입력 (항상 표시됨) */}
-          <div className="form-group">
-            <label>비밀번호</label>
-            <input
-              type="password"
-              name="postPassword"
-              value={formData.postPassword}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력해 주세요"
-            />
-          </div>
-        </div>
-
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         {/* 버튼 컨테이너 추가 */}
-        <div className="button-container">
-          <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? "올리는 중..." : "올리기"}
-          </button>
+          <div className="button-container">
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? "올리는 중..." : "올리기"}
+            </button>
+          </div>
         </div>
       </form>
     </div>

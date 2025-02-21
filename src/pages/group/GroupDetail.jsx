@@ -9,7 +9,7 @@ import EmptyIcon from "../../assets/empty.png";
 
 const GroupDetail = () => {
   const navigate = useNavigate();
-  const { groupId } = useParams();
+   const { groupId } = useParams();
   const [groupData, setGroupData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ const GroupDetail = () => {
         name: group.name,
         imageUrl: group.imageUrl,
         introduction: group.introduction,
-        followCount: group.followCount,
+        followCount: group.memberCount,
         postCount: group.postCount,
         createdAt: group.createdAt,
         badges: group.badges,
@@ -53,16 +53,7 @@ const GroupDetail = () => {
 
   const fetchPosts = async () => {
     try {
-      // API 요청 부분 주석 처리
-      // const postResponse = await api.get(`/groups/${groupId}/posts`, {
-      //   params: {
-      //     page: currentPage,
-      //     pageSize: 10,
-      //     sortBy: sortBy,
-      //     keyword: searchTerm,
-      //     isPublic: isPublicSelected
-      //   }
-      // });
+
 
       // 해당 그룹의 게시글을 post.json에서 찾아 필터링
       const posts = mokPostData.filter(
@@ -128,21 +119,12 @@ const GroupDetail = () => {
     }
   };
 
-  /* 페이지 연결 필요 */
-  const handleEditDeleteGroup = () => {
-    navigate();
-  };
-
-  const handleCreatePostClick = () => {
-    navigate("/post");
-  };
-
   const badgeInfo = {
-    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 등록" },
+    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 달성" },
     "그룹 인원수 10명 달성": { icon: "🌼", name: "그룹 인원수 10명 달성" },
     "게시글 공감 20개 이상 받기": {
       icon: "💖",
-      name: "게시글 공감 20개 이상 받기",
+      name: "게시글 공감 20개 달성",
     },
   };
 
@@ -183,9 +165,9 @@ const GroupDetail = () => {
           className="group-img"
         />
         <div className="group-info">
-          <button className="edit-delete-btn" onClick={handleEditDeleteGroup}>
-            그룹 수정/삭제
-          </button>
+          <Link to={`/groups/${groupId}`}>
+            <button className="edit-delete-btn">그룹 수정/삭제</button>
+          </Link>
 
           <div className="group-name-stats">
             <h1 className="group-detail-title">{groupData.name}</h1>
@@ -216,9 +198,6 @@ const GroupDetail = () => {
       <div className="post-section">
         <div className="post-header">
           <h3>추억 목록</h3>
-          <button className="post-upload-btn" onClick={handleCreatePostClick}>
-            추억 올리기
-          </button>
         </div>
 
         <div className="post-controls">
@@ -244,6 +223,9 @@ const GroupDetail = () => {
             <option value="likes">공감순</option>
             <option value="latest">최신순</option>
           </select>
+          <Link to={`/groups/${groupId}/posts`}>
+            <button className="post-upload-btn">추억 올리기</button>
+          </Link>
         </div>
 
         {/* 게시글 목록 렌더링 */}
@@ -258,7 +240,7 @@ const GroupDetail = () => {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                to={`/post/${post.id}`}
+                to={`/posts/${post.id}/details`}
                 style={{ textDecoration: "none" }}
               >
                 <div
