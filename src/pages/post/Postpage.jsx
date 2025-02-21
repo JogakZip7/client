@@ -67,7 +67,7 @@ function PostPage() {
       }
     }
   
-    if (!loggedInUser) {
+    if (!loggedInUserNickname) {
       alert("로그인 후 댓글을 작성할 수 있습니다.");
       return;
     }
@@ -98,7 +98,7 @@ function PostPage() {
   
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
-    if (comments[index].user !== loggedInUser) {
+    if (comments[index].nickname !== loggedInUserNickname) {
       alert("본인이 작성한 댓글만 삭제할 수 있습니다.");
       return;
     }
@@ -131,7 +131,7 @@ function PostPage() {
   };
   // 댓글 수정
   const handleEditComment = (index) => {
-    if (comments[index].user !== loggedInUser) {
+    if (comments[index].nickname !== loggedInUserNickname) {
       alert("본인이 작성한 댓글만 수정할 수 있습니다.");
       return;
     }
@@ -141,7 +141,7 @@ function PostPage() {
 
   // 공감 버튼 클릭 시 공감 수 증가
   const handleLikeClick = () => {
-    if (!loggedInUser) {
+    if (!loggedInUserNickname) {
       alert("로그인 후 공감을 보낼 수 있습니다.");
       return;
     }

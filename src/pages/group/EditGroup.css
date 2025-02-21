@@ -44,44 +44,36 @@
   width: 290px;
 }
 
+
 /* 버튼 그룹 스타일 */
-.submit-btn button {
+.submit-btn,
+.delete-btn {
   margin-top: 20px; /* 버튼 간격을 줄이기 */
   display: flex;
   justify-content: center; /* 버튼들을 수평으로 중앙 정렬 */
+  align-items: center; /* 버튼 내 텍스트 수직 중앙 정렬 */
   width: 310px;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   background-color: #6A6765;
   color: white;
-  height: 20px;
+  height: 40px; /* 버튼 높이 */
+  padding: 0; /* padding 제거, flex로 중앙 정렬 */
+  transition: background-color 0.3s ease;
 }
 
-.submit-btn button:hover {
+/* button 태그에 호버 효과 적용 */
+.submit-btn:hover,
+.delete-btn:hover {
   background-color: #282828;
 }
 
-/* 버튼 그룹 스타일 */
-.delete-btn button {
-  margin-top: 20px; /* 버튼 간격을 줄이기 */
-  display: flex;
-  justify-content: center; /* 버튼들을 수평으로 중앙 정렬 */
-  width: 310px;
-  font-family: 'Spoqa Han Sans Neo';
-  font-size: 12px;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  background-color: #6A6765;
-  color: white;
-  height: 20px;
-}
 
-.delete-btn button:hover {
-  background-color: #282828;
+
+/* 두 버튼 사이의 간격 추가 */
+.submit-btn {
+  margin-bottom: 15px; /* 버튼 간격 */
 }
