@@ -3,7 +3,7 @@ import axiosInstance from './axiosInstance';
 // 게시물 등록
 export const createPost = async (groupId, postData) => {
   try {
-    const response = await axiosInstance.post(`/api/groups/${groupId}/posts`, postData);
+    const response = await axiosInstance.post(`/groups/${groupId}/posts`, postData);
     return response.data;
   } catch (error) {
     console.error("Error creating post:", error);
@@ -14,7 +14,7 @@ export const createPost = async (groupId, postData) => {
 // 게시물 목록 조회
 export const fetchPosts = async (groupId) => {
   try {
-    const response = await axiosInstance.get(`/api/groups/${groupId}/posts`);
+    const response = await axiosInstance.get(`/groups/${groupId}/posts`);
     return response.data;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -25,7 +25,7 @@ export const fetchPosts = async (groupId) => {
 // 특정 게시물 조회
 export const fetchPostById = async (postId) => {
   try {
-    const response = await axiosInstance.get(`/api/posts/${postId}`);
+    const response = await axiosInstance.get(`/posts/${postId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -36,7 +36,7 @@ export const fetchPostById = async (postId) => {
 // 게시물 수정
 export const updatePost = async (postId, postData) => {
   try {
-    const response = await axiosInstance.put(`/api/posts/${postId}`, postData);
+    const response = await axiosInstance.put(`/posts/${postId}`, postData);
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -47,7 +47,7 @@ export const updatePost = async (postId, postData) => {
 // 게시물 삭제
 export const deletePost = async (postId) => {
   try {
-    const response = await axiosInstance.delete(`/api/posts/${postId}`);
+    const response = await axiosInstance.delete(`/posts/${postId}`);
     return response.data;
   } catch (error) {
     console.error("Error deleting post:", error);
@@ -58,7 +58,7 @@ export const deletePost = async (postId) => {
 // 게시물 상세 정보 조회
 export const fetchPostDetails = async (postId) => {
   try {
-    const response = await axiosInstance.get(`/api/posts/${postId}/details`);
+    const response = await axiosInstance.get(`/posts/${postId}/details`);
     return response.data;
   } catch (error) {
     console.error("Error fetching post details:", error);
@@ -69,7 +69,7 @@ export const fetchPostDetails = async (postId) => {
 // 게시물 좋아요
 export const likePost = async (postId) => {
   try {
-    const response = await axiosInstance.post(`/api/posts/${postId}/like`);
+    const response = await axiosInstance.post(`/posts/${postId}/like`);
     return response.data;
   } catch (error) {
     console.error("Error liking post:", error);
@@ -80,7 +80,7 @@ export const likePost = async (postId) => {
 // 게시물 공개 여부 확인
 export const checkPostPublic = async (postId) => {
   try {
-    const response = await axiosInstance.get(`/api/posts/${postId}/is-public`);
+    const response = await axiosInstance.get(`/posts/${postId}/is-public`);
     return response.data;
   } catch (error) {
     console.error("Error checking post public status:", error);
@@ -91,7 +91,7 @@ export const checkPostPublic = async (postId) => {
 // 게시물 스크랩
 export const scrapPost = async (postId) => {
   try {
-    const response = await axiosInstance.post(`/api/posts/${postId}/scrap`);
+    const response = await axiosInstance.post(`/posts/${postId}/scrap`);
     return response.data;
   } catch (error) {
     console.error("Error scrapping post:", error);

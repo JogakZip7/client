@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom'; // URL에서 postId와 groupId 추출
-import { updatePost, deletePost } from './PostApi'; // PostApi.jsx에서 작성한 updatePost와 deletePost 함수 import
+import { updatePost, deletePost } from '../../api/PostApi'; // PostApi.jsx에서 작성한 updatePost와 deletePost 함수 import
 import "./EditPost.css";
 
 const EditPost = ({ postData = {} }) => {

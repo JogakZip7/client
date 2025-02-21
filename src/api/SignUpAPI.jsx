@@ -10,11 +10,11 @@ const SignUpAPI = async (nickname, password) => {
 
     console.log("회원가입API:", response.data);
 
-    if (response.data && response.data.token) {
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      return { success: true, token };
-    }    
+    if (response.data && response.data.token && response.data.nickname) {
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("nickname", response.data.nickname);
+      return { success: true, nickname: response.data.nickname };
+    }
     return { success: false, error: "회원가입 실패" };
   } catch (error) {
     return {
