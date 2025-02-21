@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import SignIn from "./pages/admin/LoginPage";
 import SignUp from "./pages/admin/SignUpPage";
-import PostPage from "./pages/post/PostPage";
+import PostPage from "./pages/post/Postpage";
 import ErrorPage from "./pages/error/ErrorPage.jsx";
 import MyGroupList from "./pages/group/GroupList"; //내가 속한 그룹
 import GroupDetail from "./pages/group/GroupDetail"; //그룹페이지
