@@ -1,59 +1,28 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "/imgs/logo.png";
 import styles from "./LoginPage.module.css";
-//import LogInAPI from "../../api/LoginAPI";
+import LogInAPI from "../../api/LoginAPI";
 
 function SignIn() {
-  const [users, setUsers] = useState([]);
-  const [id, setId] = useState("");
+  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleId = (e) => setId(e.target.value);
-  const handlePw = (e) => setPassword(e.target.value);
+  const handleNickname = (e) => setNickname(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
 
-  useEffect(() => {
-    axios
-      .get("/login.json")
-      .then((res) => {
-        if (res.data && res.data.users) {
-          setUsers(res.data.users);
-        } else {
-          console.error("유효한 유저 데이터가 없습니다.");
-          setUsers([]);
-        }
-      })
-      .catch((error) => {
-        console.error("데이터 로드 실패:", error);
-        setUsers([]);
-      });
-  }, []);
-
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
-    const user = users.find((u) => u.id === id);
-    if (!user) {
-      setError("아이디가 존재하지 않습니다. 회원가입을 진행해주세요.");
-      return;
+    const result = await LogInAPI(nickname, password);
+    if (result.success) {
+      alert(`${result.nickname}님 기다리고 있었어요🎉`);
+      window.location.href = "/";
+    } else {
+      setError(result.error);
     }
-
-    if (user.password !== password) {
-      setError("비밀번호가 올바르지 않습니다.");
-      return;
-    }
-
-    console.log("로그인 성공!");
-    const fakeToken = `fake-jwt-token-${user.id}-${Date.now()}`;
-    localStorage.setItem("token", fakeToken);
-    localStorage.setItem("id", user.id);
-    localStorage.setItem("nickname", user.nickname);
-
-    alert(`${user.nickname}님 기다리고 있었어요🎉`);
-    window.location.href = "/";
   };
 
   return (
@@ -68,11 +37,11 @@ function SignIn() {
 
       <form onSubmit={handleLogin} className={styles.form}>
         <div className={styles.inputGroup}>
-          <label>아이디:</label>
+          <label>닉네임:</label>
           <input
             type="text"
-            value={id}
-            onChange={handleId}
+            value={nickname}
+            onChange={handleNickname}
             className={styles.input}
             required
           />
@@ -83,7 +52,7 @@ function SignIn() {
           <input
             type="password"
             value={password}
-            onChange={handlePw}
+            onChange={handlePassword}
             className={styles.input}
             required
           />
@@ -95,11 +64,11 @@ function SignIn() {
           로그인
         </button>
 
-        <a href="/signup">
+        <Link to="/signup">
           <button type="button" className={styles.signupButton}>
             회원가입
           </button>
-        </a>
+        </Link>
       </form>
     </div>
   );
