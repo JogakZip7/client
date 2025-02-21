@@ -156,17 +156,6 @@ const EditPost = ({ postData = {} }) => {
               </label>
             </div>
           </div>
-
-          <div className="form-group">
-            <label>비밀번호</label>
-            <input
-              type="password"
-              name="postPassword"
-              value={formData.postPassword}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력해 주세요"
-            />
-          </div>
         </div>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
