@@ -58,7 +58,17 @@ export const deletePost = async (postId) => {
 // 게시물 상세 정보 조회
 export const fetchPostDetails = async (postId) => {
   try {
-    const response = await axiosInstance.get(`/posts/${postId}/details`);
+    const token = localStorage.getItem("token"); // ✅ 토큰 가져오기
+    if (!token) {
+      throw new Error("User token not found in localStorage");
+    }
+
+    const response = await axiosInstance.get(`/posts/${postId}/details`, {
+      headers: {
+        Authorization: `Bearer ${token}`, // 🔹 헤더에 토큰 추가
+      },
+    });
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error fetching post details:", error);
