@@ -136,38 +136,14 @@ const MakePost = () => {
             </div>
           </div>
 
-          {/* 비밀번호 입력 (항상 표시됨) */}
-          <div className="form-group">
-            <label>비밀번호</label>
-            <input
-              type="password"
-              name="postPassword"
-              value={formData.postPassword}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력해 주세요"
-            />
-          </div>
-
-          {/* 태그 입력 */}
-          <div className="form-group">
-            <label>태그</label>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags.join(",")}
-              onChange={handleTagsChange} // handleTagsChange를 onChange에 연결
-              placeholder="태그를 입력해 주세요 (콤마로 구분)"
-            />
-          </div>
-        </div>
-
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         {/* 버튼 컨테이너 추가 */}
-        <div className="button-container">
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "올리는 중..." : "올리기"}
-          </button>
+          <div className="button-container">
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? "올리는 중..." : "올리기"}
+            </button>
+          </div>
         </div>
       </form>
     </div>
