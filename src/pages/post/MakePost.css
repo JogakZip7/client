@@ -4,13 +4,6 @@
   margin: 112px auto;
 }
 
-.logo {
-  width: 120px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .create-post-title {
   font-size: 24px;
   margin-bottom: 60px;
@@ -120,17 +113,6 @@ input[type="checkbox"] {
 .button-group .submit-btn:hover {
   background-color: #282828;
 }
-
-.button-group .post-btn {
-  background-color: #6A6765;
-  color: white;
-  border: none;
-}
-
-.button-group .post-btn:hover {
-  background-color: #282828;
-}
-
 
 /* 공개 여부 토글 스타일 */
 .toggle {
