@@ -87,14 +87,3 @@ export const checkPostPublic = async (postId) => {
     throw error;
   }
 };
-
-// 게시물 스크랩
-export const scrapPost = async (postId) => {
-  try {
-    const response = await axiosInstance.post(`/posts/${postId}/scrap`);
-    return response.data;
-  } catch (error) {
-    console.error("Error scrapping post:", error);
-    throw error;
-  }
-};
