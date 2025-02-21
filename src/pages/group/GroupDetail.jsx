@@ -9,7 +9,7 @@ import EmptyIcon from "../../assets/empty.png";
 
 const GroupDetail = () => {
   const navigate = useNavigate();
-  const { groupId } = useParams();
+   const { groupId } = useParams();
   const [groupData, setGroupData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ const GroupDetail = () => {
         name: group.name,
         imageUrl: group.imageUrl,
         introduction: group.introduction,
-        followCount: group.followCount,
+        followCount: group.memberCount,
         postCount: group.postCount,
         createdAt: group.createdAt,
         badges: group.badges,
@@ -53,16 +53,7 @@ const GroupDetail = () => {
 
   const fetchPosts = async () => {
     try {
-      // API 요청 부분 주석 처리
-      // const postResponse = await api.get(`/groups/${groupId}/posts`, {
-      //   params: {
-      //     page: currentPage,
-      //     pageSize: 10,
-      //     sortBy: sortBy,
-      //     keyword: searchTerm,
-      //     isPublic: isPublicSelected
-      //   }
-      // });
+
 
       // 해당 그룹의 게시글을 post.json에서 찾아 필터링
       const posts = mokPostData.filter(
@@ -129,11 +120,11 @@ const GroupDetail = () => {
   };
 
   const badgeInfo = {
-    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 등록" },
+    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 달성" },
     "그룹 인원수 10명 달성": { icon: "🌼", name: "그룹 인원수 10명 달성" },
     "게시글 공감 20개 이상 받기": {
       icon: "💖",
-      name: "게시글 공감 20개 이상 받기",
+      name: "게시글 공감 20개 달성",
     },
   };
 
@@ -207,11 +198,6 @@ const GroupDetail = () => {
       <div className="post-section">
         <div className="post-header">
           <h3>추억 목록</h3>
-          <Link to={`/groups/${groupId}/posts`}>
-            <button className="post-upload-btn">
-              추억 올리기
-            </button>
-          </Link>
         </div>
 
         <div className="post-controls">
@@ -237,6 +223,9 @@ const GroupDetail = () => {
             <option value="likes">공감순</option>
             <option value="latest">최신순</option>
           </select>
+          <Link to={`/groups/${groupId}/posts`}>
+            <button className="post-upload-btn">추억 올리기</button>
+          </Link>
         </div>
 
         {/* 게시글 목록 렌더링 */}
@@ -251,7 +240,7 @@ const GroupDetail = () => {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                to={`/post/${post.id}/details`}
+                to={`/posts/${post.id}/details`}
                 style={{ textDecoration: "none" }}
               >
                 <div

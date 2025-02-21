@@ -97,18 +97,19 @@ function EditGroup() {
           required
         />
 
-        <div className="button-group">
-          <button type="submit" className="submit-btn" disabled={loading}>
+        <div className="submit-btn">
+          <button type="submit" disabled={loading}>
             {loading ? "수정하는 중..." : "수정하기"}
           </button>
-          <button
+        </div> 
+        <div className="delete-btn">
+        <button
             type="button"
             onClick={handleDeleteGroupSubmit}
-            className="delete-btn"
           >
             삭제하기
           </button>
-        </div>
+          </div>  
       </form>
     </div>
   );

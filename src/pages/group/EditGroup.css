@@ -10,6 +10,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 /* 상단 헤더 스타일 */
 .header {
   display: flex;
@@ -17,6 +18,7 @@
   align-items: center;
   text-align: center;
 }
+
 
 /* 폼 스타일 */
 .create-group-form {
@@ -43,42 +45,43 @@
 }
 
 /* 버튼 그룹 스타일 */
-.button-group {
-  margin-top: 30px;
+.submit-btn button {
+  margin-top: 20px; /* 버튼 간격을 줄이기 */
   display: flex;
-  justify-content: center; /* 버튼들이 수평으로 중앙 정렬 */
-  gap: 20px;
-}
-
-.button-group button {
-   width: calc(100% - 10px); /* 버튼의 너비를 10px 줄임 */
-  height: 40px; 
+  justify-content: center; /* 버튼들을 수평으로 중앙 정렬 */
+  width: 310px;
   font-family: 'Spoqa Han Sans Neo';
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.button-group .submit-btn {
   background-color: #6A6765;
   color: white;
-  border: none;
+  height: 20px;
 }
 
-.button-group .submit-btn:hover {
+.submit-btn button:hover {
   background-color: #282828;
 }
 
-/* 삭제 버튼 */
-.button-group .delete-btn {
+/* 버튼 그룹 스타일 */
+.delete-btn button {
+  margin-top: 20px; /* 버튼 간격을 줄이기 */
+  display: flex;
+  justify-content: center; /* 버튼들을 수평으로 중앙 정렬 */
+  width: 310px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   background-color: #6A6765;
   color: white;
-  border: none;
-
+  height: 20px;
 }
 
-.button-group .delete-btn:hover {
+.delete-btn button:hover {
   background-color: #282828;
 }

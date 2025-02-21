@@ -24,7 +24,7 @@ function GroupList() {
 
   // 페이지가 로드될 때, localStorage에서 userId를 가져옵니다.
   useEffect(() => {
-    const storedUserId = localStorage.getItem("id"); // localStorage에서 userId 가져오기
+    const storedUserId = localStorage.getItem("nickname"); // localStorage에서 userId 가져오기
     setUserId(storedUserId);
     if (storedUserId) {
       // 유저의 참여 그룹만 필터링

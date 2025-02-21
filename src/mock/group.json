@@ -3,37 +3,37 @@
 		"id" : 2,
 		"owner" : "1a496b5f-7884-47fe-95bf-753db0bcb72b",
 		"name" : "수딩이네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740134989141-893330599.png",
+		"imageUrl" : "/imgs/image=img1.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 수딩이네 가족",
-		"postCount" : 13,
-		"memberCount" : 13,
-		"badges" : "[\"그룹 인원수 10명 달성\"]"
+		"postCount" : 20,
+		"memberCount" : 100000000,
+		"badges" : ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 3,
 		"owner" : "1a083a9a-c649-4bc9-8933-823e4f8230f1",
 		"name" : "양서네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740134164496-135976801.png",
+		"imageUrl" : "/imgs/image=img2.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 양서네 가족",
 		"postCount" : 0,
 		"memberCount" : 5,
-		"badges" : "[]"
+		"badges" : ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 4,
 		"owner" : "5ea9416f-0adc-451e-b374-0c34ecd2e2c5",
 		"name" : "정은이네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740137118179-370078379.png",
+		"imageUrl" : "/imgs/image=img3.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 정은이네 가족",
 		"postCount" : 6,
 		"memberCount" : 5,
-		"badges" : "[]"
+		"badges" : ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 5,
 		"owner" : "ab0dfbb8-779e-4e1d-b696-efc22ea7feec",
 		"name" : "신원이네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740135338425-786369212.png",
+		"imageUrl" : "/imgs/image=img4.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 신원이네 가족",
 		"postCount" : 1,
 		"memberCount" : 6,
@@ -43,7 +43,7 @@
 		"id" : 6,
 		"owner" : "cd310565-9ee5-458b-891d-b1c69e7f5f17",
 		"name" : "민하네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740135338425-786369212.png",
+		"imageUrl" : "/imgs/image=img5.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 민하네 가족",
 		"postCount" : 0,
 		"memberCount" : 5,
@@ -53,7 +53,7 @@
 		"id" : 7,
 		"owner" : "6db22dfd-e82b-4f2a-8e07-319e771e201b",
 		"name" : "예진이네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740137118179-370078379.png",
+		"imageUrl" : "/imgs/image=img7.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 예진이네 가족",
 		"postCount" : 0,
 		"memberCount" : 4,
@@ -63,7 +63,7 @@
 		"id" : 8,
 		"owner" : "06b11161-7cf6-40ef-8184-076fba6cf390",
 		"name" : "박서네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740137118179-370078379.png",
+		"imageUrl" : "/imgs/image=img8.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 박서네 가족",
 		"postCount" : 0,
 		"memberCount" : 3,
@@ -73,7 +73,7 @@
 		"id" : 10,
 		"owner" : "326d9c79-88d3-4516-a881-e1f3c0110e09",
 		"name" : "가은이네 가족",
-		"imageUrl" : "http://localhost:3000/uploads/1740146173867-347148228.png",
+		"imageUrl" : "/imgs/image=img9.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 가은이네 가족",
 		"postCount" : 0,
 		"memberCount" : 1,
@@ -83,7 +83,7 @@
 		"id" : 11,
 		"owner" : "fef1c93d-2ee2-437b-a1fc-70d8851ce325",
 		"name" : "고고와 친구들",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img10.jpg",
 		"introduction" : "영차영차",
 		"postCount" : 0,
 		"memberCount" : 1,
@@ -93,7 +93,7 @@
 		"id" : 12,
 		"owner" : "bbd5b3eb-83a2-47a3-9dcd-326f4041f5e7",
 		"name" : "도도네 집",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img11.png",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 도도네",
 		"postCount" : 0,
 		"memberCount" : 1,
@@ -103,7 +103,7 @@
 		"id" : 13,
 		"owner" : "9ca099d4-bd86-4444-ba03-53d439712241",
 		"name" : "나나와 친구들",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img12.jpg",
 		"introduction" : "우리는 하나",
 		"postCount" : 0,
 		"memberCount" : 1,
@@ -113,90 +113,90 @@
 		"id" : 14,
 		"owner" : "7d3825a4-01dc-4986-891f-2ea734fb2619",
 		"name" : "치치네",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img13.jpg",
 		"introduction" : "치치네 가족 공간입니다",
 		"postCount" : 0,
-		"memberCount" : 1,
-		"badges" : "[]"
+		"memberCount" : 1000000,
+		"badges" : ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 15,
 		"owner" : "3aaa3ceb-5735-40c1-8fa9-0c4b71e09e7b",
 		"name" : "소소네 집",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img14.jpg",
 		"introduction" : "한 마음으로 아끼는 소소네 가족",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["게시글 20개 등록","그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 16,
 		"owner" : "4a23c95e-763f-4eb1-9fce-34d3762a11c5",
 		"name" : "삐삐와 친구들",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img15.jpg",
 		"introduction" : "삐뽀삐뽀",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 17,
 		"owner" : "7d3825a4-01dc-4986-891f-2ea734fb2619",
 		"name" : "치치네 친구들",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img16.jpg",
 		"introduction" : "치치네입니다",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 18,
 		"owner" : "4a23c95e-763f-4eb1-9fce-34d3762a11c5",
 		"name" : "삐삐네 가족",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img17.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 삐삐네 가족",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 19,
 		"owner" : "b22840e6-a330-4099-b63a-538d9f76207f",
 		"name" : "지연이네 가족",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img18.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 지연이네 가족",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 20,
 		"owner" : "b22840e6-a330-4099-b63a-538d9f76207f",
 		"name" : "지연이네",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img19.jpg",
 		"introduction" : "친구들과 함께",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 21,
 		"owner" : "a1f56938-4a3d-4313-b06a-9066c19587d1",
 		"name" : "joe's room",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img20.jpg",
 		"introduction" : "room of memories",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" : ["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	},
 	{
 		"id" : 22,
 		"owner" : "fef1c93d-2ee2-437b-a1fc-70d8851ce325",
 		"name" : "고고네 가족",
-		"imageUrl" : "https://ex.com/group.jpg",
+		"imageUrl" : "/imgs/image=img21.jpg",
 		"introduction" : "서로 한 마음으로 응원하고 아끼는 고고네",
 		"postCount" : 0,
 		"memberCount" : 1,
-		"badges" : "[]"
+		"badges" :["그룹 인원수 10명 달성", "게시글 공감 20개 이상 받기"]
 	}
 ]
