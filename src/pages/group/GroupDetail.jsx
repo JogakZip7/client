@@ -129,11 +129,11 @@ const GroupDetail = () => {
   };
 
   const badgeInfo = {
-    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 등록" },
+    "게시글 20개 등록": { icon: "👾", name: "게시글 20개 달성" },
     "그룹 인원수 10명 달성": { icon: "🌼", name: "그룹 인원수 10명 달성" },
     "게시글 공감 20개 이상 받기": {
       icon: "💖",
-      name: "게시글 공감 20개 이상 받기",
+      name: "게시글 공감 20개 달성",
     },
   };
 
@@ -207,11 +207,6 @@ const GroupDetail = () => {
       <div className="post-section">
         <div className="post-header">
           <h3>추억 목록</h3>
-          <Link to={`/groups/${groupId}/posts`}>
-            <button className="post-upload-btn">
-              추억 올리기
-            </button>
-          </Link>
         </div>
 
         <div className="post-controls">
@@ -237,6 +232,9 @@ const GroupDetail = () => {
             <option value="likes">공감순</option>
             <option value="latest">최신순</option>
           </select>
+          <Link to={`/groups/${groupId}/posts`}>
+            <button className="post-upload-btn">추억 올리기</button>
+          </Link>
         </div>
 
         {/* 게시글 목록 렌더링 */}
