@@ -46,7 +46,22 @@
   .likeButton:hover {
     background-color: #ddd;
   }
+  .scrapButton {
+    position: absolute;
+    bottom: 10px;
+    right: 150px;
+    padding: 8px 20px;
+    background-color: #ffffff00;
+    border: 0.9px solid #282828;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    transform: translateY(-25px);
+  }
   
+  .scrapButton:hover {
+    background-color: #ddd;
+  }
   .backButton {
     padding: 8px 12px;
     background-color: #fafafa;

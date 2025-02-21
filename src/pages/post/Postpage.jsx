@@ -158,7 +158,7 @@ function PostPage() {
 
   // 공감 버튼 클릭 시 공감 수 증가
   const handleLikeClick = () => {
-    if (!loggedInUser) {
+    if (!loggedInUserNickname) {
       alert("로그인 후 공감을 보낼 수 있습니다.");
       return;
     }
@@ -264,7 +264,10 @@ function PostPage() {
         {/* 공감하기 버튼 */}
         <button onClick={handleLikeClick} className={styles.likeButton}>
           <img src={FlowerIcon} alt="공감" className={styles.flowerIcon2} />
-          {likeClicked ? " 공감 취소" : " 공감 보내기"}
+          {likeClicked ? " 공감 보내기" : "공감 완료!"}
+        </button>
+        <button className={styles.scrapButton}>
+         스크랩하기
         </button>
         {/* 게시글 수정 버튼 */}
 
