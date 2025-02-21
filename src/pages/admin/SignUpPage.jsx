@@ -4,32 +4,34 @@ import styles from "./SignUpPage.module.css"; // CSS 모듈 추가
 import Logo from "/imgs/logo.png";
 import { Link } from "react-router-dom";
 
-function SignUpPage({ token, setToken }) {
+function SignUpPage() {
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [passwordToConfirm, setPasswordToConfirm] = useState("");
+  const [token, setToken] = useState("");
 
-  const signUp = () => {
+  const signUp = async (e) => {
+    e.preventDefault();
+
+    // 비밀번호 확인 체크
     if (password !== passwordToConfirm) {
-      alert("비밀번호와 비밀번호 확인이 다릅니다.");
-    } else if (!password) {
-      alert("비밀번호는 필수 항목입니다.");
-    } else if (!passwordToConfirm) {
-      alert("비밀번호 확인은 필수 항목입니다.");
-    } else if (!nickname) {
-      alert("닉네임은 필수 항목입니다.");
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+      return;
+    }
+
+    if (!nickname || !password) {
+      alert("닉네임과 비밀번호를 모두 입력해주세요.");
+      return;
+    }
+
+    const result = await SignUpAPI(nickname, password);
+
+    if (result.success) {
+      setToken(result.token); // 🔥 토큰 저장
+      alert("회원가입 성공! 🎉");
+      window.location.href = "/"; // 로그인 페이지로 리디렉트 가능
     } else {
-      SignUpAPI(userid, password, nickname).then((response) => {
-        if (response !== "") {
-          alert("회원가입 성공! 🎉");
-          setPassword("");
-          setPasswordToConfirm("");
-          setNickname("");
-          setToken(response);
-        } else {
-          alert("회원가입 실패! 아이디 중복 또는 서버 문제일 수 있습니다.");
-        }
-      });
+      alert(result.error);
     }
   };
 

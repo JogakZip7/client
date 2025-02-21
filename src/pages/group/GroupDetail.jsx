@@ -251,7 +251,7 @@ const GroupDetail = () => {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                to={`/post/${post.id}`}
+                to={`/post/${post.id}/details`}
                 style={{ textDecoration: "none" }}
               >
                 <div

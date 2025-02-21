@@ -6,7 +6,7 @@ import styles from "./GroupList.module.css";
 
 function GroupListItem({ item }) {
   return (
-    <Link to={`/groups/${item.id}`}>
+    <Link to={`/groups/${item.id}/details`}>
       <div className="PostListItem">
         <img src={item.imageUrl} />
         <div>
