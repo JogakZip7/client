@@ -210,7 +210,11 @@ function PostPage() {
         {/* 그룹 ID와 공개 여부 표시 */}
         <div className={styles.headerInfo}>
           <button
+<<<<<<< HEAD
             onClick={() => navigate(`/groups/${postData.groupId}/details`)}
+=======
+            onClick={() => navigate(`/groups/${postData.groupId}`)}
+>>>>>>> origin/editpost
             className={styles.groupButton}
           >
             {groupName}

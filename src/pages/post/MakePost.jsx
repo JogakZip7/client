@@ -1,8 +1,18 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { Route } from 'react-router-dom';
 import "./MakePost.css";
 
 const MakePost = () => {
+=======
+import { useNavigate, useParams } from 'react-router-dom'; // useParams를 import
+import { createPost } from './PostApi'; // PostApi.jsx에서 작성한 createPost 함수 import
+import "./MakePost.css";
+
+const MakePost = () => {
+  const { groupId } = useParams(); // URL에서 groupId 추출
+
+>>>>>>> origin/editpost
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -15,6 +25,10 @@ const MakePost = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+<<<<<<< HEAD
+=======
+  const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
+>>>>>>> origin/editpost
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,10 +39,18 @@ const MakePost = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
+<<<<<<< HEAD
   const handleTagsChange = (e) => {
     setFormData({
       ...formData,
       tags: e.target.value.split(",").map((tag) => tag.trim()),
+=======
+  // handleTagsChange가 실제로 사용되도록 연결
+  const handleTagsChange = (e) => {
+    setFormData({
+      ...formData,
+      tags: e.target.value.split(",").map((tag) => tag.trim()), // 콤마로 구분된 태그 배열로 변환
+>>>>>>> origin/editpost
     });
   };
 
@@ -36,11 +58,16 @@ const MakePost = () => {
     setFormData({ ...formData, isPublic: !formData.isPublic });
   };
 
+<<<<<<< HEAD
   const handleSubmit = (e) => {
+=======
+  const handleSubmit = async (e) => {
+>>>>>>> origin/editpost
     e.preventDefault();
     setLoading(true);
     setErrorMessage("");
 
+<<<<<<< HEAD
     // 데이터 객체 출력 (서버 호출 부분)
     console.log("Sending post data:", formData);
 
@@ -61,6 +88,33 @@ const MakePost = () => {
     setLoading(false);
     alert("추억이 성공적으로 등록되었습니다!");
     // navigate(`/groups/${groupId}`);
+=======
+    try {
+      // FormData 객체를 사용해 데이터를 전송 (이미지 포함)
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('content', formData.content);
+      formDataToSend.append('image', formData.image);
+      formDataToSend.append('tags', formData.tags.join(','));
+      formDataToSend.append('location', formData.location);
+      formDataToSend.append('moment', formData.moment);
+      formDataToSend.append('postPassword', formData.postPassword);
+      formDataToSend.append('isPublic', formData.isPublic);
+
+      // 실제 API 호출 부분 (PostApi.jsx의 createPost 함수 사용)
+      const response = await createPost(groupId, formDataToSend);
+
+      console.log("Server response:", response);
+      alert("추억이 성공적으로 등록되었습니다!");
+      navigate(`/groups/${groupId}/posts`); // 게시물이 등록된 그룹 페이지로 이동
+
+    } catch (error) {
+      console.error("Error creating post:", error);
+      setErrorMessage("추억 등록에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
+>>>>>>> origin/editpost
   };
 
   return (
@@ -80,9 +134,13 @@ const MakePost = () => {
           </div>
           <div className="form-group">
             <label>본문</label>
+<<<<<<< HEAD
               <div className="form-group">
               <input type="file" name="imageUrl" onChange={handleImageChange} />
               </div>
+=======
+            <input type="file" name="image" onChange={handleImageChange} />
+>>>>>>> origin/editpost
             <textarea
               name="content"
               value={formData.content}
@@ -94,6 +152,7 @@ const MakePost = () => {
 
         <div className="form-right">
           <div className="form-group">
+<<<<<<< HEAD
             <label>태그</label>
             <input
               type="text"
@@ -104,6 +163,8 @@ const MakePost = () => {
             />
           </div>
           <div className="form-group">
+=======
+>>>>>>> origin/editpost
             <label>장소</label>
             <input
               type="text"
@@ -150,13 +211,32 @@ const MakePost = () => {
               placeholder="비밀번호를 입력해 주세요"
             />
           </div>
+<<<<<<< HEAD
+=======
+
+          {/* 태그 입력 */}
+          <div className="form-group">
+            <label>태그</label>
+            <input
+              type="text"
+              name="tags"
+              value={formData.tags.join(",")}
+              onChange={handleTagsChange} // handleTagsChange를 onChange에 연결
+              placeholder="태그를 입력해 주세요 (콤마로 구분)"
+            />
+          </div>
+>>>>>>> origin/editpost
         </div>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         {/* 버튼 컨테이너 추가 */}
         <div className="button-container">
+<<<<<<< HEAD
           <button type="submit" className="submit-button" disabled={loading}>
+=======
+          <button type="submit" className="submit-btn" disabled={loading}>
+>>>>>>> origin/editpost
             {loading ? "올리는 중..." : "올리기"}
           </button>
         </div>

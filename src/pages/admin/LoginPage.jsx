@@ -41,10 +41,7 @@ function SignIn() {
           <input
             type="text"
             value={nickname}
-            onChange={handleNickname}
-            className={styles.input}
-            required
-          />
+            onChange={handleNickname}/>
         </div>
 
         <div className={styles.inputGroup}>
@@ -52,17 +49,14 @@ function SignIn() {
           <input
             type="password"
             value={password}
-            onChange={handlePassword}
-            className={styles.input}
-            required
-          />
+            onChange={handlePassword} />
         </div>
 
         {error && <p className={styles.errorMessage}>{error}</p>}
-
         <button type="submit" className={styles.loginButton}>
           로그인
         </button>
+
 
         <Link to="/signup">
           <button type="button" className={styles.signupButton}>
@@ -74,4 +68,6 @@ function SignIn() {
   );
 }
 
+
 export default SignIn;
+
