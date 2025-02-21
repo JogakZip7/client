@@ -7,6 +7,7 @@ import FlowerIcon from "../../assets/Flower.png";
 import ChatIcon from "../../assets/Chat.png";
 import postsData from "../../mock/post.json";
 import groupData from "../../mock/group.json";
+// import { fetchPostDetails } from "../../api/PostApi";
 
 function PostPage() {
   const { postId } = useParams(); // URL에서 postId 가져오기

@@ -12,9 +12,9 @@ function ScrapPage() {
     const fetchScrapPosts = async () => {
       try {
         const data = await getMyScrapPosts();
-        console.log("📌 스크랩한 게시글 데이터:", data);
+        //console.log("스크랩한 게시글 데이터:", data);
 
-        // ✅ `data.data`에서 배열 추출
+        // data.data에서 배열 추출
         setScrapPosts(data.data || []);
       } catch (err) {
         console.error("Error loading scrap posts:", err);
