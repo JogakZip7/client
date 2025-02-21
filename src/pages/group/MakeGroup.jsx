@@ -44,7 +44,7 @@ function MakeGroup() {
       <div className="header">
         <h2>그룹 만들기</h2>
       </div>
-
+  
       <form className="create-group-form" onSubmit={handleSubmit}>
         <label>그룹명</label>
         <input
@@ -54,18 +54,17 @@ function MakeGroup() {
           onChange={(e) => setGroupName(e.target.value)}
           required
         />
-
+  
         <label>대표 이미지</label>
         <input type="file" onChange={handleImageChange} />
-
+  
         <label>그룹 소개</label>
         <textarea
           placeholder="그룹을 소개해 주세요"
           value={groupIntro}
           onChange={(e) => setGroupIntro(e.target.value)}
         />
-
-
+  
         {/* 비밀번호 입력 */}
         <label>비밀번호 생성</label>
         <input
@@ -75,14 +74,18 @@ function MakeGroup() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-         <div className="button-group">
-          <button type="submit" className="submit-btn" disabled={loading}>
+        
+        {/* 버튼 그룹 */}
+        <div className="submit-btn">
+          <button type="submit" disabled={loading}>
             {loading ? "만드는 중..." : "만들기"}
           </button>
         </div>
+
       </form>
     </div>
   );
+  
 }
 
 export default MakeGroup;
