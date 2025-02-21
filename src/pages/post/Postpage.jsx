@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import styles from "./PostPage.module.css";
 import PenIcon from "../../assets/Pen.png";
+import { commentApi } from "../../api/commentAPI";
 import TrashIcon from "../../assets/Trash.png";
 import FlowerIcon from "../../assets/Flower.png";
 import ChatIcon from "../../assets/Chat.png";
@@ -85,7 +86,7 @@ function PostPage() {
       }
     }
 
-    if (!loggedInUser) {
+    if (!loggedInUserNickname) {
       alert("로그인 후 댓글을 작성할 수 있습니다.");
       return;
     }
@@ -116,7 +117,7 @@ function PostPage() {
 
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
-    if (comments[index].user !== loggedInUser) {
+    if (comments[index].nickname !== loggedInUserNickname) {
       alert("본인이 작성한 댓글만 삭제할 수 있습니다.");
       return;
     }
@@ -135,10 +136,7 @@ function PostPage() {
     setShowDeleteCommentPopup(false);
   };
 
-  // 게시글 삭제 취소
-  const handleCancelDeletePost = () => {
-    setShowDeletePostPopup(false);
-  };
+ 
   // 게시글 수정
   const handleEditPost = () => {
     if (postData.nickname !== loggedInUserNickname) {
@@ -150,7 +148,7 @@ function PostPage() {
   };
   // 댓글 수정
   const handleEditComment = (index) => {
-    if (comments[index].user !== loggedInUser) {
+    if (comments[index].nickname !== loggedInUserNickname) {
       alert("본인이 작성한 댓글만 수정할 수 있습니다.");
       return;
     }
@@ -299,24 +297,20 @@ function PostPage() {
         <p className={styles.commentTitle}>댓글 {comments.length}</p>
         <hr className={styles.divider} />
         <div>
-          <textarea
-            value={commentContent}
-            onChange={(e) => setCommentContent(e.target.value)}
-            onKeyDown={handleKeyDown} // Enter 키 이벤트 추가
-            placeholder="댓글 작성해주세요"
-            className={styles.commentTextarea}
-          />
+        <textarea
+          value={commentContent}
+          onChange={(e) => setCommentContent(e.target.value)}
+          onKeyDown={handleKeyDown} // Enter 키 이벤트 추가
+          placeholder="댓글 입력하세요..."
+          className={styles.commentTextarea}
+        />
           <div className={styles.submitButtonContainer}>
-            <button
-              onClick={handleCommentSubmit}
-              className={styles.submitButton}
-            >
+            <button onClick={handleCommentSubmit} className={styles.submitButton}>
               등록
             </button>
           </div>
           <hr className={styles.divider} />
         </div>
-
         {/* 댓글 목록 */}
         <div className={styles.commentsList}>
           {currentComments.map((comment, index) => (
@@ -326,36 +320,27 @@ function PostPage() {
                 <span className={styles.commentDate}>{comment.date}</span>
               </div>
               {editingCommentIndex === index ? (
-                <div>
-                  <textarea
-                    value={editingCommentContent}
-                    onChange={(e) => setEditingCommentContent(e.target.value)}
-                    className={styles.editingTextarea}
-                  />
-                  <div className={styles.editingSaveButtonContainer}>
-                    <button
-                      onClick={handleSaveEditedComment}
-                      className={styles.editingSaveButton}
-                    >
-                      저장
-                    </button>
-                  </div>
+              <div>
+                <textarea
+                  value={editingCommentContent}
+                  onChange={(e) => setEditingCommentContent(e.target.value)}
+                  className={styles.editingTextarea}
+                />
+                <div className={styles.editingSaveButtonContainer}>
+                  <button onClick={handleSaveEditedComment} className={styles.editingSaveButton}>
+                    저장
+                  </button>
                 </div>
-              ) : (
-                <p className={styles.commentContent}>{comment.content}</p>
-              )}
+              </div>
+            ) : (
+              <p className={styles.commentContent}>{comment.content}</p>
+            )}
 
               <div className={styles.commentButtons}>
-                <button
-                  onClick={() => handleEditComment(index)}
-                  className={styles.editCommentButton}
-                >
+                <button onClick={() => handleEditComment(index)} className={styles.editCommentButton}>
                   <img src={PenIcon} alt="수정" className={styles.icon} />
                 </button>
-                <button
-                  onClick={() => handleDeleteComment(index)}
-                  className={styles.deleteCommentButton}
-                >
+                <button onClick={() => handleDeleteComment(index)} className={styles.deleteCommentButton}>
                   <img src={TrashIcon} alt="삭제" className={styles.icon} />
                 </button>
               </div>
@@ -365,33 +350,35 @@ function PostPage() {
         </div>
 
         {/* 페이지네이션 */}
-        <div className={styles.pagination}>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-            className={styles.pageButton}
-          >
-            이전
-          </button>
-          {[...Array(totalPages).keys()].map((pageNumber) => (
+        {/* 페이지네이션 (댓글이 5개 이상일 때만 표시) */}
+        {totalPages > 1 && (
+          <div className={styles.pagination}>
             <button
-              key={pageNumber}
-              onClick={() => handlePageChange(pageNumber + 1)}
-              className={`${styles.pageButton} ${
-                currentPage === pageNumber + 1 ? styles.activePage : ""
-              }`}
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+              className={styles.pageButton}
             >
-              {pageNumber + 1}
+              이전
             </button>
-          ))}
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-            className={styles.pageButton}
-          >
-            다음
-          </button>
-        </div>
+            {[...Array(totalPages).keys()].map((pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber + 1)}
+                className={`${styles.pageButton} ${currentPage === pageNumber + 1 ? styles.activePage : ""}`}
+              >
+                {pageNumber + 1}
+              </button>
+            ))}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+              className={styles.pageButton}
+            >
+              다음
+            </button>
+          </div>
+        )}
+
       </section>
 
       {/* 댓글 삭제 팝업 */}
@@ -399,37 +386,10 @@ function PostPage() {
         <div className={styles.popupOverlay}>
           <div className={styles.popup}>
             <h3>정말 댓글을 삭제하실건가요? ㅜㅜ</h3>
-            <button
-              onClick={handleConfirmDeleteComment}
-              className={styles.popupButton}
-            >
+            <button onClick={handleConfirmDeleteComment} className={styles.popupButton}>
               확인
             </button>
-            <button
-              onClick={handleCancelDeleteComment}
-              className={styles.popupButton}
-            >
-              취소
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* 게시글 삭제 팝업 */}
-      {showDeletePostPopup && (
-        <div className={styles.popupOverlay}>
-          <div className={styles.popup}>
-            <h3>정말 게시글을 삭제하실건가요? ㅜㅜ</h3>
-            <button
-              onClick={handleConfirmDeletePost}
-              className={styles.popupButton}
-            >
-              확인
-            </button>
-            <button
-              onClick={handleCancelDeletePost}
-              className={styles.popupButton}
-            >
+            <button onClick={handleCancelDeleteComment} className={styles.popupButton}>
               취소
             </button>
           </div>
