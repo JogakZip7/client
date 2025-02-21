@@ -42,11 +42,11 @@ function Main() {
         {/* 네비게이션 바 있는 페이지 */}
         <Route element={<LayoutWithNavbar />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/post" element={<PostPage />} />
+          
           <Route path="/showgroups" element={<MyGroupList />} />
           <Route path="/groups/:groupId/details" element={<GroupDetail />} />
           <Route path="/posts/:postId/details" element={<PostPage/>}/>
-          <Route path="/groups/:groupId" element={<GroupDetail />} />
+          
           <Route path="/posts/:postId" element={<PostPage/>}/>
           <Route path="/myscraps" element={<ScrapPage/>}/>
           <Route path="/groups" element={<MakeGroup />} />
