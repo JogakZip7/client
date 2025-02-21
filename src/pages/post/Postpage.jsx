@@ -1,37 +1,54 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import styles from "./PostPage.module.css";
 import PenIcon from "../../assets/Pen.png";
 import TrashIcon from "../../assets/Trash.png";
 import FlowerIcon from "../../assets/Flower.png";
 import ChatIcon from "../../assets/Chat.png";
-import postsData from "../../mock/post.json";
-import groupData from "../../mock/group.json";
-// import { fetchPostDetails } from "../../api/PostApi";
+//import postsData from "../../mock/post.json";
+//import groupData from "../../mock/group.json";
+import { fetchPostDetails } from "../../api/PostApi";
 
 function PostPage() {
   const { postId } = useParams(); // URL에서 postId 가져오기
   const navigate = useNavigate();
+  const [postData, setPostData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // postId에 해당하는 게시글 찾기
-  const postData = postsData.find((post) => String(post.id) === postId);
+  //게시물 내용 불러오기
+  useEffect(() => {
+    const getPostDetails = async () => {
+      try {
+        const data = await fetchPostDetails(postId);
+        setPostData(data || []);
+        console.log("게시글내용: ", data);
+      } catch (err) {
+        console.error("Error loading post details:", err);
+        setError("게시글을 불러오는 중 오류가 발생했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getPostDetails();
+  }, [postId]);
+
+  // if (loading) return <p>로딩 중...</p>;
+  // if (error) return <p>{error}</p>;
+  // if (post.length === 0) return <p>게시물 내용이 없습니다.</p>
 
   // 페이지 로드 시, 사용자가 이 게시글에 공감했는지 확인
   useEffect(() => {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
     setLikeClicked(!!likedPosts[postId]); // 공감 여부 확인
   }, [postId]);
+
   //postData가 없으면 에러 페이지로 이동
   useEffect(() => {
     if (!postData) {
       navigate("/error");
     }
   }, [postData, navigate]);
-
-  // postData가 없을 때 로딩 방지
-  if (!postData) return null;
-  const group = groupData.find((group) => group.id === postData.groupId);
-  const groupName = group ? group.name : "알 수 없는 그룹";
 
   // 초기 공감 수를 JSON의 likeCount로 설정
   const [likes, setLikes] = useState(postData.likeCount);
@@ -93,10 +110,9 @@ function PostPage() {
 
   useEffect(() => {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
-    if (likedPosts[postId]) {
-      setLikeClicked(true);
-    }
+    setLikeClicked(!!likedPosts[postId]); // 공감 여부 확인
   }, [postId]);
+
 
   // 댓글 삭제 팝업 표시
   const handleDeleteComment = (index) => {
@@ -199,6 +215,7 @@ function PostPage() {
     navigate(-1); // 바로 이전 페이지로 이동
   };
 
+
   return (
     <div className={styles.container}>
       {/* 뒤로가기 버튼 */}
@@ -214,7 +231,7 @@ function PostPage() {
             onClick={() => navigate(`/groups/${postData.groupId}/details`)}
             className={styles.groupButton}
           >
-            {groupName}
+            {postData.groupId}
           </button>
           <span> | {postData.isPublic ? "공개" : "비공개"}</span>
         </div>
@@ -268,7 +285,7 @@ function PostPage() {
         />
         {/* 본문 내용 */}
         <p className={styles.contentParagraph}>
-          {postData.content.split("\n").map((line, index) => (
+          {(postData?.content || "").split("\n").map((line, index) => (
             <React.Fragment key={index}>
               {line}
               <br />

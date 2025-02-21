@@ -39,7 +39,7 @@ function ScrapPage() {
       <ul className={styles.list}>
         {scrapPosts.map((post) => (
           <Link
-            to={`/post/${post.id}`}
+            to={`/posts/${post.id}/details`}
             key={post.id}
             className={styles.listItem}
           >
