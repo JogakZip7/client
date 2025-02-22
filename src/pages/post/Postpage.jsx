@@ -325,7 +325,8 @@ function PostPage() {
           ))}
         </div>
 
-        {/* 페이지네이션 */}
+        {/* 페이지네이션 (댓글이 5개 이상일 때만 표시) */}
+      {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
             disabled={currentPage === 1}
@@ -351,6 +352,8 @@ function PostPage() {
             다음
           </button>
         </div>
+      )}
+
       </section>
 
       {/* 댓글 삭제 팝업 */}
