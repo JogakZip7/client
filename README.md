@@ -35,11 +35,11 @@
 
 | **역할** | **종류** |
 | --- | --- |
-| Framework | <img src="https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=Java&logoColor=white">|
-| Styling | <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=styled-components&logoColor=white"/> |
+| Framework | <img src="https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=vite&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white">|
+| Styling | <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css&logoColor=white"/> |
 | Programming Language | <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> |
-| Formatting | <img src="https://img.shields.io/badge/prettier-F7B93E?style=flat-square&logo=styled-components&logoColor=white"/> |
-| Package manager | <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=styled-components&logoColor=white"/>|
+| Formatting | <img src="https://img.shields.io/badge/prettier-F7B93E?style=flat-square&logo=prettier&logoColor=white"/> |
+| Package manager | <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>|
 | Version control | <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> |
 
 # 📂 폴더 구조
