@@ -36,7 +36,7 @@
 | **역할** | **종류** |
 | --- | --- |
 | Framework | <img src="https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=Java&logoColor=white">|
-| Styling | <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> |
+| Styling | <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=styled-components&logoColor=white"/> |
 | Programming Language | <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> |
 | Formatting | <img src="https://img.shields.io/badge/prettier-F7B93E?style=flat-square&logo=styled-components&logoColor=white"/> |
 | Package manager | <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=styled-components&logoColor=white"/>|
